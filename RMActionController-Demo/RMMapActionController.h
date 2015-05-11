@@ -1,6 +1,6 @@
 //
 //  RMMapActionController.h
-//  RMMapActionController-Demo
+//  RMActionController-Demo
 //
 //  Created by Roland Moers on 01.05.15.
 //  Copyright (c) 2015 Roland Moers. All rights reserved.
