@@ -28,12 +28,12 @@
 #import <MapKit/MapKit.h>
 
 /*
- *
+ *  RMMapActionViewController is a simple example showing how to subclass RMActionViewController and show custom content in the action view controller.
  */
 @interface RMMapActionController : RMActionController
 
 /*
- *
+ *  The map view that is displayed by the RMMapActionViewController Instance.
  */
 @property (nonatomic, readonly) MKMapView *mapView;
 
