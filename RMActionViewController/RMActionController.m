@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 #pragma mark - Interfaces
 
-@interface RMActionController () <UIViewControllerTransitioningDelegate>
+@interface RMActionController () <UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (nonatomic, assign) RMActionControllerStyle style;
 
@@ -501,6 +501,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.popoverPresentationController.delegate = self;
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -526,13 +532,17 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
 }
 
-- (void)backgroundViewTapped:(UIGestureRecognizer *)sender {
+- (void)handleCancelNotAssociatedWithAnyButton {
     for(RMAction *anAction in self.cancelActions) {
         if([anAction containsCancelAction]) {
             [anAction executeHandlerOfCancelActionWithController:self];
             return;
         }
     }
+}
+
+- (void)backgroundViewTapped:(UIGestureRecognizer *)sender {
+    [self handleCancelNotAssociatedWithAnyButton];
 }
 
 - (void)addSubview:(UIView *)subview toContainer:(UIView *)container {
@@ -633,6 +643,11 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     action.controller = self;
+}
+
+#pragma mark - UIpopopverPresentationController Delegates
+- (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
+    [self handleCancelNotAssociatedWithAnyButton];
 }
 
 @end

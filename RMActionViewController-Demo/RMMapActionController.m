@@ -42,7 +42,7 @@
     controller.mapView.translatesAutoresizingMaskIntoConstraints = NO;
     
     NSDictionary *bindings = @{@"mapView": controller.mapView};
-    [controller.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(250)]" options:0 metrics:nil views:bindings]];
+    [controller.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(200)]" options:0 metrics:nil views:bindings]];
     
     return controller;
 }

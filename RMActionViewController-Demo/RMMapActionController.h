@@ -28,12 +28,14 @@
 #import <MapKit/MapKit.h>
 
 /*
- *  RMMapActionViewController is a simple example showing how to subclass RMActionViewController and show custom content in the action view controller.
+ *  RMMapActionController is a simple example showing how to subclass RMActionController and show custom content in the action controller.
+ *
+ *  For more examples see RMDateSelectionActionController and RMPickerActionController
  */
 @interface RMMapActionController : RMActionController
 
 /*
- *  The map view that is displayed by the RMMapActionViewController Instance.
+ *  The map view that is displayed by the RMMapActionController instance.
  */
 @property (nonatomic, readonly) MKMapView *mapView;
 

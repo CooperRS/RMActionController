@@ -47,11 +47,11 @@
     }
     
     RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController *controller) {
-        NSLog(@"Successfully selected date: %@", ((UIDatePicker *)controller.contentView).date);
+        NSLog(@"Map action controller finished successfully");
     }];
     
     RMAction *cancelAction = [RMAction actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController *controller) {
-        NSLog(@"Date selection was canceled");
+        NSLog(@"Map action controller was canceled");
     }];
     
     RMMapActionController *mapActionController = [RMMapActionController actionControllerWithStyle:style];
@@ -66,7 +66,7 @@
     mapActionController.disableMotionEffects = !self.motionSwitch.on;
     mapActionController.disableBlurEffects = !self.blurSwitch.on;
     
-    //On the iPad we want to show the date selection view controller within a popover. Fortunately, we can use iOS 8 API for this! :)
+    //On the iPad we want to show the map action controller within a popover. Fortunately, we can use iOS 8 API for this! :)
     //(Of course only if we are running on iOS 8 or later)
     if([mapActionController respondsToSelector:@selector(popoverPresentationController)] && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         //First we set the modal presentation style to the popover style
