@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.screenshots  = "http://cooperrs.github.io/RMActionViewController/Images/Blur-Screen-Portrait.png", "http://cooperrs.github.io/RMActionViewController/Images/Blur-Screen-Landscape.png", "http://cooperrs.github.io/RMActionViewController/Images/Blur-Screen-Portrait-Black.png"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Roland Moers" => "rm@cooperrs.de" }
-  s.source       = { :git => "https://github.com/CooperRS/RMActionViewController.git", :head }
+  s.source       = { :git => "https://github.com/CooperRS/RMActionViewController.git" }
   s.source_files = 'RMActionViewController/*'
   s.platform     = :ios, '8.0'
   s.requires_arc = true
