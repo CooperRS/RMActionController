@@ -16,7 +16,7 @@
 		CAD311D21B01512600D905F7 /* RMMapActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311D11B01512600D905F7 /* RMMapActionController.m */; };
 		CAD311D61B01515900D905F7 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311D51B01515900D905F7 /* RMActionController.m */; };
 		CAD311E31B01517800D905F7 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAD311E21B01517800D905F7 /* MainInterface.storyboard */; };
-		CAD311E61B01517800D905F7 /* RMActionViewController-DemoExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CAD311DB1B01517800D905F7 /* RMActionViewController-DemoExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CAD311E61B01517800D905F7 /* RMActionController-DemoExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAD311EB1B0151D600D905F7 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311D51B01515900D905F7 /* RMActionController.m */; };
 		CAD311EC1B0151DB00D905F7 /* RMMapActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311D11B01512600D905F7 /* RMMapActionController.m */; };
 /* End PBXBuildFile section */
@@ -38,7 +38,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CAD311E61B01517800D905F7 /* RMActionViewController-DemoExtension.appex in Embed App Extensions */,
+				CAD311E61B01517800D905F7 /* RMActionController-DemoExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CAD311A11B01507300D905F7 /* RMActionViewController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RMActionViewController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD311A11B01507300D905F7 /* RMActionController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RMActionController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD311A51B01507300D905F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD311A61B01507300D905F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CAD311A81B01507300D905F7 /* RMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMAppDelegate.h; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		CAD311D11B01512600D905F7 /* RMMapActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapActionController.m; sourceTree = "<group>"; };
 		CAD311D41B01515900D905F7 /* RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMActionController.h; sourceTree = "<group>"; };
 		CAD311D51B01515900D905F7 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
-		CAD311DB1B01517800D905F7 /* RMActionViewController-DemoExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RMActionViewController-DemoExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RMActionController-DemoExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD311DE1B01517800D905F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD311E21B01517800D905F7 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,9 +86,9 @@
 		CAD311981B01507300D905F7 = {
 			isa = PBXGroup;
 			children = (
-				CAD311D31B01513800D905F7 /* RMActionViewController */,
-				CAD311A31B01507300D905F7 /* RMActionViewController-Demo */,
-				CAD311DC1B01517800D905F7 /* RMActionViewController-DemoExtension */,
+				CAD311D31B01513800D905F7 /* RMActionController */,
+				CAD311A31B01507300D905F7 /* RMActionController-Demo */,
+				CAD311DC1B01517800D905F7 /* RMActionController-DemoExtension */,
 				CAD311A21B01507300D905F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,13 +96,13 @@
 		CAD311A21B01507300D905F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CAD311A11B01507300D905F7 /* RMActionViewController-Demo.app */,
-				CAD311DB1B01517800D905F7 /* RMActionViewController-DemoExtension.appex */,
+				CAD311A11B01507300D905F7 /* RMActionController-Demo.app */,
+				CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CAD311A31B01507300D905F7 /* RMActionViewController-Demo */ = {
+		CAD311A31B01507300D905F7 /* RMActionController-Demo */ = {
 			isa = PBXGroup;
 			children = (
 				CAD311B61B01507400D905F7 /* LaunchScreen.xib */,
@@ -116,7 +116,7 @@
 				CAD311B41B01507400D905F7 /* Images.xcassets */,
 				CAD311A41B01507300D905F7 /* Supporting Files */,
 			);
-			path = "RMActionViewController-Demo";
+			path = "RMActionController-Demo";
 			sourceTree = "<group>";
 		};
 		CAD311A41B01507300D905F7 /* Supporting Files */ = {
@@ -128,22 +128,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CAD311D31B01513800D905F7 /* RMActionViewController */ = {
+		CAD311D31B01513800D905F7 /* RMActionController */ = {
 			isa = PBXGroup;
 			children = (
 				CAD311D41B01515900D905F7 /* RMActionController.h */,
 				CAD311D51B01515900D905F7 /* RMActionController.m */,
 			);
-			path = RMActionViewController;
+			path = RMActionController;
 			sourceTree = "<group>";
 		};
-		CAD311DC1B01517800D905F7 /* RMActionViewController-DemoExtension */ = {
+		CAD311DC1B01517800D905F7 /* RMActionController-DemoExtension */ = {
 			isa = PBXGroup;
 			children = (
 				CAD311E21B01517800D905F7 /* MainInterface.storyboard */,
 				CAD311DD1B01517800D905F7 /* Supporting Files */,
 			);
-			path = "RMActionViewController-DemoExtension";
+			path = "RMActionController-DemoExtension";
 			sourceTree = "<group>";
 		};
 		CAD311DD1B01517800D905F7 /* Supporting Files */ = {
@@ -157,9 +157,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CAD311A01B01507300D905F7 /* RMActionViewController-Demo */ = {
+		CAD311A01B01507300D905F7 /* RMActionController-Demo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionViewController-Demo" */;
+			buildConfigurationList = CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-Demo" */;
 			buildPhases = (
 				CAD3119D1B01507300D905F7 /* Sources */,
 				CAD3119E1B01507300D905F7 /* Frameworks */,
@@ -171,14 +171,14 @@
 			dependencies = (
 				CAD311E51B01517800D905F7 /* PBXTargetDependency */,
 			);
-			name = "RMActionViewController-Demo";
+			name = "RMActionController-Demo";
 			productName = "RMActionViewController-Demo";
-			productReference = CAD311A11B01507300D905F7 /* RMActionViewController-Demo.app */;
+			productReference = CAD311A11B01507300D905F7 /* RMActionController-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CAD311DA1B01517800D905F7 /* RMActionViewController-DemoExtension */ = {
+		CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CAD311E71B01517800D905F7 /* Build configuration list for PBXNativeTarget "RMActionViewController-DemoExtension" */;
+			buildConfigurationList = CAD311E71B01517800D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-DemoExtension" */;
 			buildPhases = (
 				CAD311D71B01517800D905F7 /* Sources */,
 				CAD311D81B01517800D905F7 /* Frameworks */,
@@ -188,9 +188,9 @@
 			);
 			dependencies = (
 			);
-			name = "RMActionViewController-DemoExtension";
+			name = "RMActionController-DemoExtension";
 			productName = "RMActionViewController-DemoExtension";
-			productReference = CAD311DB1B01517800D905F7 /* RMActionViewController-DemoExtension.appex */;
+			productReference = CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -210,7 +210,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CAD3119C1B01507300D905F7 /* Build configuration list for PBXProject "RMActionViewController-Demo" */;
+			buildConfigurationList = CAD3119C1B01507300D905F7 /* Build configuration list for PBXProject "RMActionController-Demo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -223,8 +223,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CAD311A01B01507300D905F7 /* RMActionViewController-Demo */,
-				CAD311DA1B01517800D905F7 /* RMActionViewController-DemoExtension */,
+				CAD311A01B01507300D905F7 /* RMActionController-Demo */,
+				CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -277,7 +277,7 @@
 /* Begin PBXTargetDependency section */
 		CAD311E51B01517800D905F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CAD311DA1B01517800D905F7 /* RMActionViewController-DemoExtension */;
+			target = CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */;
 			targetProxy = CAD311E41B01517800D905F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -388,7 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "RMActionViewController-Demo/Info.plist";
+				INFOPLIST_FILE = "RMActionController-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -398,7 +398,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "RMActionViewController-Demo/Info.plist";
+				INFOPLIST_FILE = "RMActionController-Demo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -411,7 +411,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "RMActionViewController-DemoExtension/Info.plist";
+				INFOPLIST_FILE = "RMActionController-DemoExtension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -421,7 +421,7 @@
 		CAD311E91B01517800D905F7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = "RMActionViewController-DemoExtension/Info.plist";
+				INFOPLIST_FILE = "RMActionController-DemoExtension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -431,7 +431,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CAD3119C1B01507300D905F7 /* Build configuration list for PBXProject "RMActionViewController-Demo" */ = {
+		CAD3119C1B01507300D905F7 /* Build configuration list for PBXProject "RMActionController-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAD311C51B01507400D905F7 /* Debug */,
@@ -440,7 +440,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionViewController-Demo" */ = {
+		CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAD311C81B01507400D905F7 /* Debug */,
@@ -449,7 +449,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CAD311E71B01517800D905F7 /* Build configuration list for PBXNativeTarget "RMActionViewController-DemoExtension" */ = {
+		CAD311E71B01517800D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-DemoExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CAD311E81B01517800D905F7 /* Debug */,
