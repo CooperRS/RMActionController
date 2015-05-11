@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
-  s.name         = "RMDateSelectionViewController"
-  s.version      = "1.5.1"
-  s.summary      = "iOS control for selecting a date using UIDatePicker in a UIActionSheet like fashion"
+  s.name         = "RMActionViewController"
+  s.version      = "1.0.0"
+  s.summary      = "This is an iOS control for presenting any UIView in UIActionSheet/UIActionController like manner"
   s.homepage     = "https://github.com/CooperRS/RMDateSelectionViewController"
-  s.screenshots  = "http://cooperrs.github.io/RMDateSelectionViewController/Images/Blur-Screen-Portrait.png", "http://cooperrs.github.io/RMDateSelectionViewController/Images/Blur-Screen-Landscape.png", "http://cooperrs.github.io/RMDateSelectionViewController/Images/Blur-Screen-Portrait-Black.png"
+  s.screenshots  = "http://cooperrs.github.io/RMActionViewController/Images/Blur-Screen-Portrait.png", "http://cooperrs.github.io/RMActionViewController/Images/Blur-Screen-Landscape.png", "http://cooperrs.github.io/RMActionViewController/Images/Blur-Screen-Portrait-Black.png"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Roland Moers" => "rm@cooperrs.de" }
-  s.source       = { :git => "https://github.com/CooperRS/RMDateSelectionViewController.git", :tag => "1.5.1" }
-  s.source_files = 'RMDateSelectionViewController/*'
+  s.source       = { :git => "https://github.com/CooperRS/RMActionViewController.git", :tag => "1.0.0" }
+  s.source_files = 'RMActionViewController/*'
   s.platform     = :ios, '8.0'
   s.requires_arc = true
   s.framework    = 'CoreGraphics', 'QuartzCore'
