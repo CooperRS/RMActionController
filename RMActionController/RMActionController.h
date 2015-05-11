@@ -34,8 +34,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
     RMActionControllerStyleDefault = RMActionControllerStyleWhite
 };
 
-/*
- *
+/**
+ *  A RMActionController displays some arbitrary view in a UIActionSheet/UIAlertController like manner to the user. It is used by RMDateSelectionViewController and RMPickerViewController.
+ * 
+ *  Usually, RMActionController is subclassed to display custom content views. See RMDateSelectionViewController and RMPickerViewController on how this works.
  */
 @interface RMActionController : UIViewController <UIAppearanceContainer>
 
@@ -43,22 +45,46 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 #pragma mark - Getting an Instance
 
 /**
+ *  Returns a new instance of RMActionController.
  *
+ *  @param style The action controller style for the new instance.
+ *
+ *  @return A new instance of RMActionController.
  */
 + (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style;
 
-/*
+/**
+ *  Returns a new instance of RMActionController.
  *
+ *  @param style        The action controller style for the new instance.
+ *  @param selectAction An instance of RMAction whos handler is called when the select button is tapped.
+ *  @param cancelAction An instance of RMAction whos handler is called when the cancel button is tapped.
+ *
+ *  @return A new instance of RMActionController.
  */
 + (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction;
 
-/*
+/**
+ *  Returns a new instance of RMActionController.
  *
+ *  @param style        The action controller style for the new instance.
+ *  @param aTitle       A title for the RMActionController
+ *  @param aMessage     A message explaining why the RMActionController is shown.
+ *  @param selectAction An instance of RMAction whos handler is called when the select button is tapped.
+ *  @param cancelAction An instance of RMAction whos handler is called when the cancel button is tapped.
+ *
+ *  @return A new instance of RMActionController.
  */
 + (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction;
 
-/*
+/**
+ *  Initializes a new instance of RMActionController.
  *
+ *  Overwrite this method when subclassing RMActionController. Initialize the custom content view and set the content view of the RMActionController to your content view in this method.
+ *
+ *  @param aStyle The action controller style for the new instance.
+ *
+ *  @return An initialized of RMActionController.
  */
 - (instancetype)initWithStyle:(RMActionControllerStyle)aStyle;
 
@@ -66,12 +92,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 #pragma mark - User Interface
 
 /**
- *
+ *  A title for the RMActionController
  */
 @property (nonatomic, copy) NSString *title;
 
 /**
- *
+ *  A message explaining why the RMActionController is shown.
  */
 @property (nonatomic, copy) NSString *message;
 
@@ -83,20 +109,25 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 /// @name Actions
 #pragma mark - Actions
 
-/*
- *
+/**
+ *  An array of actions that has been added to the RMActionController
  */
 @property (nonatomic, readonly) NSArray *actions;
 
 /**
+ *  Use this method to add further actions to the RMActionController.
  *
+ *  @param action The instance of RMAction to add.
  */
 - (void)addAction:(RMAction *)action;
 
 /// @name Content View
 #pragma mark - Content View
-/*
+
+/**
+ *  The content view of the RMActionController.
  *
+ *  Overwrite this method in a subclass of RMActionController and return your custom content view.
  */
 @property (nonatomic) UIView *contentView;
 
@@ -111,21 +142,23 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 @property (assign, nonatomic) BOOL disableMotionEffects;
 
 /**
- *  Used to enable or disable bouncing effects when sliding in the date selection view. Default value is NO.
+ *  Used to enable or disable bouncing effects when sliding in the RMActionController. Default value is NO.
  *
  *  @warning This property always returns YES, if motion is reduced via accessibilty options.
  */
 @property (assign, nonatomic) BOOL disableBouncingEffects;
 
 /**
- *  Used to enable or disable blurring the date selection view. Default value is NO.
+ *  Used to enable or disable blurring the RMActionController. Default value is NO.
  *
  *  @warning This property always returns YES if either UIBlurEffect, UIVibrancyEffect or UIVisualEffectView is not available on your system at runtime or transparency is reduced via accessibility options.
  */
 @property (assign, nonatomic) BOOL disableBlurEffects;
 
-/*
+/**
+ *  Used to enable or disable blurring the RMActionController content view.
  *
+ *  Overwrite this method in subclasses of RMActionController if your custom content view cannot be shown within an UIVisualEffectView.
  */
 @property (assign, nonatomic) BOOL disableBlurEffectsForContentView;
 
@@ -140,41 +173,56 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
     RMActionStyleDefault = RMActionStyleDone
 };
 
+/**
+ *  A RMAction instance represents an action that can be tapped by the use when a RMActionController is presented. It has a title or image for identifying the action and a handler which is calledwhen the action has been tapped by the user.
+ */
 @interface RMAction : NSObject
 
 /// @name Getting an Instance
 #pragma mark - Getting an Instance
 
-/*
+/**
+ *  Returns a new instance of RMAction.
  *
+ *  @param title   The title of the action.
+ *  @param style   The style of the action.
+ *  @param handler A block that is called when the action has been tapped.
+ *
+ *  @return The new instance of RMAction.
  */
 + (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler;
 
-/*
+/**
+ *  Returns a new instance of RMAction.
  *
+ *  @param image   The image of the action.
+ *  @param style   The style of the action.
+ *  @param handler A block that is called when the action has been tapped.
+ *
+ *  @return The new instance of RMAction.
  */
 + (instancetype)actionWithImage:(UIImage *)image style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler;
 
 /// @name Properties
 #pragma mark - Properties
 
-/*
- *
+/**
+ *  The title of the action.
  */
 @property (nonatomic, readonly) NSString *title;
 
-/*
- *
+/**
+ *  The image of the action.
  */
 @property (nonatomic, readonly) UIImage *image;
 
-/*
- *
+/**
+ *  The style of the action.
  */
 @property (nonatomic, readonly) RMActionStyle style;
 
-/*
- *
+/**
+ *  Control whether or not the RMActionController to whom the RMAction has been added is dismissed when the RMAction has been tapped.
  */
 @property (nonatomic, assign) BOOL dismissesActionController;
 
@@ -182,13 +230,23 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
 
 #pragma mark -
 
+/**
+ *  A RMGroupedAction instance represents a number of actions that can be grouped.
+ *
+ *  Normally, a RMActionController uses one row for every action that has been added. RMGroupedActions offers the possibility to show multiple RMActions in one row.
+ */
 @interface RMGroupedAction : RMAction
 
 /// @name Getting an Instance
 #pragma mark - Getting an Instance
 
-/*
+/**
+ *  Returns a new instance of RMGroupedAction.
  *
+ *  @param style   The style of the action.
+ *  @param actions The actions that are contained in the grouped action.
+ *
+ *  @return The new instance of RMGroupedAction
  */
 + (instancetype)actionWithStyle:(RMActionStyle)style andActions:(NSArray *)actions;
 
