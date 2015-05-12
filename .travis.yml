@@ -1,0 +1,5 @@
+language: objective-c
+xcode_sdk: iphonesimulator
+xcode_project: RMActionController-Demo.xcodeproj
+xcode_scheme: RMActionController-Demo
+
