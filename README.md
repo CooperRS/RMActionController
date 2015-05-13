@@ -52,8 +52,6 @@ You can use the property `modalPresentationStyle` to control how the action cont
 
 Finially, RMActionController can be used in both your main application and an action extension showing UI.
 
-## Running Demo Project
-
 ## Documentation
 There is an additional documentation available provided by the CocoaPods team. Take a look at [cocoadocs.org](http://cocoadocs.org/docsets/RMActionController/).
 
