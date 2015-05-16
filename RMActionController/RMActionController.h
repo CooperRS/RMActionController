@@ -28,6 +28,9 @@
 
 @class RMAction;
 
+/**
+ *
+ */
 typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
     RMActionControllerStyleWhite,
     RMActionControllerStyleBlack,
@@ -166,6 +169,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 
 #pragma mark - 
 
+/**
+ *
+ */
 typedef NS_ENUM(NSInteger, RMActionStyle) {
     RMActionStyleDone,
     RMActionStyleCancel,

@@ -315,6 +315,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     } else {
         self.bottomContainer.backgroundColor = [UIColor whiteColor];
     }
+    
+    //Debugging Accessibility Labels
+#ifdef DEBUG
+    self.topContainer.accessibilityLabel = @"TopContainer";
+    self.bottomContainer.accessibilityLabel = @"BottomContainer";
+#endif
 }
 
 - (void)setupConstraints {
@@ -465,6 +471,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     NSAssert(self.contentView != nil, @"Error: The view of an RMActionController has been loaded before a contentView has been set. You have to set the contentView before presenting a RMActionController.");
     
     [super viewDidLoad];
+    
+#ifdef DEBUG
+    self.view.accessibilityLabel = @"ActionControllerView";
+#endif
     
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.view.backgroundColor = [UIColor clearColor];

@@ -35,6 +35,20 @@
                ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CAF2FD821B0733FE001B1545"
+               BuildableName = "RMActionController-Tests.xctest"
+               BlueprintName = "RMActionController-Tests"
+               ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -43,13 +57,23 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CAF2FD821B0733FE001B1545"
+               BuildableName = "RMActionController-Tests.xctest"
+               BlueprintName = "RMActionController-Tests"
+               ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAD311DA1B01517800D905F7"
-            BuildableName = "RMActionController-DemoExtension.appex"
-            BlueprintName = "RMActionController-DemoExtension"
+            BlueprintIdentifier = "CAD311A01B01507300D905F7"
+            BuildableName = "RMActionController-Demo.app"
+            BlueprintName = "RMActionController-Demo"
             ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
