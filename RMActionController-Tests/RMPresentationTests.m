@@ -9,8 +9,6 @@
 #import <KIF/KIF.h>
 #import <MapKit/MapKit.h>
 
-#define EXPECTED_HEIGHT 384.5
-
 @interface NSDate (Rounding)
 
 - (NSDate *)dateByRoundingToMinutes:(NSInteger)minutes;
@@ -25,10 +23,6 @@
 
 #pragma mark - Lifecycle
 - (void)beforeEach {
-    if([[[UIApplication sharedApplication] keyWindow] accessibilityElementWithLabel:@"Cancel"] != nil) {
-        [tester tapViewWithAccessibilityLabel:@"Cancel"];
-    }
-    
     [system simulateDeviceRotationToOrientation:UIDeviceOrientationPortrait];
     [tester waitForTimeInterval:0.5];
     
@@ -174,14 +168,12 @@
         CGRect screenFrame = [[UIScreen mainScreen] bounds];
         
         XCTAssertEqual(frame.origin.x, 0);
-        XCTAssertEqual(frame.origin.y, screenFrame.size.height - EXPECTED_HEIGHT);
         XCTAssertEqual(frame.size.width, screenFrame.size.width);
-        XCTAssertEqual(frame.size.height, EXPECTED_HEIGHT);
+        XCTAssertTrue(frame.size.height > 0);
     } else if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         XCTAssertEqual(frame.origin.x, 0);
         XCTAssertEqual(frame.origin.y, 0);
         XCTAssertEqual(frame.size.width, 341);
-        XCTAssertEqual(frame.size.height, EXPECTED_HEIGHT + 10);
     }
 }
 
