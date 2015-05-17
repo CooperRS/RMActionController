@@ -55,6 +55,7 @@ When subclassing RMActionController you only have to overwrite one method. This 
 
 Presenting any RMActionController works by using standard Apple API.
 
+```objc
 - (IBAction)openActionController:(id)sender {
     //Create select action
     RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController *controller) {
@@ -74,6 +75,7 @@ Presenting any RMActionController works by using standard Apple API.
     //Now just present the date selection controller using the standard iOS presentation method
     [self presentViewController:actionController animated:YES completion:nil];
 }
+```
 
 ### Advanced
 You can use the property `modalPresentationStyle` to control how the action controller is shown. By default, it is set to `UIModalPresentationOverCurrentContext`. But on the iPad you could use `UIModalPresentationPopover` to present the action controller within a popover. See the following example on how this works:
