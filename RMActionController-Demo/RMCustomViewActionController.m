@@ -36,7 +36,7 @@
     [controller.contentView addConstraint:[NSLayoutConstraint constraintWithItem:textLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:controller.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:20]];
     
     NSDictionary *bindings = @{@"contentView": controller.contentView};
-    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[contentView(300)]" options:0 metrics:nil views:bindings]];
+    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[contentView(>=300)]" options:0 metrics:nil views:bindings]];
     [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[contentView(140)]" options:0 metrics:nil views:bindings]];
     
     return controller;

@@ -326,6 +326,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 - (void)setupConstraints {
+    NSDictionary *metrics = @{@"seperatorHeight": @(1.f / [[UIScreen mainScreen] scale])};
+    
     UIView *topContainer = self.topContainer;
     UIView *bottomContainer = self.bottomContainer;
     
@@ -356,13 +358,13 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:bindings]];
-            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(0.5)]-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
+            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(seperatorHeight)]-(0)-[actionView]-(0)-|" options:0 metrics:metrics views:bindings]];
         } else {
             NSDictionary *bindings = @{@"actionView": action.view, @"seperator": seperator, @"currentTopView": currentTopView};
             
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:bindings]];
-            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(0.5)]-(0)-[actionView]-(0)-[currentTopView]" options:0 metrics:nil views:bindings]];
+            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(seperatorHeight)]-(0)-[actionView]-(0)-[currentTopView]" options:0 metrics:metrics views:bindings]];
         }
         
         currentTopView = seperator;
@@ -390,7 +392,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperatorView]-(0)-|" options:0 metrics:nil views:actionBindingsDict]];
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:actionBindingsDict]];
-            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionView]-(0)-[seperatorView(0.5)]-(0)-[currentTopView]" options:0 metrics:nil views:actionBindingsDict]];
+            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionView]-(0)-[seperatorView(seperatorHeight)]-(0)-[currentTopView]" options:0 metrics:metrics views:actionBindingsDict]];
             
             currentTopView = actionView;
         }];
@@ -402,7 +404,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             NSDictionary *bindings = NSDictionaryOfVariableBindings(seperatorView, currentTopView);
             
             [self.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperatorView]-(0)-|" options:0 metrics:nil views:bindings]];
-            [self.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperatorView(0.5)]-(0)-[currentTopView]" options:0 metrics:nil views:bindings]];
+            [self.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperatorView(seperatorHeight)]-(0)-[currentTopView]" options:0 metrics:metrics views:bindings]];
             
             currentTopView = seperatorView;
             
@@ -459,7 +461,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
                 
                 [blockself.bottomContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
                 [blockself.bottomContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:bindings]];
-                [blockself.bottomContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionView]-(0)-[seperator(0.5)]-(0)-[currentTopView]" options:0 metrics:nil views:bindings]];
+                [blockself.bottomContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionView]-(0)-[seperator(seperatorHeight)]-(0)-[currentTopView]" options:0 metrics:metrics views:bindings]];
             }
             
             currentTopView = action.view;
@@ -930,6 +932,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     view.translatesAutoresizingMaskIntoConstraints = NO;
     view.backgroundColor = [UIColor clearColor];
     
+    NSDictionary *metrics = @{@"seperatorHeight": @(1.f / [[UIScreen mainScreen] scale])};
+    
     __block UIView *currentLeft = nil;
     [self.actions enumerateObjectsUsingBlock:^(RMAction *action, NSUInteger index, BOOL *stop) {
         [action.view setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
@@ -948,7 +952,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             
             [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
             [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:bindings]];
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[currentLeft(==actionView)]-(0)-[seperator(0.5)]-(0)-[actionView(==currentLeft)]" options:0 metrics:nil views:bindings]];
+            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[currentLeft(==actionView)]-(0)-[seperator(seperatorHeight)]-(0)-[actionView(==currentLeft)]" options:0 metrics:metrics views:bindings]];
         }
         
         currentLeft = action.view;
