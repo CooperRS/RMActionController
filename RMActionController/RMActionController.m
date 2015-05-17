@@ -167,6 +167,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             self.modalPresentationStyle = UIModalPresentationCustom;
         }
         
+        
+        
         [self setup];
     }
     return self;
@@ -504,17 +506,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         [self.view addMotionEffect:motionEffectGroup];
     }
     
-    if([self respondsToSelector:@selector(popoverPresentationController)]) {
-        CGSize minimalSize = [self.view systemLayoutSizeFittingSize:CGSizeMake(999, 999)];
-        self.preferredContentSize = CGSizeMake(minimalSize.width, minimalSize.height+10);
-        self.popoverPresentationController.backgroundColor = self.backgroundView.backgroundColor;
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    CGSize minimalSize = [self.view systemLayoutSizeFittingSize:CGSizeMake(999, 999)];
+    self.preferredContentSize = CGSizeMake(minimalSize.width, minimalSize.height+10);
     
-    self.popoverPresentationController.delegate = self;
+    if([self respondsToSelector:@selector(popoverPresentationController)]) {
+        self.popoverPresentationController.delegate = self;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -522,12 +519,6 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     //Action controller will appear, so it hasn't been dismissed, right?
     self.hasBeenDismissed = NO;
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-    
-    [super viewDidDisappear:animated];
 }
 
 #pragma mark - Helper
@@ -656,6 +647,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 #pragma mark - UIpopopverPresentationController Delegates
+- (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)popoverPresentationController {
+    popoverPresentationController.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+}
+
 - (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
     [self handleCancelNotAssociatedWithAnyButton];
 }

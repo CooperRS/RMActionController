@@ -40,9 +40,13 @@
     
     controller.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
     controller.mapView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+#ifdef DEBUG
     controller.mapView.accessibilityLabel = @"MapView";
+#endif
     
     NSDictionary *bindings = @{@"mapView": controller.mapView};
+    [controller.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[mapView(300)]" options:0 metrics:nil views:bindings]];
     [controller.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(200)]" options:0 metrics:nil views:bindings]];
     
     return controller;

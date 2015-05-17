@@ -55,31 +55,31 @@
         NSLog(@"Action controller was canceled");
     }];
     
-    RMCustomViewActionController *mapActionController = [RMCustomViewActionController actionControllerWithStyle:style];
-    mapActionController.title = @"Test";
-    mapActionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
+    RMCustomViewActionController *actionController = [RMCustomViewActionController actionControllerWithStyle:style];
+    actionController.title = @"Test";
+    actionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
     
-    [mapActionController addAction:selectAction];
-    [mapActionController addAction:cancelAction];
+    [actionController addAction:selectAction];
+    [actionController addAction:cancelAction];
     
     //You can enable or disable blur, bouncing and motion effects
-    mapActionController.disableBouncingEffects = !self.bouncingSwitch.on;
-    mapActionController.disableMotionEffects = !self.motionSwitch.on;
-    mapActionController.disableBlurEffects = !self.blurSwitch.on;
+    actionController.disableBouncingEffects = !self.bouncingSwitch.on;
+    actionController.disableMotionEffects = !self.motionSwitch.on;
+    actionController.disableBlurEffects = !self.blurSwitch.on;
     
     //On the iPad we want to show the map action controller within a popover. Fortunately, we can use iOS 8 API for this! :)
     //(Of course only if we are running on iOS 8 or later)
-    if([mapActionController respondsToSelector:@selector(popoverPresentationController)] && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if([actionController respondsToSelector:@selector(popoverPresentationController)] && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         //First we set the modal presentation style to the popover style
-        mapActionController.modalPresentationStyle = UIModalPresentationPopover;
+        actionController.modalPresentationStyle = UIModalPresentationPopover;
         
         //Then we tell the popover presentation controller, where the popover should appear
-        mapActionController.popoverPresentationController.sourceView = self.tableView;
-        mapActionController.popoverPresentationController.sourceRect = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        actionController.popoverPresentationController.sourceView = self.tableView;
+        actionController.popoverPresentationController.sourceRect = [self.tableView rectForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     }
     
     //Now just present the date selection controller using the standard iOS presentation method
-    [self presentViewController:mapActionController animated:YES completion:nil];
+    [self presentViewController:actionController animated:YES completion:nil];
 }
 
 #pragma mark - UITableView Delegates
