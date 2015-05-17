@@ -26,6 +26,7 @@
 
 #import "RMViewController.h"
 
+#import "RMCustomViewActionController.h"
 #import "RMMapActionController.h"
 
 @interface RMViewController ()
@@ -40,23 +41,23 @@
 @implementation RMViewController
 
 #pragma mark - Actions
-- (IBAction)openMapActionController:(id)sender {
+- (IBAction)openActionController:(id)sender {
     RMActionControllerStyle style = RMActionControllerStyleWhite;
     if(self.blackSwitch.on) {
         style = RMActionControllerStyleBlack;
     }
     
     RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController *controller) {
-        NSLog(@"Map action controller finished successfully");
+        NSLog(@"Action controller finished successfully");
     }];
     
     RMAction *cancelAction = [RMAction actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController *controller) {
-        NSLog(@"Map action controller was canceled");
+        NSLog(@"Action controller was canceled");
     }];
     
-    RMMapActionController *mapActionController = [RMMapActionController actionControllerWithStyle:style];
+    RMCustomViewActionController *mapActionController = [RMCustomViewActionController actionControllerWithStyle:style];
     mapActionController.title = @"Test";
-    mapActionController.message = @"This is a test message.\nPlease choose a location and press 'Select' or 'Cancel'.";
+    mapActionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
     
     [mapActionController addAction:selectAction];
     [mapActionController addAction:cancelAction];
@@ -84,7 +85,7 @@
 #pragma mark - UITableView Delegates
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0 && indexPath.row == 0) {
-        [self openMapActionController:self];
+        [self openActionController:self];
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -30,7 +30,7 @@
 /*
  *  RMMapActionController is a simple example showing how to subclass RMActionController and show custom content in the action controller.
  *
- *  For more examples see RMDateSelectionViewController and RMPickerViewController
+ *  For another example see RMCustomViewActionController in this project. Additionally, I published two more RMActionController subclasses called RMDateSelectionViewController and RMPickerViewController. You can find them on GitHub.
  */
 @interface RMMapActionController : RMActionController
 

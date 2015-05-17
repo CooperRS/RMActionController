@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54C26CF343008EBB70997356 /* libPods-RMActionController-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFCF5BA9B0ABA3319143338 /* libPods-RMActionController-Tests.a */; };
+		CA8763701B088DDA00885A0B /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */; };
 		CAD311A71B01507300D905F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A61B01507300D905F7 /* main.m */; };
 		CAD311AA1B01507300D905F7 /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A91B01507300D905F7 /* RMAppDelegate.m */; };
 		CAD311B31B01507400D905F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAD311B11B01507400D905F7 /* Main.storyboard */; };
@@ -58,6 +59,8 @@
 		3AFCF5BA9B0ABA3319143338 /* libPods-RMActionController-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RMActionController-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		769E7A3B9A15854927680AEA /* Pods-RMActionController-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMActionController-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMActionController-Tests/Pods-RMActionController-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9904203FEE4B65574FFC0D4E /* Pods-RMActionController-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMActionController-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMActionController-Tests/Pods-RMActionController-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		CA87636E1B088DDA00885A0B /* RMCustomViewActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCustomViewActionController.h; sourceTree = "<group>"; };
+		CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionController.m; sourceTree = "<group>"; };
 		CAD311A11B01507300D905F7 /* RMActionController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RMActionController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD311A51B01507300D905F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD311A61B01507300D905F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +126,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CA8763711B088E0F00885A0B /* SampleActionController */ = {
+			isa = PBXGroup;
+			children = (
+				CA87636E1B088DDA00885A0B /* RMCustomViewActionController.h */,
+				CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */,
+				CAD311D01B01512600D905F7 /* RMMapActionController.h */,
+				CAD311D11B01512600D905F7 /* RMMapActionController.m */,
+			);
+			name = SampleActionController;
+			sourceTree = "<group>";
+		};
 		CAD311981B01507300D905F7 = {
 			isa = PBXGroup;
 			children = (
@@ -155,8 +169,7 @@
 				CAD311A91B01507300D905F7 /* RMAppDelegate.m */,
 				CAD311CD1B01511500D905F7 /* RMViewController.h */,
 				CAD311CE1B01511500D905F7 /* RMViewController.m */,
-				CAD311D01B01512600D905F7 /* RMMapActionController.h */,
-				CAD311D11B01512600D905F7 /* RMMapActionController.m */,
+				CA8763711B088E0F00885A0B /* SampleActionController */,
 				CAD311B41B01507400D905F7 /* Images.xcassets */,
 				CAD311A41B01507300D905F7 /* Supporting Files */,
 			);
@@ -381,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8763701B088DDA00885A0B /* RMCustomViewActionController.m in Sources */,
 				CAD311AA1B01507300D905F7 /* RMAppDelegate.m in Sources */,
 				CAD311D21B01512600D905F7 /* RMMapActionController.m in Sources */,
 				CAD311A71B01507300D905F7 /* main.m in Sources */,
