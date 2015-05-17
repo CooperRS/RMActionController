@@ -16,7 +16,6 @@
     
     controller.contentView = [[UIView alloc] initWithFrame:CGRectZero];
     controller.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    controller.contentView.tintColor = [UIColor whiteColor];
     
     UILabel *plusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     plusLabel.translatesAutoresizingMaskIntoConstraints = NO;
