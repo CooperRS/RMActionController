@@ -29,7 +29,7 @@
 @class RMAction;
 
 /**
- *
+ *  RMActionControllerStyle is used to determine the display style of RMActionController. There are three styles available: White, black and the default style, which is white.
  */
 typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
     RMActionControllerStyleWhite,
@@ -170,7 +170,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 #pragma mark - 
 
 /**
- *
+ *  RMActionStyle is used to determine the display style of RMAction. There are 4 styles available: Done, cancel, additional and the default style, which is the done style.
  */
 typedef NS_ENUM(NSInteger, RMActionStyle) {
     RMActionStyleDone,
