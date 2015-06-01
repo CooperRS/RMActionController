@@ -39,7 +39,6 @@ When subclassing RMActionController you only have to overwrite one method. This 
     //Create an instance of your RMActionController subclass
     RMMapActionController *controller = [super actionControllerWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
     
-    
     controller.contentView = [[MKMapView alloc] initWithFrame:CGRectZero];
     controller.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     controller.contentView.accessibilityLabel = @"MapView";
