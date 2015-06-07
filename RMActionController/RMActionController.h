@@ -171,7 +171,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 /**
  *  Used to enable or disable blurring the background of RMActionController.
  *
- *  @warning This property always returns YES if either UIBlurEffect, UIVibrancyEffect or UIVisualEffectView is not available on your system at runtime or transparency is reduced via accessibility options.
+ *  @warning This property always returns YES, if disableBlurEffects returns YES.
  */
 @property (assign, nonatomic) BOOL disableBlurEffectsForBackgroundView;
 
