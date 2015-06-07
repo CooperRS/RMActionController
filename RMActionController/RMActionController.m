@@ -567,6 +567,14 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     return _disableBlurEffects;
 }
 
+- (BOOL)disableBlurEffectsForBackgroundView {
+    if(self.disableBlurEffects) {
+        return YES;
+    }
+    
+    return _disableBlurEffectsForBackgroundView;
+}
+
 - (BOOL)disableBouncingEffects {
     if(&UIAccessibilityIsReduceMotionEnabled && UIAccessibilityIsReduceMotionEnabled()) {
         return YES;
@@ -585,8 +593,23 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (UIView *)backgroundView {
     if(!_backgroundView) {
-        self.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-        _backgroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+        if(self.disableBlurEffectsForBackgroundView) {
+            self.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+            _backgroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
+        } else {
+            UIVisualEffect *effect = nil;
+            switch (self.style) {
+                case RMActionControllerStyleWhite:
+                    effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+                    break;
+                case RMActionControllerStyleBlack:
+                    effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+                    break;
+            }
+            
+            self.backgroundView = [[UIVisualEffectView alloc] initWithEffect:effect];
+        }
+        
         _backgroundView.translatesAutoresizingMaskIntoConstraints = NO;
         
         UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundViewTapped:)];
