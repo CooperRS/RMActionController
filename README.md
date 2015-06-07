@@ -15,7 +15,7 @@ This is an iOS control for presenting any UIView in UIActionSheet/UIAlertControl
 ### CocoaPods
 ```ruby
 platform :ios, '8.0'
-pod "RMActionController", "~> 1.0.0"
+pod "RMActionController", "~> 1.0.1"
 ```
 
 ### Manual
@@ -28,7 +28,7 @@ pod "RMActionController", "~> 1.0.0"
 
 The default RMActionController does not contain any content view. This means presenting an RMActionController only presents a set of buttons added to the RMActionController. For this task an UIAlertController can be used.
 
-To add a content view RMActionController usually is subclassed. This project contains two subclasses of RMActionController (RMCustomViewActionController and RMMapActionController) which give two examples for a subclass of RMActionController. The following two section will show the process of subclassing RMActionController using the code of RMMapActionController.
+To add a content view RMActionController usually is subclassed. This project contains two subclasses of RMActionController (RMCustomViewActionController and RMMapActionController) which give two examples for a subclass of RMActionController.
 
 #### Subclassing
 
@@ -67,7 +67,7 @@ Presenting any RMActionController works by using standard Apple API.
     }];
     
     //Create action controller and (optionally) set title and message
-    RMCustomViewActionController *actionController = [RMCustomViewActionController actionControllerWithStyle:RMActionControllerStyleWhite selectAction:selectAction andCancelAction:cancelAction];
+    RMMapActionController *actionController = [RMMapActionController actionControllerWithStyle:RMActionControllerStyleWhite selectAction:selectAction andCancelAction:cancelAction];
     actionController.title = @"Test";
     actionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
 
@@ -77,6 +77,8 @@ Presenting any RMActionController works by using standard Apple API.
 ```
 
 ### Advanced
+
+#### Presentation Style
 You can use the property `modalPresentationStyle` to control how the action controller is shown. By default, it is set to `UIModalPresentationOverCurrentContext`. But on the iPad you could use `UIModalPresentationPopover` to present the action controller within a popover. See the following example on how this works:
 
 ```objc
@@ -84,7 +86,7 @@ You can use the property `modalPresentationStyle` to control how the action cont
     //Create select and cancel action
     ...
 
-    RMCustomViewActionController *actionController = [RMCustomViewActionController actionControllerWithStyle:RMActionControllerStyleWhite selectAction:selectAction andCancelAction:cancelAction];
+    RMMapActionController *actionController = [RMMapActionController actionControllerWithStyle:RMActionControllerStyleWhite selectAction:selectAction andCancelAction:cancelAction];
 
     //On the iPad we want to show the date selection view controller within a popover.
     if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
@@ -101,6 +103,7 @@ You can use the property `modalPresentationStyle` to control how the action cont
 }
 ```
 
+#### Others
 Finially, RMActionController can be used in both your main application and an action extension showing UI.
 
 ## Documentation
