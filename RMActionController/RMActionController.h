@@ -32,8 +32,11 @@
  *  RMActionControllerStyle is used to determine the display style of RMActionController. There are three styles available: White, black and the default style, which is white.
  */
 typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
+    /** Displays a RMActionController with a light background. */
     RMActionControllerStyleWhite,
+    /** Displays a RMActionController with a dark background. */
     RMActionControllerStyleBlack,
+    /** Displays a RMActionController with the default background (which is currently light). */
     RMActionControllerStyleDefault = RMActionControllerStyleWhite
 };
 
@@ -170,12 +173,16 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 #pragma mark - 
 
 /**
- *  RMActionStyle is used to determine the display style of RMAction. There are 4 styles available: Done, cancel, additional and the default style, which is the done style.
+ *  RMActionStyle is used to determine the display style of RMAction and where it is positioned. There are 4 styles available: Done, cancel, additional and the default style, which is the done style.
  */
 typedef NS_ENUM(NSInteger, RMActionStyle) {
+    /** The button is displayed with a regular font and positioned right below the content view. */
     RMActionStyleDone,
+    /** The button is displayed with a bold font and positioned below all done buttons (or the content view if there are no done buttons). */
     RMActionStyleCancel,
+    /** The button is displayed with a regular font and positioned above the content view. */
     RMActionStyleAdditional,
+    /** The button is displayed and positioned like a done button. */
     RMActionStyleDefault = RMActionStyleDone
 };
 
