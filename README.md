@@ -11,16 +11,11 @@ This is an iOS control for presenting any UIView in UIActionSheet/UIAlertControl
 ### Black version
 ![Colors](http://cooperrs.github.io/RMActionController/Images/Blur-Screen-Portrait-Black.png)
 
-## Installation
-### CocoaPods
+## Installation (CocoaPods)
 ```ruby
 platform :ios, '8.0'
 pod "RMActionController", "~> 1.0.1"
 ```
-
-### Manual
-1. Check out the project
-2. Add all files in the `RMActionController` folder to Xcode
 
 ## Usage
 
