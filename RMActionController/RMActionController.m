@@ -167,8 +167,6 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             self.modalPresentationStyle = UIModalPresentationCustom;
         }
         
-        
-        
         [self setup];
     }
     return self;
@@ -340,10 +338,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
     
     if([self.cancelActions count] <= 0) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
     } else {
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
     }
     
     //Top container content constraints
@@ -471,6 +469,11 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
 }
 
+- (void)setupTopContainersTopMarginConstraint {
+    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(10)-[topContainer]" options:0 metrics:nil views:@{@"topContainer": self.topContainer}]];
+}
+
 - (void)viewDidLoad {
     NSAssert(self.contentView != nil, @"Error: The view of an RMActionController has been loaded before a contentView has been set. You have to set the contentView before presenting a RMActionController.");
     
@@ -480,11 +483,18 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     self.view.accessibilityLabel = @"ActionControllerView";
 #endif
     
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.view.translatesAutoresizingMaskIntoConstraints = YES;
     self.view.backgroundColor = [UIColor clearColor];
     self.view.layer.masksToBounds = YES;
     
     [self setupContainerElements];
+    
+    if(self.modalPresentationStyle != UIModalPresentationPopover) {
+        [self.view addSubview:self.backgroundView];
+        
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[BGView]-(0)-|" options:0 metrics:nil views:@{@"BGView": self.backgroundView}]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[BGView]-(0)-|" options:0 metrics:nil views:@{@"BGView": self.backgroundView}]];
+    }
     
     [self.view addSubview:self.topContainer];
     if([self.cancelActions count] > 0) {
@@ -492,6 +502,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     [self setupConstraints];
+    if(self.modalPresentationStyle == UIModalPresentationPopover) {
+        [self setupTopContainersTopMarginConstraint];
+    }
     
     if(!self.disableMotionEffects) {
         UIInterpolatingMotionEffect *verticalMotionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
@@ -519,7 +532,6 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    //Action controller will appear, so it hasn't been dismissed, right?
     self.hasBeenDismissed = NO;
 }
 
@@ -711,6 +723,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         if([toVC isKindOfClass:[RMActionController class]]) {
             RMActionController *actionController = (RMActionController *)toVC;
             
+            [actionController setupTopContainersTopMarginConstraint];
+            
             actionController.backgroundView.alpha = 0;
             [containerView addSubview:actionController.backgroundView];
             [containerView addSubview:actionController.view];
@@ -782,25 +796,21 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 #pragma mark - Class
 + (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
-    RMAction *action = [[RMAction alloc] init];
+    RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     action.title = title;
-    action.style = style;
-    
-    __weak RMAction *weakAction = action;
-    [action setHandler:^(RMActionController *controller) {
-        handler(controller);
-        
-        if(weakAction.dismissesActionController) {
-            [controller dismissViewControllerAnimated:YES completion:nil];
-        }
-    }];
     
     return action;
 }
 
 + (instancetype)actionWithImage:(UIImage *)image style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
-    RMAction *action = [[RMAction alloc] init];
+    RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     action.image = image;
+    
+    return action;
+}
+
++ (instancetype)actionWithStyle:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
+    RMAction *action = [[RMAction alloc] init];
     action.style = style;
     
     __weak RMAction *weakAction = action;
@@ -808,7 +818,11 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         handler(controller);
         
         if(weakAction.dismissesActionController) {
-            [controller dismissViewControllerAnimated:YES completion:nil];
+            if(controller.modalPresentationStyle == UIModalPresentationPopover || controller.yConstraint != nil) {
+                [controller dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                [controller dismissViewControllerAnimated:NO completion:nil];
+            }
         }
     }];
     
