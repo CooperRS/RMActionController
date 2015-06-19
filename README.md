@@ -14,7 +14,7 @@ This is an iOS control for presenting any UIView in UIActionSheet/UIAlertControl
 ## Installation (CocoaPods)
 ```ruby
 platform :ios, '8.0'
-pod "RMActionController", "~> 1.0.1"
+pod "RMActionController", "~> 1.0.2"
 ```
 
 ## Usage
