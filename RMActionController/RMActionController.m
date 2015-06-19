@@ -568,6 +568,18 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
 }
 
+#pragma mark - iOS Properties
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    switch (self.style) {
+        case RMActionControllerStyleWhite:
+            return UIStatusBarStyleLightContent;
+        case RMActionControllerStyleBlack:
+            return UIStatusBarStyleDefault;
+        default:
+            return UIStatusBarStyleLightContent;
+    }
+}
+
 #pragma mark - Custom Properties
 - (BOOL)disableBlurEffects {
     if(!NSClassFromString(@"UIBlurEffect") || !NSClassFromString(@"UIVibrancyEffect") || !NSClassFromString(@"UIVisualEffectView")) {
