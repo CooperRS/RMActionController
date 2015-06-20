@@ -235,7 +235,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             [self.topContainer addSubview:anAction.view];
         }
     } else {
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self blurEffectStyleForCurrentStyle]];
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
         UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
         
         UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
@@ -279,7 +279,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             [self.bottomContainer addSubview:anAction.view];
         }
     } else {
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self blurEffectStyleForCurrentStyle]];
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
         UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
         
         UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
@@ -536,7 +536,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 #pragma mark - Helper
-- (UIBlurEffectStyle)blurEffectStyleForCurrentStyle {
+- (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
             return UIBlurEffectStyleExtraLight;
@@ -544,6 +544,17 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             return UIBlurEffectStyleDark;
         default:
             return UIBlurEffectStyleExtraLight;
+    }
+}
+
+- (UIBlurEffectStyle)backgroundBlurEffectStyleForCurrentStyle {
+    switch (self.style) {
+        case RMActionControllerStyleWhite:
+            return UIBlurEffectStyleDark;
+        case RMActionControllerStyleBlack:
+            return UIBlurEffectStyleLight;
+        default:
+            return UIBlurEffectStyleDark;
     }
 }
 
@@ -557,7 +568,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 - (void)backgroundViewTapped:(UIGestureRecognizer *)sender {
-    [self handleCancelNotAssociatedWithAnyButton];
+    if(!self.disableBackgroundTaps) {
+        [self handleCancelNotAssociatedWithAnyButton];
+    }
 }
 
 - (void)addSubview:(UIView *)subview toContainer:(UIView *)container {
@@ -629,16 +642,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             self.backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
             _backgroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
         } else {
-            UIVisualEffect *effect = nil;
-            switch (self.style) {
-                case RMActionControllerStyleWhite:
-                    effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-                    break;
-                case RMActionControllerStyleBlack:
-                    effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-                    break;
-            }
-            
+            UIVisualEffect *effect = [UIBlurEffect effectWithStyle:[self backgroundBlurEffectStyleForCurrentStyle]];
             self.backgroundView = [[UIVisualEffectView alloc] initWithEffect:effect];
         }
         
