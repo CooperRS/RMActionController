@@ -32,6 +32,7 @@
     [controller addAction:[RMAction actionWithTitle:@"Additional2" style:RMActionStyleAdditional andHandler:nil]];
     
     XCTAssertNotNil(controller.contentView);
+    XCTAssertTrue([controller.contentView isKindOfClass:[MKMapView class]]);
     
     BOOL catchedException = NO;
     @try {
