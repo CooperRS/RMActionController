@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 @interface RMActionController () <UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate>
 
-@property (nonatomic, assign) RMActionControllerStyle style;
+@property (nonatomic, assign, readwrite) RMActionControllerStyle style;
 
 @property (nonatomic, strong) UIView *topContainer;
 @property (nonatomic, strong) UIView *bottomContainer;
@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 @interface RMGroupedAction ()
 
-@property (nonatomic, strong) NSArray *actions;
+@property (nonatomic, strong, readwrite) NSArray *actions;
 
 @end
 
@@ -218,7 +218,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         self.topContainer = [[UIView alloc] initWithFrame:CGRectZero];
         
         [self.topContainer addSubview:self.contentView];
-    
+        
         if([self.headerTitleLabel.text length] > 0) {
             [self.topContainer addSubview:self.headerTitleLabel];
         }
@@ -599,6 +599,14 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     return _disableBlurEffectsForBackgroundView;
 }
 
+- (BOOL)disableBlurEffectsForContentView {
+    if(self.disableBlurEffects) {
+        return YES;
+    }
+    
+    return _disableBlurEffectsForContentView;
+}
+
 - (BOOL)disableBouncingEffects {
     if(&UIAccessibilityIsReduceMotionEnabled && UIAccessibilityIsReduceMotionEnabled()) {
         return YES;
@@ -932,7 +940,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 #pragma mark - Class
 + (instancetype)actionWithStyle:(RMActionStyle)style andActions:(NSArray *)actions {
-    NSAssert([actions count] > 1, @"Tried to initialize RMGroupedAction with only one action. Use RMAction in this case.");
+    NSAssert([actions count] > 0, @"Tried to initialize RMGroupedAction with less than one action.");
+    NSAssert([actions count] > 1, @"Tried to initialize RMGroupedAction with one action. Use RMAction in this case.");
+    
+    for(NSObject *anObject in actions) {
+        NSAssert([anObject isKindOfClass:[RMAction class]], @"Tried to initialize RMGroupedAction with objects of types other than RMAction.");
+    }
     
     RMGroupedAction *groupedAction = [[RMGroupedAction alloc] init];
     groupedAction.style = style;

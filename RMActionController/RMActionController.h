@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 
 /**
  *  A RMActionController displays some arbitrary view in a UIActionSheet/UIAlertController like manner to the user. It is used by RMDateSelectionViewController and RMPickerViewController.
- * 
+ *
  *  Usually, RMActionController is subclassed to display custom content views. See RMDateSelectionViewController and RMPickerViewController on how this works.
  */
 @interface RMActionController : UIViewController <UIAppearanceContainer>
@@ -98,7 +98,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 #pragma mark - User Interface
 
 /**
- *  A title for the RMActionController
+ *  The display style of the RMActionController.
+ */
+@property (nonatomic, assign, readonly) RMActionControllerStyle style;
+
+/**
+ *  A title for the RMActionController.
  */
 @property (nonatomic, copy) NSString *title;
 
@@ -165,6 +170,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  *  Used to enable or disable blurring the RMActionController content view.
  *
  *  Overwrite this method in subclasses of RMActionController if your custom content view cannot be shown within an UIVisualEffectView.
+ *
+ *  @warning This property always returns YES, if disableBlurEffects returns YES.
  */
 @property (assign, nonatomic) BOOL disableBlurEffectsForContentView;
 
@@ -177,7 +184,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 
 @end
 
-#pragma mark - 
+#pragma mark -
 
 /**
  *  RMActionStyle is used to determine the display style of RMAction and where it is positioned. There are 4 styles available: Done, cancel, additional and the default style, which is the done style.
@@ -269,5 +276,10 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *  @return The new instance of RMGroupedAction
  */
 + (instancetype)actionWithStyle:(RMActionStyle)style andActions:(NSArray *)actions;
+
+/**
+ *  An array of actions the RMGroupedAction consists of.
+ */
+@property (nonatomic, strong, readonly) NSArray *actions;
 
 @end

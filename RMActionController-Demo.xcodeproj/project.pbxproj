@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54C26CF343008EBB70997356 /* libPods-RMActionController-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AFCF5BA9B0ABA3319143338 /* libPods-RMActionController-Tests.a */; };
+		CA3FDCAB1B35E1B200590165 /* RMActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA61B35E1B200590165 /* RMActionTests.m */; };
+		CA3FDCAC1B35E1B200590165 /* RMGroupedActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */; };
+		CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */; };
+		CA3FDCAE1B35E1B200590165 /* RMActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */; };
+		CA3FDCAF1B35E1B200590165 /* RMMapActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */; };
 		CA8763701B088DDA00885A0B /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */; };
 		CAD311A71B01507300D905F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A61B01507300D905F7 /* main.m */; };
 		CAD311AA1B01507300D905F7 /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A91B01507300D905F7 /* RMAppDelegate.m */; };
@@ -21,23 +25,22 @@
 		CAD311E61B01517800D905F7 /* RMActionController-DemoExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CAD311EB1B0151D600D905F7 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311D51B01515900D905F7 /* RMActionController.m */; };
 		CAD311EC1B0151DB00D905F7 /* RMMapActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311D11B01512600D905F7 /* RMMapActionController.m */; };
-		CAF2FD8F1B073459001B1545 /* RMPresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF2FD8E1B073459001B1545 /* RMPresentationTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CA3FDCA11B35E1A800590165 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD311991B01507300D905F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAD311A01B01507300D905F7;
+			remoteInfo = "RMActionController-Demo";
+		};
 		CAD311E41B01517800D905F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAD311991B01507300D905F7 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = CAD311DA1B01517800D905F7;
 			remoteInfo = "RMActionViewController-DemoExtension";
-		};
-		CAF2FD891B0733FE001B1545 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CAD311991B01507300D905F7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CAD311A01B01507300D905F7;
-			remoteInfo = "RMActionController-Demo";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,9 +59,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3AFCF5BA9B0ABA3319143338 /* libPods-RMActionController-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RMActionController-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		769E7A3B9A15854927680AEA /* Pods-RMActionController-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMActionController-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMActionController-Tests/Pods-RMActionController-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9904203FEE4B65574FFC0D4E /* Pods-RMActionController-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMActionController-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMActionController-Tests/Pods-RMActionController-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Demo-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA3FDC9E1B35E1A700590165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA3FDCA61B35E1B200590165 /* RMActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionTests.m; sourceTree = "<group>"; };
+		CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMGroupedActionTests.m; sourceTree = "<group>"; };
+		CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionControllerTests.m; sourceTree = "<group>"; };
+		CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionControllerTests.m; sourceTree = "<group>"; };
+		CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapActionControllerTests.m; sourceTree = "<group>"; };
 		CA87636E1B088DDA00885A0B /* RMCustomViewActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCustomViewActionController.h; sourceTree = "<group>"; };
 		CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionController.m; sourceTree = "<group>"; };
 		CAD311A11B01507300D905F7 /* RMActionController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RMActionController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,12 +85,16 @@
 		CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "RMActionController-DemoExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD311DE1B01517800D905F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAD311E21B01517800D905F7 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		CAF2FD831B0733FE001B1545 /* RMActionController-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAF2FD861B0733FE001B1545 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAF2FD8E1B073459001B1545 /* RMPresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPresentationTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CA3FDC981B35E1A700590165 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD3119E1B01507300D905F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -98,32 +109,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CAF2FD801B0733FE001B1545 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				54C26CF343008EBB70997356 /* libPods-RMActionController-Tests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09CB4E9EB61A8ABC0A95D522 /* Pods */ = {
+		CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */ = {
 			isa = PBXGroup;
 			children = (
-				769E7A3B9A15854927680AEA /* Pods-RMActionController-Tests.debug.xcconfig */,
-				9904203FEE4B65574FFC0D4E /* Pods-RMActionController-Tests.release.xcconfig */,
+				CA3FDCA61B35E1B200590165 /* RMActionTests.m */,
+				CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */,
+				CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */,
+				CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */,
+				CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */,
+				CA3FDC9D1B35E1A700590165 /* Supporting Files */,
 			);
-			name = Pods;
+			path = "RMActionController-Demo-Tests";
 			sourceTree = "<group>";
 		};
-		ABD9FA9FE8D63EFC8FA56A7C /* Frameworks */ = {
+		CA3FDC9D1B35E1A700590165 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3AFCF5BA9B0ABA3319143338 /* libPods-RMActionController-Tests.a */,
+				CA3FDC9E1B35E1A700590165 /* Info.plist */,
 			);
-			name = Frameworks;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		CA8763711B088E0F00885A0B /* SampleActionController */ = {
@@ -143,10 +150,8 @@
 				CAD311D31B01513800D905F7 /* RMActionController */,
 				CAD311A31B01507300D905F7 /* RMActionController-Demo */,
 				CAD311DC1B01517800D905F7 /* RMActionController-DemoExtension */,
-				CAF2FD841B0733FE001B1545 /* RMActionController-Tests */,
+				CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */,
 				CAD311A21B01507300D905F7 /* Products */,
-				09CB4E9EB61A8ABC0A95D522 /* Pods */,
-				ABD9FA9FE8D63EFC8FA56A7C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,7 +160,7 @@
 			children = (
 				CAD311A11B01507300D905F7 /* RMActionController-Demo.app */,
 				CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */,
-				CAF2FD831B0733FE001B1545 /* RMActionController-Tests.xctest */,
+				CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -211,26 +216,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CAF2FD841B0733FE001B1545 /* RMActionController-Tests */ = {
-			isa = PBXGroup;
-			children = (
-				CAF2FD8E1B073459001B1545 /* RMPresentationTests.m */,
-				CAF2FD851B0733FE001B1545 /* Supporting Files */,
-			);
-			path = "RMActionController-Tests";
-			sourceTree = "<group>";
-		};
-		CAF2FD851B0733FE001B1545 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CAF2FD861B0733FE001B1545 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CA3FDC9A1B35E1A700590165 /* RMActionController-Demo-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA3FDCA31B35E1A800590165 /* Build configuration list for PBXNativeTarget "RMActionController-Demo-Tests" */;
+			buildPhases = (
+				CA3FDC971B35E1A700590165 /* Sources */,
+				CA3FDC981B35E1A700590165 /* Frameworks */,
+				CA3FDC991B35E1A700590165 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA3FDCA21B35E1A800590165 /* PBXTargetDependency */,
+			);
+			name = "RMActionController-Demo-Tests";
+			productName = "RMActionController-Demo-Tests";
+			productReference = CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CAD311A01B01507300D905F7 /* RMActionController-Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-Demo" */;
@@ -267,26 +273,6 @@
 			productReference = CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		CAF2FD821B0733FE001B1545 /* RMActionController-Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CAF2FD8D1B0733FE001B1545 /* Build configuration list for PBXNativeTarget "RMActionController-Tests" */;
-			buildPhases = (
-				B84091F0C7392D3C5F6EBA93 /* Check Pods Manifest.lock */,
-				CAF2FD7F1B0733FE001B1545 /* Sources */,
-				CAF2FD801B0733FE001B1545 /* Frameworks */,
-				CAF2FD811B0733FE001B1545 /* Resources */,
-				7A0AEF827836FABE67DE44D4 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CAF2FD8A1B0733FE001B1545 /* PBXTargetDependency */,
-			);
-			name = "RMActionController-Tests";
-			productName = "RMActionController-Tests";
-			productReference = CAF2FD831B0733FE001B1545 /* RMActionController-Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -296,15 +282,15 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Roland Moers";
 				TargetAttributes = {
+					CA3FDC9A1B35E1A700590165 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = CAD311A01B01507300D905F7;
+					};
 					CAD311A01B01507300D905F7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
 					CAD311DA1B01517800D905F7 = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					CAF2FD821B0733FE001B1545 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = CAD311A01B01507300D905F7;
 					};
 				};
 			};
@@ -323,12 +309,19 @@
 			targets = (
 				CAD311A01B01507300D905F7 /* RMActionController-Demo */,
 				CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */,
-				CAF2FD821B0733FE001B1545 /* RMActionController-Tests */,
+				CA3FDC9A1B35E1A700590165 /* RMActionController-Demo-Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CA3FDC991B35E1A700590165 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD3119F1B01507300D905F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,49 +340,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CAF2FD811B0733FE001B1545 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		7A0AEF827836FABE67DE44D4 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMActionController-Tests/Pods-RMActionController-Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B84091F0C7392D3C5F6EBA93 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
+		CA3FDC971B35E1A700590165 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */,
+				CA3FDCAE1B35E1B200590165 /* RMActionControllerTests.m in Sources */,
+				CA3FDCAB1B35E1B200590165 /* RMActionTests.m in Sources */,
+				CA3FDCAF1B35E1B200590165 /* RMMapActionControllerTests.m in Sources */,
+				CA3FDCAC1B35E1B200590165 /* RMGroupedActionTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD3119D1B01507300D905F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -412,26 +377,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CAF2FD7F1B0733FE001B1545 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CAF2FD8F1B073459001B1545 /* RMPresentationTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CA3FDCA21B35E1A800590165 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAD311A01B01507300D905F7 /* RMActionController-Demo */;
+			targetProxy = CA3FDCA11B35E1A800590165 /* PBXContainerItemProxy */;
+		};
 		CAD311E51B01517800D905F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */;
 			targetProxy = CAD311E41B01517800D905F7 /* PBXContainerItemProxy */;
-		};
-		CAF2FD8A1B0733FE001B1545 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CAD311A01B01507300D905F7 /* RMActionController-Demo */;
-			targetProxy = CAF2FD891B0733FE001B1545 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -455,6 +412,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CA3FDCA41B35E1A800590165 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMActionController-Demo-Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMActionController-Demo.app/RMActionController-Demo";
+			};
+			name = Debug;
+		};
+		CA3FDCA51B35E1A800590165 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "RMActionController-Demo-Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMActionController-Demo.app/RMActionController-Demo";
+			};
+			name = Release;
+		};
 		CAD311C51B01507400D905F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -581,47 +574,17 @@
 			};
 			name = Release;
 		};
-		CAF2FD8B1B0733FE001B1545 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 769E7A3B9A15854927680AEA /* Pods-RMActionController-Tests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "RMActionController-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMActionController-Demo.app/RMActionController-Demo";
-			};
-			name = Debug;
-		};
-		CAF2FD8C1B0733FE001B1545 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9904203FEE4B65574FFC0D4E /* Pods-RMActionController-Tests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "RMActionController-Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMActionController-Demo.app/RMActionController-Demo";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CA3FDCA31B35E1A800590165 /* Build configuration list for PBXNativeTarget "RMActionController-Demo-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA3FDCA41B35E1A800590165 /* Debug */,
+				CA3FDCA51B35E1A800590165 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		CAD3119C1B01507300D905F7 /* Build configuration list for PBXProject "RMActionController-Demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -645,15 +608,6 @@
 			buildConfigurations = (
 				CAD311E81B01517800D905F7 /* Debug */,
 				CAD311E91B01517800D905F7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CAF2FD8D1B0733FE001B1545 /* Build configuration list for PBXNativeTarget "RMActionController-Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CAF2FD8B1B0733FE001B1545 /* Debug */,
-				CAF2FD8C1B0733FE001B1545 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
