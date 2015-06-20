@@ -12,6 +12,7 @@
 		CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */; };
 		CA3FDCAE1B35E1B200590165 /* RMActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */; };
 		CA3FDCAF1B35E1B200590165 /* RMMapActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */; };
+		CA55C79C1B35E996009CF003 /* RMActionControllerPresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA55C79B1B35E996009CF003 /* RMActionControllerPresentationTests.m */; };
 		CA8763701B088DDA00885A0B /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */; };
 		CAD311A71B01507300D905F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A61B01507300D905F7 /* main.m */; };
 		CAD311AA1B01507300D905F7 /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A91B01507300D905F7 /* RMAppDelegate.m */; };
@@ -29,6 +30,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		CA3FDCA11B35E1A800590165 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD311991B01507300D905F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CAD311A01B01507300D905F7;
+			remoteInfo = "RMActionController-Demo";
+		};
+		CA55C7961B35E98E009CF003 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAD311991B01507300D905F7 /* Project object */;
 			proxyType = 1;
@@ -66,6 +74,9 @@
 		CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionControllerTests.m; sourceTree = "<group>"; };
 		CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionControllerTests.m; sourceTree = "<group>"; };
 		CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapActionControllerTests.m; sourceTree = "<group>"; };
+		CA55C7911B35E98E009CF003 /* RMActionController-Demo-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Demo-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA55C7951B35E98E009CF003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA55C79B1B35E996009CF003 /* RMActionControllerPresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionControllerPresentationTests.m; sourceTree = "<group>"; };
 		CA87636E1B088DDA00885A0B /* RMCustomViewActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCustomViewActionController.h; sourceTree = "<group>"; };
 		CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionController.m; sourceTree = "<group>"; };
 		CAD311A11B01507300D905F7 /* RMActionController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RMActionController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +100,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		CA3FDC981B35E1A700590165 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA55C78E1B35E98E009CF003 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -133,6 +151,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CA55C7921B35E98E009CF003 /* RMActionController-Demo-UITests */ = {
+			isa = PBXGroup;
+			children = (
+				CA55C79B1B35E996009CF003 /* RMActionControllerPresentationTests.m */,
+				CA55C7951B35E98E009CF003 /* Info.plist */,
+			);
+			path = "RMActionController-Demo-UITests";
+			sourceTree = "<group>";
+		};
 		CA8763711B088E0F00885A0B /* SampleActionController */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +178,7 @@
 				CAD311A31B01507300D905F7 /* RMActionController-Demo */,
 				CAD311DC1B01517800D905F7 /* RMActionController-DemoExtension */,
 				CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */,
+				CA55C7921B35E98E009CF003 /* RMActionController-Demo-UITests */,
 				CAD311A21B01507300D905F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -161,6 +189,7 @@
 				CAD311A11B01507300D905F7 /* RMActionController-Demo.app */,
 				CAD311DB1B01517800D905F7 /* RMActionController-DemoExtension.appex */,
 				CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */,
+				CA55C7911B35E98E009CF003 /* RMActionController-Demo-UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -237,6 +266,24 @@
 			productReference = CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		CA55C7901B35E98E009CF003 /* RMActionController-Demo-UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA55C79A1B35E98E009CF003 /* Build configuration list for PBXNativeTarget "RMActionController-Demo-UITests" */;
+			buildPhases = (
+				CA55C78D1B35E98E009CF003 /* Sources */,
+				CA55C78E1B35E98E009CF003 /* Frameworks */,
+				CA55C78F1B35E98E009CF003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CA55C7971B35E98E009CF003 /* PBXTargetDependency */,
+			);
+			name = "RMActionController-Demo-UITests";
+			productName = "RMActionController-Demo-UITests";
+			productReference = CA55C7911B35E98E009CF003 /* RMActionController-Demo-UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CAD311A01B01507300D905F7 /* RMActionController-Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-Demo" */;
@@ -286,6 +333,10 @@
 						CreatedOnToolsVersion = 6.3.2;
 						TestTargetID = CAD311A01B01507300D905F7;
 					};
+					CA55C7901B35E98E009CF003 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = CAD311A01B01507300D905F7;
+					};
 					CAD311A01B01507300D905F7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -310,12 +361,20 @@
 				CAD311A01B01507300D905F7 /* RMActionController-Demo */,
 				CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */,
 				CA3FDC9A1B35E1A700590165 /* RMActionController-Demo-Tests */,
+				CA55C7901B35E98E009CF003 /* RMActionController-Demo-UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CA3FDC991B35E1A700590165 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA55C78F1B35E98E009CF003 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -355,6 +414,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA55C78D1B35E98E009CF003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA55C79C1B35E996009CF003 /* RMActionControllerPresentationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD3119D1B01507300D905F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +451,11 @@
 			isa = PBXTargetDependency;
 			target = CAD311A01B01507300D905F7 /* RMActionController-Demo */;
 			targetProxy = CA3FDCA11B35E1A800590165 /* PBXContainerItemProxy */;
+		};
+		CA55C7971B35E98E009CF003 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CAD311A01B01507300D905F7 /* RMActionController-Demo */;
+			targetProxy = CA55C7961B35E98E009CF003 /* PBXContainerItemProxy */;
 		};
 		CAD311E51B01517800D905F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -445,6 +517,34 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RMActionController-Demo.app/RMActionController-Demo";
+			};
+			name = Release;
+		};
+		CA55C7981B35E98E009CF003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = "RMActionController-Demo-UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.cooperrs.RMActionController-Demo-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "RMActionController-Demo";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		CA55C7991B35E98E009CF003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "RMActionController-Demo-UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.cooperrs.RMActionController-Demo-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "RMActionController-Demo";
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -582,6 +682,15 @@
 			buildConfigurations = (
 				CA3FDCA41B35E1A800590165 /* Debug */,
 				CA3FDCA51B35E1A800590165 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA55C79A1B35E98E009CF003 /* Build configuration list for PBXNativeTarget "RMActionController-Demo-UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA55C7981B35E98E009CF003 /* Debug */,
+				CA55C7991B35E98E009CF003 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
