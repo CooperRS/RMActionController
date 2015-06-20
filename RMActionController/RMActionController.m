@@ -827,7 +827,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     __weak RMAction *weakAction = action;
     [action setHandler:^(RMActionController *controller) {
-        handler(controller);
+        if(handler) {
+            handler(controller);
+        }
         
         if(weakAction.dismissesActionController) {
             if(controller.modalPresentationStyle == UIModalPresentationPopover || controller.yConstraint != nil) {
