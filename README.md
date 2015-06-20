@@ -1,4 +1,4 @@
-# RMActionViewController
+# RMActionViewController ![Build Status](https://travis-ci.org/CooperRS/RMActionController.svg?branch=master)
 This is an iOS control for presenting any UIView in UIActionSheet/UIAlertController like manner.
 
 ## Screenshots

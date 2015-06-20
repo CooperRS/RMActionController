@@ -67,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA38CB371B35EF0F000837D8 /* RMActionController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMActionController+Private.h"; sourceTree = "<group>"; };
 		CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Demo-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3FDC9E1B35E1A700590165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA3FDCA61B35E1B200590165 /* RMActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionTests.m; sourceTree = "<group>"; };
@@ -130,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA38CB3A1B35EF16000837D8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CA38CB371B35EF0F000837D8 /* RMActionController+Private.h */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +147,7 @@
 				CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */,
 				CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */,
 				CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */,
+				CA38CB3A1B35EF16000837D8 /* Categories */,
 				CA3FDC9D1B35E1A700590165 /* Supporting Files */,
 			);
 			path = "RMActionController-Demo-Tests";

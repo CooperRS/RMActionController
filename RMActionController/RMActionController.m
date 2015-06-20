@@ -939,6 +939,16 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @implementation RMGroupedAction
 
 #pragma mark - Class
++ (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *))handler {
+    [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
+    return nil;
+}
+
++ (instancetype)actionWithImage:(UIImage *)image style:(RMActionStyle)style andHandler:(void (^)(RMActionController *))handler {
+    [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
+    return nil;
+}
+
 + (instancetype)actionWithStyle:(RMActionStyle)style andActions:(NSArray *)actions {
     NSAssert([actions count] > 0, @"Tried to initialize RMGroupedAction with less than one action.");
     NSAssert([actions count] > 1, @"Tried to initialize RMGroupedAction with one action. Use RMAction in this case.");

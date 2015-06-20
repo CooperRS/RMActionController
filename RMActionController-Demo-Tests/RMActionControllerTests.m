@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 
 #import "RMActionController.h"
+#import "RMActionController+Private.h"
 
 @interface RMActionControllerTests : XCTestCase
 
@@ -20,6 +21,7 @@
     RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
     
     XCTAssertEqual(controller.style, RMActionControllerStyleDefault);
+    XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleLightContent);
     XCTAssertNil(controller.title);
     XCTAssertNil(controller.message);
     
@@ -40,12 +42,14 @@
     RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleBlack];
     
     XCTAssertEqual(controller.style, RMActionControllerStyleBlack);
+    XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleDefault);
 }
 
 - (void)testCreatingEmptyActionControllerWithWhiteStyle {
     RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleWhite];
     
     XCTAssertEqual(controller.style, RMActionControllerStyleWhite);
+    XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleLightContent);
 }
 
 - (void)testCreatingEmptyActionControllerWithSelectAction {
@@ -105,6 +109,7 @@
     
     RMGroupedAction *groupedAction = (RMGroupedAction *)firstAction;
     
+    XCTAssertEqual(groupedAction.controller, controller);
     XCTAssertNotNil(groupedAction.actions);
     XCTAssertEqual([groupedAction.actions count], (NSUInteger)2);
     
@@ -113,6 +118,9 @@
     
     XCTAssertEqual(firstGroupedAction, cancelAction);
     XCTAssertEqual(secondGroupedAction, selectAction);
+    
+    XCTAssertEqual(firstGroupedAction.controller, controller);
+    XCTAssertEqual(secondGroupedAction.controller, controller);
 }
 
 - (void)testSettingTitleAndMessage {
