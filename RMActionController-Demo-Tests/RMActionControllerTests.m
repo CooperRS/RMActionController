@@ -131,6 +131,31 @@
     XCTAssertEqual(secondGroupedAction.controller, controller);
 }
 
+- (void)testCreatingActionControllerWithInit {
+    RMActionController *controller = [[RMActionController alloc] init];
+    
+    XCTAssertEqual(controller.style, RMActionControllerStyleDefault);
+    XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleLightContent);
+    XCTAssertNil(controller.title);
+    XCTAssertNil(controller.message);
+    
+    XCTAssertFalse(controller.disableBackgroundTaps);
+    XCTAssertFalse(controller.disableBlurEffects);
+    XCTAssertFalse(controller.disableBlurEffectsForBackgroundView);
+    XCTAssertFalse(controller.disableBlurEffectsForContentView);
+    XCTAssertFalse(controller.disableBouncingEffects);
+    XCTAssertFalse(controller.disableMotionEffects);
+    
+    XCTAssertNil(controller.contentView);
+    
+    NSObject *backgroundView = controller.backgroundView;
+    XCTAssertNotNil(backgroundView);
+    XCTAssertTrue([backgroundView isKindOfClass:[UIVisualEffectView class]]);
+    
+    XCTAssertNotNil(controller.actions);
+    XCTAssertEqual([controller.actions count], (NSUInteger)0);
+}
+
 - (void)testSettingTitleAndMessage {
     RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
     
@@ -202,11 +227,11 @@
 }
 
 - (void)testPresentingEmptyActionControllerThrowsException {
-    RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
+    RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault]; 
     
     BOOL catchedException = NO;
     @try {
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controller animated:YES completion:nil];
+        [controller viewDidLoad];
     }
     @catch (NSException *exception) {
         XCTAssertEqualObjects(exception.name, @"NSInternalInconsistencyException");
