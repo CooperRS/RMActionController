@@ -34,6 +34,10 @@
     
     XCTAssertNil(controller.contentView);
     
+    NSObject *backgroundView = controller.backgroundView;
+    XCTAssertNotNil(backgroundView);
+    XCTAssertTrue([backgroundView isKindOfClass:[UIVisualEffectView class]]);
+    
     XCTAssertNotNil(controller.actions);
     XCTAssertEqual([controller.actions count], (NSUInteger)0);
 }
@@ -43,6 +47,8 @@
     
     XCTAssertEqual(controller.style, RMActionControllerStyleBlack);
     XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleDefault);
+    XCTAssertEqual([controller containerBlurEffectStyleForCurrentStyle], UIBlurEffectStyleDark);
+    XCTAssertEqual([controller backgroundBlurEffectStyleForCurrentStyle], UIBlurEffectStyleLight);
 }
 
 - (void)testCreatingEmptyActionControllerWithWhiteStyle {
@@ -50,6 +56,8 @@
     
     XCTAssertEqual(controller.style, RMActionControllerStyleWhite);
     XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleLightContent);
+    XCTAssertEqual([controller containerBlurEffectStyleForCurrentStyle], UIBlurEffectStyleExtraLight);
+    XCTAssertEqual([controller backgroundBlurEffectStyleForCurrentStyle], UIBlurEffectStyleDark);
 }
 
 - (void)testCreatingEmptyActionControllerWithSelectAction {
@@ -172,6 +180,12 @@
     XCTAssertFalse(controller.disableBackgroundTaps);
     XCTAssertFalse(controller.disableBlurEffectsForBackgroundView);
     XCTAssertTrue(controller.disableBlurEffectsForContentView);
+    
+    controller.disableBlurEffects = YES;
+    NSObject *backgroundView = controller.backgroundView;
+    
+    XCTAssertNotNil(backgroundView);
+    XCTAssertTrue([backgroundView isKindOfClass:[UIView class]]);
 }
 
 - (void)testDisablingMotionAndBouncingEffects {
@@ -203,6 +217,57 @@
     @finally {
         XCTAssertTrue(catchedException);
     }
+}
+
+- (void)testTappingBackgroundView {
+    __block BOOL selectExecuted = NO;
+    __block BOOL cancelExecuted = NO;
+    
+    RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController *controller) {
+        selectExecuted = YES;
+    }];
+    
+    RMAction *cancelAction = [RMAction actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController *controller) {
+        cancelExecuted = YES;
+    }];
+    
+    RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
+    [controller addAction:selectAction];
+    [controller addAction:cancelAction];
+    
+    [controller backgroundViewTapped:nil];
+    
+    XCTAssertFalse(selectExecuted);
+    XCTAssertTrue(cancelExecuted);
+}
+
+- (void)testAddingActions {
+    RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:nil];
+    RMAction *cancelAction = [RMAction actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:nil];
+    RMAction *additionalAction = [RMAction actionWithTitle:@"Additional" style:RMActionStyleAdditional andHandler:nil];
+    
+    RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
+    [controller addAction:selectAction];
+    [controller addAction:cancelAction];
+    [controller addAction:additionalAction];
+    
+    XCTAssertNotNil(controller.actions);
+    XCTAssertNotNil(controller.doneActions);
+    XCTAssertNotNil(controller.cancelActions);
+    XCTAssertNotNil(controller.additionalActions);
+    
+    XCTAssertEqual([controller.actions count], (NSUInteger)3);
+    XCTAssertEqual([controller.doneActions count], (NSUInteger)1);
+    XCTAssertEqual([controller.cancelActions count], (NSUInteger)1);
+    XCTAssertEqual([controller.additionalActions count], (NSUInteger)1);
+    
+    XCTAssertEqual(controller.actions[0], additionalAction);
+    XCTAssertEqual(controller.actions[1], selectAction);
+    XCTAssertEqual(controller.actions[2], cancelAction);
+    
+    XCTAssertEqual(controller.additionalActions[0], additionalAction);
+    XCTAssertEqual(controller.doneActions[0], selectAction);
+    XCTAssertEqual(controller.cancelActions[0], cancelAction);
 }
 
 @end

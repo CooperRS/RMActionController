@@ -8,6 +8,21 @@
 
 #import "RMActionController.h"
 
+@interface RMActionController ()
+
+@property (nonatomic, strong) NSMutableArray *additionalActions;
+@property (nonatomic, strong) NSMutableArray *doneActions;
+@property (nonatomic, strong) NSMutableArray *cancelActions;
+
+@property (nonatomic, strong) UIView *backgroundView;
+
+- (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle;
+- (UIBlurEffectStyle)backgroundBlurEffectStyleForCurrentStyle;
+
+- (void)backgroundViewTapped:(UIGestureRecognizer *)sender;
+
+@end
+
 @interface RMAction (Private)
 
 @property (nonatomic, weak) RMActionController *controller;
