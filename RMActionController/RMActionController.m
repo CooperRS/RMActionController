@@ -446,7 +446,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         __block UIView *currentTopView = nil;
         
         [self.cancelActions enumerateObjectsUsingBlock:^(RMAction *action, NSUInteger index, BOOL *stop) {
-            if(currentTopView) {
+            if(!currentTopView) {
                 NSDictionary *bindings = @{@"actionView": action.view};
                 
                 [blockself.bottomContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
