@@ -957,9 +957,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     NSAssert([actions count] > 0, @"Tried to initialize RMGroupedAction with less than one action.");
     NSAssert([actions count] > 1, @"Tried to initialize RMGroupedAction with one action. Use RMAction in this case.");
     
-    for(NSObject *anObject in actions) {
-        NSAssert([anObject isKindOfClass:[RMAction class]], @"Tried to initialize RMGroupedAction with objects of types other than RMAction.");
-    }
+    [actions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSAssert([obj isKindOfClass:[RMAction class]], @"Tried to initialize RMGroupedAction with objects of types other than RMAction.");
+    }];
     
     RMGroupedAction *groupedAction = [[RMGroupedAction alloc] init];
     groupedAction.style = style;
