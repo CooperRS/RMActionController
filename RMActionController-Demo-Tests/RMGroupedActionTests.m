@@ -181,4 +181,25 @@
     }
 }
 
+- (void)testExecutingHandlerOfGroupedActionThrowsException {
+    RMAction *firstAction = [RMAction actionWithTitle:@"First" style:RMActionStyleDone andHandler:nil];
+    RMAction *secondAction = [RMAction actionWithTitle:@"Second" style:RMActionStyleCancel andHandler:nil];
+    
+    RMGroupedAction *groupedAction = [RMGroupedAction actionWithStyle:RMActionStyleDefault andActions:@[firstAction, secondAction]];
+    
+    BOOL catchedException = NO;
+    @try {
+        groupedAction.handler(nil);
+    }
+    @catch (NSException *exception) {
+        XCTAssertEqualObjects(exception.name, @"RMInconsistencyException");
+        XCTAssertEqualObjects(exception.reason, @"The handler of a grouped action has been called.");
+        
+        catchedException = YES;
+    }
+    @finally {
+        XCTAssertTrue(catchedException);
+    }
+}
+
 @end

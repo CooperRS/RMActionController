@@ -25,6 +25,8 @@
 
 @interface RMAction (Private)
 
+@property (nonatomic, copy) void (^handler)(RMActionController *controller);
+
 @property (nonatomic, weak) RMActionController *controller;
 
 @property (nonatomic, strong) UIView *view;
