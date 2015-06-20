@@ -202,11 +202,11 @@
 }
 
 - (void)testPresentingEmptyActionControllerThrowsException {
-    RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
+    RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault]; 
     
     BOOL catchedException = NO;
     @try {
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controller animated:YES completion:nil];
+        [controller viewDidLoad];
     }
     @catch (NSException *exception) {
         XCTAssertEqualObjects(exception.name, @"NSInternalInconsistencyException");

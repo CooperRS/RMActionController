@@ -18,15 +18,26 @@
 @implementation RMMapActionControllerTests
 
 - (void)testPresentingMapActionController {
-    RMMapActionController *controller = [RMMapActionController actionControllerWithStyle:RMActionControllerStyleDefault];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"PresentationCompleted"];
     
-    XCTAssertTrue(controller.disableBlurEffectsForContentView);
+    RMMapActionController *controller = [RMMapActionController actionControllerWithStyle:RMActionControllerStyleWhite title:@"Test" message:@"This is a test controller." selectAction:nil andCancelAction:nil];
+    
+    [controller addAction:[RMAction actionWithTitle:@"Select1" style:RMActionStyleDone andHandler:nil]];
+    [controller addAction:[RMAction actionWithTitle:@"Select2" style:RMActionStyleDone andHandler:nil]];
+    
+    [controller addAction:[RMAction actionWithTitle:@"Cancel1" style:RMActionStyleCancel andHandler:nil]];
+    [controller addAction:[RMAction actionWithTitle:@"Cancel2" style:RMActionStyleCancel andHandler:nil]];
+    
+    [controller addAction:[RMAction actionWithTitle:@"Additional1" style:RMActionStyleAdditional andHandler:nil]];
+    [controller addAction:[RMAction actionWithTitle:@"Additional2" style:RMActionStyleAdditional andHandler:nil]];
+    
     XCTAssertNotNil(controller.contentView);
-    XCTAssertTrue([controller.contentView isKindOfClass:[MKMapView class]]);
     
     BOOL catchedException = NO;
     @try {
-        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controller animated:NO completion:nil];
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:controller animated:YES completion:^{
+            [expectation fulfill];
+        }];
     }
     @catch (NSException *exception) {
         catchedException = YES;
@@ -34,6 +45,16 @@
     @finally {
         XCTAssertFalse(catchedException);
     }
+    
+    [self waitForExpectationsWithTimeout:2 handler:nil];
+    
+    expectation = [self expectationWithDescription:@"DismissalCompleted"];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController dismissViewControllerAnimated:YES completion:^{
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:2 handler:nil];
 }
 
 @end
