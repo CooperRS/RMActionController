@@ -1,8 +1,6 @@
 language: objective-c
-
-language: objective-c
 xcode_sdk: iphonesimulator
-xcode_workspace: RMActionController-Demo.xcworkspace
+xcode_project: RMActionController-Demo.xcodeproj
 xcode_scheme: RMActionController-Demo
 
 #env:
