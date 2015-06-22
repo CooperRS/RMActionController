@@ -122,15 +122,15 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @synthesize disableMotionEffects = _disableMotionEffects;
 
 #pragma mark - Class
-+ (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style {
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style {
     return [self actionControllerWithStyle:style selectAction:nil andCancelAction:nil];
 }
 
-+ (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
     return [self actionControllerWithStyle:style title:nil message:nil selectAction:selectAction andCancelAction:cancelAction];
 }
 
-+ (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
     RMActionController *controller = [(RMActionController *)[self alloc] initWithStyle:style];
     controller.title = aTitle;
     controller.message = aMessage;
@@ -819,14 +819,14 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @implementation RMAction
 
 #pragma mark - Class
-+ (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
++ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(__nonnull RMActionController<UIView *> *controller))handler {
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     action.title = title;
     
     return action;
 }
 
-+ (instancetype)actionWithImage:(UIImage *)image style:(RMActionStyle)style andHandler:(void (^)(RMActionController *controller))handler {
++ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(__nonnull RMActionController<UIView *> *controller))handler {
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     action.image = image;
     
@@ -943,17 +943,17 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @implementation RMGroupedAction
 
 #pragma mark - Class
-+ (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController *))handler {
++ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
     [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
     return nil;
 }
 
-+ (instancetype)actionWithImage:(UIImage *)image style:(RMActionStyle)style andHandler:(void (^)(RMActionController *))handler {
++ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
     [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
     return nil;
 }
 
-+ (instancetype)actionWithStyle:(RMActionStyle)style andActions:(NSArray *)actions {
++ (nullable instancetype)actionWithStyle:(RMActionStyle)style andActions:(nonnull NSArray<RMAction<UIView *> *> *)actions {
     NSAssert([actions count] > 0, @"Tried to initialize RMGroupedAction with less than one action.");
     NSAssert([actions count] > 1, @"Tried to initialize RMGroupedAction with one action. Use RMAction in this case.");
     

@@ -28,35 +28,29 @@
 
 @interface RMMapActionController ()
 
-@property (nonatomic, readwrite) MKMapView *mapView;
-
 @end
 
 @implementation RMMapActionController
 
 #pragma mark - Class
-+ (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
     RMMapActionController *controller = [super actionControllerWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
     
-    controller.mapView = [[MKMapView alloc] initWithFrame:CGRectZero];
-    controller.mapView.translatesAutoresizingMaskIntoConstraints = NO;
+    controller.contentView = [[MKMapView alloc] initWithFrame:CGRectZero];
+    controller.contentView.translatesAutoresizingMaskIntoConstraints = NO;
     
 #ifdef DEBUG
-    controller.mapView.accessibilityLabel = @"MapView";
+    controller.contentView.accessibilityLabel = @"MapView";
 #endif
     
-    NSDictionary *bindings = @{@"mapView": controller.mapView};
-    [controller.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[mapView(>=300)]" options:0 metrics:nil views:bindings]];
-    [controller.mapView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(200)]" options:0 metrics:nil views:bindings]];
+    NSDictionary *bindings = @{@"mapView": controller.contentView};
+    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[mapView(>=300)]" options:0 metrics:nil views:bindings]];
+    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(200)]" options:0 metrics:nil views:bindings]];
     
     return controller;
 }
 
 #pragma mark - Properties
-- (UIView *)contentView {
-    return self.mapView;
-}
-
 - (BOOL)disableBlurEffectsForContentView {
     return YES;
 }

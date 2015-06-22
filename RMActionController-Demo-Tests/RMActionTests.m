@@ -116,13 +116,4 @@
     XCTAssertEqual([(UIButton *)actionView imageForState:UIControlStateNormal], image);
 }
 
-- (void)testLoadingActionViewWithNilTitle {
-    RMAction *action = [RMAction actionWithTitle:nil style:RMActionStyleDone andHandler:nil];
-    UIView *actionView = action.view;
-    
-    XCTAssertNotNil(actionView);
-    XCTAssertTrue([actionView isKindOfClass:[UIButton class]]);
-    XCTAssertNil([(UIButton *)actionView imageForState:UIControlStateNormal]);
-}
-
 @end

@@ -13,6 +13,6 @@
  *
  *  For another example see RMMapActionController in this project. Additionally, I published two more RMActionController subclasses called RMDateSelectionViewController and RMPickerViewController. You can find them on GitHub.
  */
-@interface RMCustomViewActionController : RMActionController
+@interface RMCustomViewActionController : RMActionController<UIView *>
 
 @end

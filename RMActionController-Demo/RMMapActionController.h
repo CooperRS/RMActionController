@@ -32,11 +32,6 @@
  *
  *  For another example see RMCustomViewActionController in this project. Additionally, I published two more RMActionController subclasses called RMDateSelectionViewController and RMPickerViewController. You can find them on GitHub.
  */
-@interface RMMapActionController : RMActionController
-
-/*
- *  The map view that is displayed by the RMMapActionController instance.
- */
-@property (nonatomic, readonly) MKMapView *mapView;
+@interface RMMapActionController : RMActionController<MKMapView *>
 
 @end
