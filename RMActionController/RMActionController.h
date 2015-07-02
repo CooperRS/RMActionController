@@ -194,6 +194,8 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
     RMActionStyleDone,
     /** The button is displayed with a bold font and positioned below all done buttons (or the content view if there are no done buttons). */
     RMActionStyleCancel,
+    /** The button is displayed with a standard destructive and positioned right below the content view. */
+    RMActionStyleDestructive,
     /** The button is displayed with a regular font and positioned above the content view. */
     RMActionStyleAdditional,
     /** The button is displayed and positioned like a done button. */
