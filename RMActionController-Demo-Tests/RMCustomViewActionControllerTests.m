@@ -126,4 +126,15 @@
     [self presentAndDismissController:controller expectingStatusBarStyle:UIStatusBarStyleDefault];
 }
 
+- (void)testPresentingCustomViewActionControllerWithDestructiveActionAndEffectsDisabled {
+    RMCustomViewActionController *controller = [RMCustomViewActionController actionControllerWithStyle:RMActionControllerStyleWhite title:nil message:nil selectAction:nil andCancelAction:nil];
+    [controller addAction:[RMAction actionWithTitle:@"Delete" style:RMActionStyleDestructive andHandler:nil]];
+    
+    controller.disableBlurEffects = YES;
+    controller.disableBouncingEffects = YES;
+    controller.disableMotionEffects = YES;
+    
+    [self presentAndDismissController:controller expectingStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
 @end
