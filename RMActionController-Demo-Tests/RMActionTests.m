@@ -56,6 +56,13 @@
     XCTAssertFalse([action containsCancelAction]);
 }
 
+- (void)testCreatingDestructiveAction {
+    RMAction *action = [RMAction actionWithTitle:@"TestAction" style:RMActionStyleDestructive andHandler:nil];
+    
+    XCTAssertEqual(action.style, RMActionStyleDestructive);
+    XCTAssertFalse([action containsCancelAction]);
+}
+
 - (void)testCreatingNonDismissingAction {
     RMAction *action = [RMAction actionWithTitle:@"TestAction" style:RMActionStyleDefault andHandler:nil];
     
