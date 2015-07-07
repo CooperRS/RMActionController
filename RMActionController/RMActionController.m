@@ -702,7 +702,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         case RMActionStyleCancel:
             [self.cancelActions addObject:action];
             break;
-            case RMActionStyleDestructive:
+        case RMActionStyleDestructive:
             [self.doneActions addObject:action];
             break;
     }
@@ -936,11 +936,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
     if (self.style == RMActionStyleDestructive) {
         [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    }
-    else{
+    } else {
         [actionButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
     }
-    
     
     return actionButton;
 }
