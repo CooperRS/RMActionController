@@ -559,7 +559,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 - (void)handleCancelNotAssociatedWithAnyButton {
-    for(RMAction *anAction in self.cancelActions) {
+    // Grouped Actions are stored in the doneActions array, so we'll need to check them as well
+    for(RMAction *anAction in [self.cancelActions arrayByAddingObjectsFromArray:self.doneActions]) {
         if([anAction containsCancelAction]) {
             [anAction executeHandlerOfCancelActionWithController:self];
             return;
@@ -933,11 +934,17 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(actionButton)]];
-
-    if (self.style == RMActionStyleDestructive) {
-        [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    
+    if(self.controller.disableBlurEffects) {
+        if(self.style == RMActionStyleDestructive) {
+            [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        } else {
+            [actionButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+        }
     } else {
-        [actionButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
+        if(self.style == RMActionStyleDestructive) {
+            [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        }
     }
     
     return actionButton;

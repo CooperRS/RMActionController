@@ -121,6 +121,9 @@ Feel free to add the app to this list: [Apps using RMActionController](https://g
 
 ##Credits
 
+* Hannes Tribus (Bugfixes)
+* normKei (Destructive button type)
+
 I want to thank everyone who has contributed code and/or time to this project!
 
 ## License (MIT License)
