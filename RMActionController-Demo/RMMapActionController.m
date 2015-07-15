@@ -26,10 +26,6 @@
 
 #import "RMMapActionController.h"
 
-@interface RMMapActionController ()
-
-@end
-
 @implementation RMMapActionController
 
 #pragma mark - Class
