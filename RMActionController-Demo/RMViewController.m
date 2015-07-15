@@ -47,11 +47,11 @@
         style = RMActionControllerStyleBlack;
     }
     
-    RMAction *selectAction = [RMAction actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController *controller) {
+    RMAction<RMCustomViewActionController *> *selectAction = [RMAction<RMCustomViewActionController *> actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMCustomViewActionController *controller) {
         NSLog(@"Action controller finished successfully");
     }];
     
-    RMAction *cancelAction = [RMAction actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController *controller) {
+    RMAction<RMCustomViewActionController *> *cancelAction = [RMAction<RMCustomViewActionController *> actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMCustomViewActionController *controller) {
         NSLog(@"Action controller was canceled");
     }];
     
@@ -88,11 +88,11 @@
         style = RMActionControllerStyleBlack;
     }
     
-    RMAction<MKMapView *> *selectAction = [RMAction<MKMapView *> actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController<MKMapView *> *controller) {
+    RMAction<RMMapActionController *> *selectAction = [RMAction<RMMapActionController *> actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMMapActionController *controller) {
         NSLog(@"Action controller selected location: %f, %f", controller.contentView.centerCoordinate.latitude, controller.contentView.centerCoordinate.longitude);
     }];
     
-    RMAction<MKMapView *> *cancelAction = [RMAction<MKMapView *> actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController<MKMapView *> *controller) {
+    RMAction<RMMapActionController *> *cancelAction = [RMAction<RMMapActionController *> actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMMapActionController *controller) {
         NSLog(@"Action controller was canceled");
     }];
     
