@@ -559,7 +559,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 - (void)handleCancelNotAssociatedWithAnyButton {
-    for(RMAction *anAction in self.cancelActions) {
+    // Grouped Actions are stored in the doneActions array, so we'll need to check them as well
+    for(RMAction *anAction in [self.cancelActions arrayByAddingObjectsFromArray:self.doneActions]) {
         if([anAction containsCancelAction]) {
             [anAction executeHandlerOfCancelActionWithController:self];
             return;
