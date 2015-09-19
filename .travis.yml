@@ -1,4 +1,8 @@
 language: objective-c
+
+os: osx
+osx_image: xcode7
+
 xcode_sdk: iphonesimulator
 xcode_project: RMActionController-Demo.xcodeproj
 xcode_scheme: RMActionController-Demo
