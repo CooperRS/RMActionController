@@ -823,14 +823,14 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @implementation RMAction
 
 #pragma mark - Class
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(__nonnull RMActionController *controller))handler {
++ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)( RMActionController * _Nonnull controller))handler {
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     action.title = title;
     
     return action;
 }
 
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(__nonnull RMActionController *controller))handler {
++ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)( RMActionController * _Nonnull controller))handler {
     RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
     action.image = image;
     

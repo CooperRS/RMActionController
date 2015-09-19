@@ -25,8 +25,8 @@
 
 #pragma mark - Helper
 - (void)verifyCustomActionControllerIsVisibleInApp:(XCUIApplication *)app {
-    XCUIElement *actionController = [app descendantsMatchingType:XCUIElementTypeUnknown][@"ActionControllerView"];
-    XCUIElement *backgroundView = [app descendantsMatchingType:XCUIElementTypeUnknown][@"BackgroundView"];
+    XCUIElement *actionController = [app descendantsMatchingType:XCUIElementTypeAny][@"ActionControllerView"];
+    XCUIElement *backgroundView = [app descendantsMatchingType:XCUIElementTypeAny][@"BackgroundView"];
     XCUIElement *plusLabel = app.staticTexts[@"PlusLabel"];
     XCUIElement *textLabel = app.staticTexts[@"TextLabel"];
     XCUIElement *selectButton = app.buttons[@"Select"];
