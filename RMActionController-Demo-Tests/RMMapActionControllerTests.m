@@ -47,7 +47,7 @@
         XCTAssertFalse(catchedException);
     }
     
-    [self waitForExpectationsWithTimeout:2 handler:nil];
+    [self waitForExpectationsWithTimeout:5 handler:nil];
     
     expectation = [self expectationWithDescription:@"DismissalCompleted"];
     
@@ -55,7 +55,7 @@
         [expectation fulfill];
     }];
     
-    [self waitForExpectationsWithTimeout:2 handler:nil];
+    [self waitForExpectationsWithTimeout:5 handler:nil];
 }
 
 @end
