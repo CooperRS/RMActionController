@@ -25,6 +25,13 @@
     [[[XCUIApplication alloc] init] launch];
 }
 
+- (void)tearDown {
+    [[[XCUIApplication alloc] init] terminate];
+    sleep(2);
+    
+    [super tearDown];
+}
+
 #pragma mark - Helper
 - (void)verifyCustomActionControllerIsVisibleInApp:(XCUIApplication *)app {
     XCUIElement *actionController = [app descendantsMatchingType:XCUIElementTypeAny][@"ActionControllerView"];
