@@ -63,18 +63,18 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 /**
  *  Returns a new instance of RMActionController.
  *
- *  @param style        The action controller style for the new instance.
+ *  @param aStyle        The action controller style for the new instance.
  *  @param selectAction An instance of RMAction whos handler is called when the select button is tapped.
  *  @param cancelAction An instance of RMAction whos handler is called when the cancel button is tapped.
  *
  *  @return A new instance of RMActionController.
  */
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction;
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)aStyle selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction;
 
 /**
  *  Returns a new instance of RMActionController.
  *
- *  @param style        The action controller style for the new instance.
+ *  @param aStyle        The action controller style for the new instance.
  *  @param aTitle       A title for the RMActionController
  *  @param aMessage     A message explaining why the RMActionController is shown.
  *  @param selectAction An instance of RMAction whos handler is called when the select button is tapped.
@@ -82,18 +82,22 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  *
  *  @return A new instance of RMActionController.
  */
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction;
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)aStyle title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction;
 
 /**
  *  Initializes a new instance of RMActionController.
  *
  *  Overwrite this method when subclassing RMActionController. Initialize the custom content view and set the content view of the RMActionController to your content view in this method.
  *
- *  @param aStyle The action controller style for the new instance.
+ *  @param aStyle        The action controller style for the new instance.
+ *  @param aTitle       A title for the RMActionController
+ *  @param aMessage     A message explaining why the RMActionController is shown.
+ *  @param selectAction An instance of RMAction whos handler is called when the select button is tapped.
+ *  @param cancelAction An instance of RMAction whos handler is called when the cancel button is tapped.
  *
  *  @return An initialized of RMActionController.
  */
-- (nullable instancetype)initWithStyle:(RMActionControllerStyle)aStyle;
+- (nullable instancetype)initWithStyle:(RMActionControllerStyle)aStyle title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction NS_DESIGNATED_INITIALIZER;
 
 /// @name User Interface
 #pragma mark - User Interface
@@ -220,7 +224,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(__nonnull T controller))handler;
++ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(T __nonnull controller))handler;
 
 /**
  *  Returns a new instance of RMAction.
@@ -231,7 +235,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(__nonnull T controller))handler;
++ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(T __nonnull controller))handler;
 
 /// @name Properties
 #pragma mark - Properties

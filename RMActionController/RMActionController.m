@@ -63,6 +63,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 @property (nonatomic, weak) NSLayoutConstraint *yConstraint;
 
+- (nonnull instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+
 @end
 
 @interface RMActionControllerAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
@@ -131,62 +134,63 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 + (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
-    RMActionController *controller = [(RMActionController *)[self alloc] initWithStyle:style];
-    controller.title = aTitle;
-    controller.message = aMessage;
-    
-    if(selectAction && cancelAction) {
-        RMGroupedAction *action = [RMGroupedAction actionWithStyle:RMActionStyleDefault andActions:@[cancelAction, selectAction]];
-        [controller addAction:action];
-    } else {
-        if(cancelAction) {
-            [controller addAction:cancelAction];
-        }
-        
-        if(selectAction) {
-            [controller addAction:selectAction];
-        }
-    }
-    
-    return controller;
+    return [[self alloc] initWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
 }
 
 #pragma mark - Init and Dealloc
-- (instancetype)init {
-    return [self initWithStyle:RMActionControllerStyleDefault];
-}
-
-- (instancetype)initWithStyle:(RMActionControllerStyle)aStyle {
-    self = [super init];
+- (nonnull instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if(self) {
-        self.style = aStyle;
-        
-        if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-            self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        } else {
-            self.modalPresentationStyle = UIModalPresentationCustom;
-        }
-        
         [self setup];
     }
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+- (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if(self) {
-        self.style = RMActionControllerStyleDefault;
         [self setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithStyle:(RMActionControllerStyle)aStyle title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
+    self = [super initWithNibName:nil bundle:nil];
+    if(self) {
+        [self setup];
+        
+        self.style = aStyle;
+        self.title = aTitle;
+        self.message = aMessage;
+        
+        if(selectAction && cancelAction) {
+            RMGroupedAction *action = [RMGroupedAction actionWithStyle:RMActionStyleDefault andActions:@[cancelAction, selectAction]];
+            [self addAction:action];
+        } else {
+            if(cancelAction) {
+                [self addAction:cancelAction];
+            }
+            
+            if(selectAction) {
+                [self addAction:selectAction];
+            }
+        }
     }
     return self;
 }
 
 - (void)setup {
-    self.transitioningDelegate = self;
-    
     self.additionalActions = [NSMutableArray array];
     self.doneActions = [NSMutableArray array];
     self.cancelActions = [NSMutableArray array];
+    
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    } else {
+        self.modalPresentationStyle = UIModalPresentationCustom;
+    }
+    
+    self.transitioningDelegate = self;
     
     [self setupUIElements];
 }

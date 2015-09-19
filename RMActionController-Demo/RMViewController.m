@@ -127,7 +127,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0 && indexPath.row == 0) {
         //[self openCustomViewActionController:self];
-        [self openMapActionController:self];
+        [self openCustomViewActionController:self];
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

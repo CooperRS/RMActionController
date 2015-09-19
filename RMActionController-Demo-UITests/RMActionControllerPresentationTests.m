@@ -91,7 +91,7 @@
     [self verifyCustomActionControllerIsVisibleInApp:app];
     
     [app.buttons[@"Cancel"] tap];
-    [app.navigationBars[@"Demo"].buttons[@"Demo"] tap];
+    [app.navigationBars[@"Objective-C Demo"].buttons[@"Objective-C Demo"] tap];
 }
 
 @end
