@@ -7,6 +7,10 @@ xcode_sdk: iphonesimulator
 xcode_workspace: RMActionController-Demo.xcworkspace
 xcode_scheme: RMActionController-Demo
 
+before_install:
+    - brew update
+    - brew install xctool
+
 #env:
 #  matrix:
 #    - NAME='iPhone 6' OS=8.1
