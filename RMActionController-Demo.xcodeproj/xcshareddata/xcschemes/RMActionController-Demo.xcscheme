@@ -34,6 +34,20 @@
                ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CA55C7901B35E98E009CF003"
+               BuildableName = "RMActionController-Demo-UITests.xctest"
+               BlueprintName = "RMActionController-Demo-UITests"
+               ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -50,6 +64,16 @@
                BlueprintIdentifier = "CA3FDC9A1B35E1A700590165"
                BuildableName = "RMActionController-Demo-Tests.xctest"
                BlueprintName = "RMActionController-Demo-Tests"
+               ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CA55C7901B35E98E009CF003"
+               BuildableName = "RMActionController-Demo-UITests.xctest"
+               BlueprintName = "RMActionController-Demo-UITests"
                ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
             </BuildableReference>
          </TestableReference>
