@@ -16,4 +16,4 @@ env:
     - NAME='iPad 2' OS=9.0
     - NAME='iPad Air' OS=9.0
 script:
-  - xctool clean build test -workspace RMActionController-Demo.xcworkspace -scheme RMActionController-Demo -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
+  - xctool test -workspace RMActionController-Demo.xcworkspace -scheme RMActionController-Demo -sdk iphonesimulator -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
