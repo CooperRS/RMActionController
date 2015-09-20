@@ -3,17 +3,21 @@ language: objective-c
 os: osx
 osx_image: xcode7
 
-env:
-  matrix:
-    - NAME='iPhone 6' OS=8.1
-    - NAME='iPhone 6' OS=8.2
-    - NAME='iPhone 6' OS=8.3
-    - NAME='iPhone 6' OS=8.4
-    - NAME='iPhone 4S' OS=9.0
-    - NAME='iPhone 5S' OS=9.0
-    - NAME='iPhone 6' OS=9.0
-    - NAME='iPhone 6 Plus' OS=9.0
-    - NAME='iPad 2' OS=9.0
-    - NAME='iPad Air' OS=9.0
-script:
-  - xctool test -workspace RMActionController-Demo.xcworkspace -scheme RMActionController-Demo -sdk iphonesimulator -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
+xcode_sdk: iphonesimulator
+xcode_workspace: RMActionController-Demo.xcworkspace
+xcode_scheme: RMActionController-Demo
+
+#env:
+#  matrix:
+#    - NAME='iPhone 6' OS=8.1
+#    - NAME='iPhone 6' OS=8.2
+#    - NAME='iPhone 6' OS=8.3
+#    - NAME='iPhone 6' OS=8.4
+#    - NAME='iPhone 4S' OS=9.0
+#    - NAME='iPhone 5S' OS=9.0
+#    - NAME='iPhone 6' OS=9.0
+#    - NAME='iPhone 6 Plus' OS=9.0
+#    - NAME='iPad 2' OS=9.0
+#    - NAME='iPad Air' OS=9.0
+#script:
+#  - xctool test -workspace RMActionController-Demo.xcworkspace -scheme RMActionController-Demo -sdk iphonesimulator -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
