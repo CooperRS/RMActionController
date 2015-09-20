@@ -9,7 +9,7 @@ xcode_scheme: RMActionController-Demo
 
 before_install:
     - brew update
-    - brew install xctool
+    - brew upgrade xctool
 
 #env:
 #  matrix:
