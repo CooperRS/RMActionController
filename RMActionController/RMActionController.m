@@ -902,7 +902,13 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 }
 
 - (UIView *)loadView {
-    UIButton *actionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButtonType buttonType = UIButtonTypeCustom;
+    
+    if(self.controller.disableBlurEffects) {
+        buttonType = UIButtonTypeSystem;
+    }
+    
+    UIButton *actionButton = [UIButton buttonWithType:buttonType];
     actionButton.translatesAutoresizingMaskIntoConstraints = NO;
     [actionButton addTarget:self action:@selector(viewTapped:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -935,16 +941,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(actionButton)]];
     
-    if(self.controller.disableBlurEffects) {
-        if(self.style == RMActionStyleDestructive) {
-            [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        } else {
-            [actionButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1.0 alpha:1.0] forState:UIControlStateNormal];
-        }
-    } else {
-        if(self.style == RMActionStyleDestructive) {
-            [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        }
+    if(self.style == RMActionStyleDestructive) {
+        [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     }
     
     return actionButton;
