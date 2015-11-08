@@ -14,7 +14,7 @@ This is an iOS control for presenting any UIView in an UIActionSheet/UIAlertCont
 ## Installation (CocoaPods)
 ```ruby
 platform :ios, '8.0'
-pod "RMActionController", "~> 1.0.4"
+pod "RMActionController", "~> 1.0.5"
 ```
 
 ## Usage
@@ -108,8 +108,8 @@ There is an additional documentation available provided by the CocoaPods team. T
 
 | Compile Time  | Runtime       |
 | :------------ | :------------ |
-| Xcode 6       | iOS 8         |
-| iOS 8 SDK     |               |
+| Xcode 7       | iOS 8         |
+| iOS 9 SDK     |               |
 | ARC           |               |
 
 Note: ARC can be turned on and off on a per file basis.
