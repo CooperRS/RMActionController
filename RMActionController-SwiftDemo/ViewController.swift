@@ -61,7 +61,6 @@ class ViewController: UITableViewController {
         presentViewController(actionController, animated: true, completion: nil)
     }
     
-    // MARK: Actions
     func openMapActionController() {
         var style = RMActionControllerStyle.White
         if self.blackSwitch.on {

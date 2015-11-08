@@ -4,6 +4,7 @@ os: osx
 osx_image: xcode7
 
 before_install:
+    - gem update cocoapods
     - brew update
     - brew upgrade xctool
 

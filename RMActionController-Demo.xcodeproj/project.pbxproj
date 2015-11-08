@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E51D168A30A9F32B9DE3F24 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		9CBBA113767E53C1E7D57A8D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BBA073936A09C4576B06B229 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		8E51D168A30A9F32B9DE3F24 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; };
+		9CBBA113767E53C1E7D57A8D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; };
+		BBA073936A09C4576B06B229 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; };
 		CA3FDCAB1B35E1B200590165 /* RMActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA61B35E1B200590165 /* RMActionTests.m */; };
 		CA3FDCAC1B35E1B200590165 /* RMGroupedActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */; };
 		CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */; };
@@ -408,6 +408,7 @@
 				CAD311D81B01517800D905F7 /* Frameworks */,
 				CAD311D91B01517800D905F7 /* Resources */,
 				3CF5D56737188EC8073CB64D /* Copy Pods Resources */,
+				A736FF080A5879A765796FA1 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -445,7 +446,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Roland Moers";
 				TargetAttributes = {
 					CA3FDC9A1B35E1A700590165 = {
@@ -698,6 +699,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A736FF080A5879A765796FA1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1021,6 +1037,7 @@
 				);
 				INFOPLIST_FILE = "RMActionController-SwiftDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.cooperrs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1033,6 +1050,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "RMActionController-SwiftDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.cooperrs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
