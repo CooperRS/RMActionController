@@ -28,22 +28,22 @@
 
 @implementation RMMapActionController
 
-#pragma mark - Class
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
-    RMMapActionController *controller = [super actionControllerWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
-    
-    controller.contentView = [[MKMapView alloc] initWithFrame:CGRectZero];
-    controller.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+#pragma mark - Init and Dealloc
+- (instancetype)initWithStyle:(RMActionControllerStyle)aStyle title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
+    self = [super initWithStyle:aStyle title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
+    if(self) {
+        self.contentView = [[MKMapView alloc] initWithFrame:CGRectZero];
+        self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        
 #ifdef DEBUG
-    controller.contentView.accessibilityLabel = @"MapView";
+        self.contentView.accessibilityLabel = @"MapView";
 #endif
-    
-    NSDictionary *bindings = @{@"mapView": controller.contentView};
-    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[mapView(>=300)]" options:0 metrics:nil views:bindings]];
-    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(200)]" options:0 metrics:nil views:bindings]];
-    
-    return controller;
+        
+        NSDictionary *bindings = @{@"mapView": self.contentView};
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[mapView(>=300)]" options:0 metrics:nil views:bindings]];
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[mapView(200)]" options:0 metrics:nil views:bindings]];
+    }
+    return self;
 }
 
 #pragma mark - Properties
