@@ -30,18 +30,17 @@ To add a content view RMActionController usually is subclassed. This project con
 When subclassing RMActionController you only have to overwrite one method. This method is called `actionControllerWithStyle:title:message:selectAction:andCancelAction:`.
 
 ```objc
-+ (instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
-    //Create an instance of your RMActionController subclass
-    RMMapActionController *controller = [super actionControllerWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
-    
-    controller.contentView = [[MKMapView alloc] initWithFrame:CGRectZero];
-    controller.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    controller.contentView.accessibilityLabel = @"MapView";
-    
-    NSDictionary *bindings = @{@"contentView": controller.contentView};
-    [controller.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[contentView(200)]" options:0 metrics:nil views:bindings]];
-    
-    return controller;
+- (instancetype)initWithStyle:(RMActionControllerStyle)style title:(NSString *)aTitle message:(NSString *)aMessage selectAction:(RMAction *)selectAction andCancelAction:(RMAction *)cancelAction {
+    self = [super initWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
+    if(self) {
+        self.contentView = [[MKMapView alloc] initWithFrame:CGRectZero];
+        self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        self.contentView.accessibilityLabel = @"MapView";
+        
+        NSDictionary *bindings = @{@"contentView": self.contentView};
+        [self.contentView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[contentView(200)]" options:0 metrics:nil views:bindings]];
+    }
+    return self;
 }
 ```
 
