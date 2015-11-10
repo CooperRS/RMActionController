@@ -907,10 +907,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (UIView *)loadView {
     UIButtonType buttonType = UIButtonTypeCustom;
-    
     if(self.controller.disableBlurEffects) {
         buttonType = UIButtonTypeSystem;
     }
+    
     UIButton *actionButton = [UIButton buttonWithType:buttonType];
     actionButton.translatesAutoresizingMaskIntoConstraints = NO;
     [actionButton addTarget:self action:@selector(viewTapped:) forControlEvents:UIControlEventTouchUpInside];
