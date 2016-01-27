@@ -300,7 +300,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     //Container properties
-    self.topContainer.layer.cornerRadius = 4;
+    if (self.removeCornerRadius) {
+        self.topContainer.layer.cornerRadius = 0;
+    } else {
+        self.topContainer.layer.cornerRadius = 4;
+    }
+    
     self.topContainer.clipsToBounds = YES;
     self.topContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -310,7 +315,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         self.topContainer.backgroundColor = [UIColor whiteColor];
     }
     
-    self.bottomContainer.layer.cornerRadius = 4;
+    if (self.removeCornerRadius) {
+        self.bottomContainer.layer.cornerRadius = 0;
+    } else {
+        self.bottomContainer.layer.cornerRadius = 4;
+    }
+    
     self.bottomContainer.clipsToBounds = YES;
     self.bottomContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -338,14 +348,26 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     NSDictionary *bindingsDict = NSDictionaryOfVariableBindings(topContainer, bottomContainer, headerTitleLabel, headerMessageLabel);
     
-    //Container constraints
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
-    
-    if([self.cancelActions count] <= 0) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+    if (self.removeBorderSpace) {
+        //Container constraints
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[topContainer]|" options:0 metrics:nil views:bindingsDict]];
+        
+        if([self.cancelActions count] <= 0) {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]|" options:0 metrics:nil views:bindingsDict]];
+        } else {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[bottomContainer]|" options:0 metrics:nil views:bindingsDict]];
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]|" options:0 metrics:nil views:bindingsDict]];
+        }
     } else {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        //Container constraints
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        
+        if([self.cancelActions count] <= 0) {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        } else {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        }
     }
     
     //Top container content constraints
