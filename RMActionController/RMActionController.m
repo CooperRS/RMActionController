@@ -175,11 +175,25 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
                 [self addAction:selectAction];
             }
         }
+      
     }
     return self;
 }
-
+- (void)handleSingleTap:(UIGestureRecognizer *)gesture {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)setup {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+
     self.additionalActions = [NSMutableArray array];
     self.doneActions = [NSMutableArray array];
     self.cancelActions = [NSMutableArray array];
@@ -193,6 +207,27 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     self.transitioningDelegate = self;
     
     [self setupUIElements];
+}
+-(void)keyboardWillShow:(NSNotification *)notification {
+   
+    NSDictionary *info  = notification.userInfo;
+    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect rawFrame      = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+
+    // Animate the current view out of the way
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - keyboardFrame.size.height - self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification {
+    // Animate the current view back to its original position
+    [UIView animateWithDuration:0.3f animations:^ {
+        NSLog(@"self.view.frame.size.height %f, mainScreen .height %f",self.view.frame.size.height,[[UIScreen mainScreen] bounds].size.height);
+        self.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 - (void)setupUIElements {
@@ -502,7 +537,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (void)viewDidLoad {
     NSAssert(self.contentView != nil, @"Error: The view of an RMActionController has been loaded before a contentView has been set. You have to set the contentView before presenting a RMActionController.");
+    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [self.backgroundView addGestureRecognizer: singleTap];
+
     [super viewDidLoad];
     
 #ifdef DEBUG
@@ -560,7 +600,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     self.hasBeenDismissed = NO;
 }
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self.view];
+}
 #pragma mark - Helper
 - (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle {
     switch (self.style) {
@@ -811,7 +853,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             }
             
             [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:damping initialSpringVelocity:1 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
-                actionController.backgroundView.alpha = 1;
+                actionController.backgroundView.alpha = 0.8;
                 
                 [containerView layoutIfNeeded];
             } completion:^(BOOL finished) {
