@@ -122,6 +122,17 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  */
 @property (nonatomic, assign) BOOL disableBackgroundTaps;
 
+/**
+ *  When YES removes contraints a. Default value is NO.
+ */
+@property (nonatomic, assign) BOOL removeBorderSpace;
+
+/**
+ *  When YES removes corner radius. Default value is NO.
+ */
+@property (nonatomic, assign) BOOL removeCornerRadius;
+
+
 /// @name Actions
 #pragma mark - Actions
 

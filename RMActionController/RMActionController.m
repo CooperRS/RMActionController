@@ -175,11 +175,23 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
                 [self addAction:selectAction];
             }
         }
+      
     }
     return self;
 }
 
 - (void)setup {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+
     self.additionalActions = [NSMutableArray array];
     self.doneActions = [NSMutableArray array];
     self.cancelActions = [NSMutableArray array];
@@ -193,6 +205,27 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     self.transitioningDelegate = self;
     
     [self setupUIElements];
+}
+-(void)keyboardWillShow:(NSNotification *)notification {
+   
+    NSDictionary *info  = notification.userInfo;
+    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
+    
+    CGRect rawFrame      = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+
+    // Animate the current view out of the way
+    [UIView animateWithDuration:0.3f animations:^ {
+        self.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - keyboardFrame.size.height - self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    }];
+}
+
+-(void)keyboardWillHide:(NSNotification *)notification {
+    // Animate the current view back to its original position
+    [UIView animateWithDuration:0.3f animations:^ {
+        NSLog(@"self.view.frame.size.height %f, mainScreen .height %f",self.view.frame.size.height,[[UIScreen mainScreen] bounds].size.height);
+        self.view.frame = CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    }];
 }
 
 - (void)setupUIElements {
@@ -300,7 +333,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     //Container properties
-    self.topContainer.layer.cornerRadius = 4;
+    if (self.removeCornerRadius) {
+        self.topContainer.layer.cornerRadius = 0;
+    } else {
+        self.topContainer.layer.cornerRadius = 4;
+    }
+    
     self.topContainer.clipsToBounds = YES;
     self.topContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -310,7 +348,12 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         self.topContainer.backgroundColor = [UIColor whiteColor];
     }
     
-    self.bottomContainer.layer.cornerRadius = 4;
+    if (self.removeCornerRadius) {
+        self.bottomContainer.layer.cornerRadius = 0;
+    } else {
+        self.bottomContainer.layer.cornerRadius = 4;
+    }
+    
     self.bottomContainer.clipsToBounds = YES;
     self.bottomContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -338,14 +381,26 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     NSDictionary *bindingsDict = NSDictionaryOfVariableBindings(topContainer, bottomContainer, headerTitleLabel, headerMessageLabel);
     
-    //Container constraints
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
-    
-    if([self.cancelActions count] <= 0) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+    if (self.removeBorderSpace) {
+        //Container constraints
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[topContainer]|" options:0 metrics:nil views:bindingsDict]];
+        
+        if([self.cancelActions count] <= 0) {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]|" options:0 metrics:nil views:bindingsDict]];
+        } else {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[bottomContainer]|" options:0 metrics:nil views:bindingsDict]];
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]|" options:0 metrics:nil views:bindingsDict]];
+        }
     } else {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        //Container constraints
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        
+        if([self.cancelActions count] <= 0) {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        } else {
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+            [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        }
     }
     
     //Top container content constraints
@@ -480,7 +535,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (void)viewDidLoad {
     NSAssert(self.contentView != nil, @"Error: The view of an RMActionController has been loaded before a contentView has been set. You have to set the contentView before presenting a RMActionController.");
-    
+
     [super viewDidLoad];
     
 #ifdef DEBUG
@@ -538,7 +593,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     
     self.hasBeenDismissed = NO;
 }
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self.view];
+}
 #pragma mark - Helper
 - (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle {
     switch (self.style) {
@@ -564,11 +621,16 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (void)handleCancelNotAssociatedWithAnyButton {
     // Grouped Actions are stored in the doneActions array, so we'll need to check them as well
+    BOOL cancelActionFound = NO;
     for(RMAction *anAction in [self.cancelActions arrayByAddingObjectsFromArray:self.doneActions]) {
         if([anAction containsCancelAction]) {
             [anAction executeHandlerOfCancelActionWithController:self];
-            return;
+            cancelActionFound = YES;
+            break;
         }
+    }
+    if (!cancelActionFound) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
@@ -747,6 +809,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     return 1.0f;
 }
 
+// test sample
+
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     UIView *containerView = [transitionContext containerView];
     
@@ -789,7 +853,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
             }
             
             [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:damping initialSpringVelocity:1 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
-                actionController.backgroundView.alpha = 1;
+                actionController.backgroundView.alpha = 0.8;
                 
                 [containerView layoutIfNeeded];
             } completion:^(BOOL finished) {
