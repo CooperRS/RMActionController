@@ -179,9 +179,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     return self;
 }
-- (void)handleSingleTap:(UIGestureRecognizer *)gesture {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 - (void)setup {
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -537,11 +535,6 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (void)viewDidLoad {
     NSAssert(self.contentView != nil, @"Error: The view of an RMActionController has been loaded before a contentView has been set. You have to set the contentView before presenting a RMActionController.");
-    UITapGestureRecognizer* singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    
-    singleTap.numberOfTapsRequired = 1;
-    singleTap.numberOfTouchesRequired = 1;
-    [self.backgroundView addGestureRecognizer: singleTap];
 
     [super viewDidLoad];
     
@@ -628,11 +621,16 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (void)handleCancelNotAssociatedWithAnyButton {
     // Grouped Actions are stored in the doneActions array, so we'll need to check them as well
+    BOOL cancelActionFound = NO;
     for(RMAction *anAction in [self.cancelActions arrayByAddingObjectsFromArray:self.doneActions]) {
         if([anAction containsCancelAction]) {
             [anAction executeHandlerOfCancelActionWithController:self];
-            return;
+            cancelActionFound = YES;
+            break;
         }
+    }
+    if (!cancelActionFound) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
