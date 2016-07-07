@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RMActionController"
-  s.platform     = :ios, '8.0'
+  s.platform     = :ios, '7.0'
   s.version      = "1.0.5"
   s.summary      = "This is an iOS control for presenting any UIView in UIActionSheet/UIActionController like manner"
   s.homepage     = "https://github.com/CooperRS/RMActionController"
