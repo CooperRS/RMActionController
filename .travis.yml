@@ -3,11 +3,6 @@ language: objective-c
 os: osx
 osx_image: xcode8
 
-before_install:
-    - gem update cocoapods
-    - brew update
-    - brew upgrade xctool
-
 env:
   matrix:
     - NAME='iPhone 6' OS=8.1
@@ -20,5 +15,3 @@ env:
     - NAME='iPhone 6 Plus' OS=9.0
     - NAME='iPad 2' OS=9.0
     - NAME='iPad Air' OS=9.0
-script:
-  - xctool test -workspace RMActionController-Demo.xcworkspace -scheme RMActionController-Demo -sdk iphonesimulator -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
