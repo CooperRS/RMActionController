@@ -37,6 +37,8 @@
 #define RM_CURRENT_ORIENTATION_IS_LANDSCAPE_PREDICATE [UIScreen mainScreen].bounds.size.height < [UIScreen mainScreen].bounds.size.width
 #endif
 
+#define IOS_9_PREDICATE [[UIDevice currentDevice].systemVersion floatValue] >= 9.0
+
 typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     RMActionControllerAnimationStylePresenting,
     RMActionControllerAnimationStyleDismissing
@@ -300,7 +302,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     //Container properties
-    self.topContainer.layer.cornerRadius = 4;
+    self.topContainer.layer.cornerRadius = IOS_9_PREDICATE ? 12 : 4;
     self.topContainer.clipsToBounds = YES;
     self.topContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -310,7 +312,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         self.topContainer.backgroundColor = [UIColor whiteColor];
     }
     
-    self.bottomContainer.layer.cornerRadius = 4;
+    self.bottomContainer.layer.cornerRadius = IOS_9_PREDICATE ? 12 : 4;
     self.bottomContainer.clipsToBounds = YES;
     self.bottomContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -942,7 +944,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         [actionButton setTitle:@"Unknown title" forState:UIControlStateNormal];
     }
     
-    [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(actionButton)]];
+    [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(height)]" options:0 metrics:@{@"height": @(IOS_9_PREDICATE ? 55 : 44)} views:NSDictionaryOfVariableBindings(actionButton)]];
     
     if(self.style == RMActionStyleDestructive) {
         [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
