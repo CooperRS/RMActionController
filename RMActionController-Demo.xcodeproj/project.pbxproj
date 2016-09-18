@@ -17,6 +17,8 @@
 		CA5EFC2F1D8EAC5A0020C8A8 /* RMActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; };
 		CA5EFC301D8EAC5A0020C8A8 /* RMActionController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA5EFC361D8EAC780020C8A8 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EFC351D8EAC780020C8A8 /* RMActionController.m */; };
+		CA7ACAD01D8EB231006A339E /* RMActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; };
+		CA7ACAD41D8EB286006A339E /* RMActionController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA8763701B088DDA00885A0B /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */; };
 		CAD311A71B01507300D905F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A61B01507300D905F7 /* main.m */; };
 		CAD311AA1B01507300D905F7 /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A91B01507300D905F7 /* RMAppDelegate.m */; };
@@ -38,13 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CA3C24211BADD5480077371A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CAD311991B01507300D905F7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CAE78B031B850F5600CBB165;
-			remoteInfo = "RMActionController-SwiftDemo";
-		};
 		CA3FDCA11B35E1A800590165 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAD311991B01507300D905F7 /* Project object */;
@@ -73,6 +68,13 @@
 			remoteGlobalIDString = CA5EFC271D8EAC5A0020C8A8;
 			remoteInfo = RMActionController;
 		};
+		CA7ACACC1D8EB215006A339E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD311991B01507300D905F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA5EFC271D8EAC5A0020C8A8;
+			remoteInfo = RMActionController;
+		};
 		CAD311E41B01517800D905F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAD311991B01507300D905F7 /* Project object */;
@@ -90,6 +92,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				CA5EFC301D8EAC5A0020C8A8 /* RMActionController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA7ACAD31D8EB275006A339E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA7ACAD41D8EB286006A339E /* RMActionController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7ACAD01D8EB231006A339E /* RMActionController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,12 +275,12 @@
 		CAD311981B01507300D905F7 = {
 			isa = PBXGroup;
 			children = (
+				CA5EFC291D8EAC5A0020C8A8 /* RMActionController */,
 				CAD311A31B01507300D905F7 /* RMActionController-Demo */,
 				CAE78B051B850F5600CBB165 /* RMActionController-SwiftDemo */,
 				CAD311DC1B01517800D905F7 /* RMActionController-DemoExtension */,
 				CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */,
 				CA55C7921B35E98E009CF003 /* RMActionController-Demo-UITests */,
-				CA5EFC291D8EAC5A0020C8A8 /* RMActionController */,
 				CAD311A21B01507300D905F7 /* Products */,
 				EB53F23FA2CE8FBE334AEF40 /* Frameworks */,
 			);
@@ -391,7 +405,6 @@
 			);
 			dependencies = (
 				CA3FDCA21B35E1A800590165 /* PBXTargetDependency */,
-				CA3C24221BADD5480077371A /* PBXTargetDependency */,
 			);
 			name = "RMActionController-Demo-Tests";
 			productName = "RMActionController-Demo-Tests";
@@ -480,10 +493,12 @@
 				CAE78B001B850F5600CBB165 /* Sources */,
 				CAE78B011B850F5600CBB165 /* Frameworks */,
 				CAE78B021B850F5600CBB165 /* Resources */,
+				CA7ACAD31D8EB275006A339E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA7ACACD1D8EB215006A339E /* PBXTargetDependency */,
 			);
 			name = "RMActionController-SwiftDemo";
 			productName = "RMActionController-SwiftDemo";
@@ -662,11 +677,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CA3C24221BADD5480077371A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CAE78B031B850F5600CBB165 /* RMActionController-SwiftDemo */;
-			targetProxy = CA3C24211BADD5480077371A /* PBXContainerItemProxy */;
-		};
 		CA3FDCA21B35E1A800590165 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CAD311A01B01507300D905F7 /* RMActionController-Demo */;
@@ -686,6 +696,11 @@
 			isa = PBXTargetDependency;
 			target = CA5EFC271D8EAC5A0020C8A8 /* RMActionController */;
 			targetProxy = CA5EFC371D8EAC8C0020C8A8 /* PBXContainerItemProxy */;
+		};
+		CA7ACACD1D8EB215006A339E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA5EFC271D8EAC5A0020C8A8 /* RMActionController */;
+			targetProxy = CA7ACACC1D8EB215006A339E /* PBXContainerItemProxy */;
 		};
 		CAD311E51B01517800D905F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
