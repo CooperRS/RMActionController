@@ -1,6 +1,4 @@
 language: objective-c
-xcode_project: RMActionController-Demo.xcodeproj
-xcode_scheme: RMActionController-Demo
 
 os: osx
 osx_image: xcode8
@@ -17,3 +15,6 @@ env:
     - NAME='iPhone 6 Plus' OS=9.0
     - NAME='iPad 2' OS=9.0
     - NAME='iPad Air' OS=9.0
+
+script:
+    - xcodebuild test -project RMActionController-Demo.xcodeproj -scheme RMActionController-Demo -sdk iphonesimulator -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
