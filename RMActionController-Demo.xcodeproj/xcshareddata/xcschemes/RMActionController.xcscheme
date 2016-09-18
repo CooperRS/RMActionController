@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CAE78B031B850F5600CBB165"
-               BuildableName = "RMActionController-SwiftDemo.app"
-               BlueprintName = "RMActionController-SwiftDemo"
+               BlueprintIdentifier = "CA5EFC271D8EAC5A0020C8A8"
+               BuildableName = "RMActionController.framework"
+               BlueprintName = "RMActionController"
                ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAE78B031B850F5600CBB165"
-            BuildableName = "RMActionController-SwiftDemo.app"
-            BlueprintName = "RMActionController-SwiftDemo"
-            ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAE78B031B850F5600CBB165"
-            BuildableName = "RMActionController-SwiftDemo.app"
-            BlueprintName = "RMActionController-SwiftDemo"
+            BlueprintIdentifier = "CA5EFC271D8EAC5A0020C8A8"
+            BuildableName = "RMActionController.framework"
+            BlueprintName = "RMActionController"
             ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CAE78B031B850F5600CBB165"
-            BuildableName = "RMActionController-SwiftDemo.app"
-            BlueprintName = "RMActionController-SwiftDemo"
+            BlueprintIdentifier = "CA5EFC271D8EAC5A0020C8A8"
+            BuildableName = "RMActionController.framework"
+            BlueprintName = "RMActionController"
             ReferencedContainer = "container:RMActionController-Demo.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

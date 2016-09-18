@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E51D168A30A9F32B9DE3F24 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; };
-		9CBBA113767E53C1E7D57A8D /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; };
-		BBA073936A09C4576B06B229 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; };
 		CA3FDCAB1B35E1B200590165 /* RMActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA61B35E1B200590165 /* RMActionTests.m */; };
 		CA3FDCAC1B35E1B200590165 /* RMGroupedActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */; };
 		CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */; };
 		CA3FDCAE1B35E1B200590165 /* RMActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */; };
 		CA3FDCAF1B35E1B200590165 /* RMMapActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */; };
 		CA55C79C1B35E996009CF003 /* RMActionControllerPresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA55C79B1B35E996009CF003 /* RMActionControllerPresentationTests.m */; };
+		CA5EFC2C1D8EAC5A0020C8A8 /* RMActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = CA5EFC2A1D8EAC5A0020C8A8 /* RMActionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA5EFC2F1D8EAC5A0020C8A8 /* RMActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; };
+		CA5EFC301D8EAC5A0020C8A8 /* RMActionController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA5EFC361D8EAC780020C8A8 /* RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA5EFC351D8EAC780020C8A8 /* RMActionController.m */; };
 		CA8763701B088DDA00885A0B /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */; };
 		CAD311A71B01507300D905F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A61B01507300D905F7 /* main.m */; };
 		CAD311AA1B01507300D905F7 /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311A91B01507300D905F7 /* RMAppDelegate.m */; };
@@ -34,7 +35,6 @@
 		CAE78B151B850F5600CBB165 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAE78B131B850F5600CBB165 /* LaunchScreen.xib */; };
 		CAE78B2A1B85107800CBB165 /* CustomViewActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE78B291B85107800CBB165 /* CustomViewActionController.swift */; };
 		CAE78B2C1B85108E00CBB165 /* MapActionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE78B2B1B85108E00CBB165 /* MapActionController.swift */; };
-		E672857D6FBE4FBF02705EDE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A380B30F8F6525ED96A555 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +59,20 @@
 			remoteGlobalIDString = CAD311A01B01507300D905F7;
 			remoteInfo = "RMActionController-Demo";
 		};
+		CA5EFC2D1D8EAC5A0020C8A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD311991B01507300D905F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA5EFC271D8EAC5A0020C8A8;
+			remoteInfo = RMActionController;
+		};
+		CA5EFC371D8EAC8C0020C8A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD311991B01507300D905F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA5EFC271D8EAC5A0020C8A8;
+			remoteInfo = RMActionController;
+		};
 		CAD311E41B01517800D905F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAD311991B01507300D905F7 /* Project object */;
@@ -69,6 +83,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CA5EFC341D8EAC5A0020C8A8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CA5EFC301D8EAC5A0020C8A8 /* RMActionController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD311EA1B01517800D905F7 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,8 +108,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		023FD22D7217DAB71291DEEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		C0F6AA898D5171D30571F446 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		CA38CB371B35EF0F000837D8 /* RMActionController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMActionController+Private.h"; sourceTree = "<group>"; };
 		CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Demo-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3FDC9E1B35E1A700590165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +119,10 @@
 		CA55C7911B35E98E009CF003 /* RMActionController-Demo-UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Demo-UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA55C7951B35E98E009CF003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA55C79B1B35E996009CF003 /* RMActionControllerPresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionControllerPresentationTests.m; sourceTree = "<group>"; };
+		CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RMActionController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA5EFC2A1D8EAC5A0020C8A8 /* RMActionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMActionController.h; sourceTree = "<group>"; };
+		CA5EFC2B1D8EAC5A0020C8A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA5EFC351D8EAC780020C8A8 /* RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionController.m; sourceTree = "<group>"; };
 		CA87636E1B088DDA00885A0B /* RMCustomViewActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMCustomViewActionController.h; sourceTree = "<group>"; };
 		CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCustomViewActionController.m; sourceTree = "<group>"; };
 		CAD311A11B01507300D905F7 /* RMActionController-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RMActionController-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,7 +149,6 @@
 		CAE78B141B850F5600CBB165 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CAE78B291B85107800CBB165 /* CustomViewActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewActionController.swift; sourceTree = "<group>"; };
 		CAE78B2B1B85108E00CBB165 /* MapActionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapActionController.swift; sourceTree = "<group>"; };
-		F6A380B30F8F6525ED96A555 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +156,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E672857D6FBE4FBF02705EDE /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,11 +166,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA5EFC241D8EAC5A0020C8A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CAD3119E1B01507300D905F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBA073936A09C4576B06B229 /* Pods.framework in Frameworks */,
+				CA5EFC2F1D8EAC5A0020C8A8 /* RMActionController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +185,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CBBA113767E53C1E7D57A8D /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +192,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E51D168A30A9F32B9DE3F24 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +237,16 @@
 			path = "RMActionController-Demo-UITests";
 			sourceTree = "<group>";
 		};
+		CA5EFC291D8EAC5A0020C8A8 /* RMActionController */ = {
+			isa = PBXGroup;
+			children = (
+				CA5EFC2A1D8EAC5A0020C8A8 /* RMActionController.h */,
+				CA5EFC351D8EAC780020C8A8 /* RMActionController.m */,
+				CA5EFC2B1D8EAC5A0020C8A8 /* Info.plist */,
+			);
+			path = RMActionController;
+			sourceTree = "<group>";
+		};
 		CA8763711B088E0F00885A0B /* SampleActionController */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,8 +266,8 @@
 				CAD311DC1B01517800D905F7 /* RMActionController-DemoExtension */,
 				CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */,
 				CA55C7921B35E98E009CF003 /* RMActionController-Demo-UITests */,
+				CA5EFC291D8EAC5A0020C8A8 /* RMActionController */,
 				CAD311A21B01507300D905F7 /* Products */,
-				DA8A346173A18A3841835A3F /* Pods */,
 				EB53F23FA2CE8FBE334AEF40 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -240,6 +280,7 @@
 				CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */,
 				CA55C7911B35E98E009CF003 /* RMActionController-Demo-UITests.xctest */,
 				CAE78B041B850F5600CBB165 /* RMActionController-SwiftDemo.app */,
+				CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,36 +358,34 @@
 			name = SampleActionController;
 			sourceTree = "<group>";
 		};
-		DA8A346173A18A3841835A3F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C0F6AA898D5171D30571F446 /* Pods.debug.xcconfig */,
-				023FD22D7217DAB71291DEEB /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		EB53F23FA2CE8FBE334AEF40 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F6A380B30F8F6525ED96A555 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		CA5EFC251D8EAC5A0020C8A8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5EFC2C1D8EAC5A0020C8A8 /* RMActionController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		CA3FDC9A1B35E1A700590165 /* RMActionController-Demo-Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA3FDCA31B35E1A800590165 /* Build configuration list for PBXNativeTarget "RMActionController-Demo-Tests" */;
 			buildPhases = (
-				081DC7128B129A796BC6EAB3 /* Check Pods Manifest.lock */,
 				CA3FDC971B35E1A700590165 /* Sources */,
 				CA3FDC981B35E1A700590165 /* Frameworks */,
 				CA3FDC991B35E1A700590165 /* Resources */,
-				7A86F57690D81644FDE7423E /* Embed Pods Frameworks */,
-				87807D4F05E3040562950136 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -377,22 +416,39 @@
 			productReference = CA55C7911B35E98E009CF003 /* RMActionController-Demo-UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CA5EFC271D8EAC5A0020C8A8 /* RMActionController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA5EFC331D8EAC5A0020C8A8 /* Build configuration list for PBXNativeTarget "RMActionController" */;
+			buildPhases = (
+				CA5EFC231D8EAC5A0020C8A8 /* Sources */,
+				CA5EFC241D8EAC5A0020C8A8 /* Frameworks */,
+				CA5EFC251D8EAC5A0020C8A8 /* Headers */,
+				CA5EFC261D8EAC5A0020C8A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RMActionController;
+			productName = RMActionController;
+			productReference = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		CAD311A01B01507300D905F7 /* RMActionController-Demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAD311C71B01507400D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-Demo" */;
 			buildPhases = (
-				9F7D9793CEFAB6A5CCC1A825 /* Check Pods Manifest.lock */,
 				CAD3119D1B01507300D905F7 /* Sources */,
 				CAD3119E1B01507300D905F7 /* Frameworks */,
 				CAD3119F1B01507300D905F7 /* Resources */,
 				CAD311EA1B01517800D905F7 /* Embed App Extensions */,
-				1A3AB554AF7A536E00B2A540 /* Embed Pods Frameworks */,
-				53D1C22A634AF382CE52FE99 /* Copy Pods Resources */,
+				CA5EFC341D8EAC5A0020C8A8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				CAD311E51B01517800D905F7 /* PBXTargetDependency */,
+				CA5EFC2E1D8EAC5A0020C8A8 /* PBXTargetDependency */,
 			);
 			name = "RMActionController-Demo";
 			productName = "RMActionViewController-Demo";
@@ -403,16 +459,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAD311E71B01517800D905F7 /* Build configuration list for PBXNativeTarget "RMActionController-DemoExtension" */;
 			buildPhases = (
-				63C6FD2D4B5B62B33B557A4A /* Check Pods Manifest.lock */,
 				CAD311D71B01517800D905F7 /* Sources */,
 				CAD311D81B01517800D905F7 /* Frameworks */,
 				CAD311D91B01517800D905F7 /* Resources */,
-				3CF5D56737188EC8073CB64D /* Copy Pods Resources */,
-				A736FF080A5879A765796FA1 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA5EFC381D8EAC8C0020C8A8 /* PBXTargetDependency */,
 			);
 			name = "RMActionController-DemoExtension";
 			productName = "RMActionViewController-DemoExtension";
@@ -423,12 +477,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAE78B261B850F5600CBB165 /* Build configuration list for PBXNativeTarget "RMActionController-SwiftDemo" */;
 			buildPhases = (
-				2945BBD0ED59B06D590652FF /* Check Pods Manifest.lock */,
 				CAE78B001B850F5600CBB165 /* Sources */,
 				CAE78B011B850F5600CBB165 /* Frameworks */,
 				CAE78B021B850F5600CBB165 /* Resources */,
-				6A0CA5812DB4591290F99ADF /* Embed Pods Frameworks */,
-				36247A606A0594853055DBF0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -446,7 +497,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Roland Moers";
 				TargetAttributes = {
 					CA3FDC9A1B35E1A700590165 = {
@@ -457,6 +508,10 @@
 						CreatedOnToolsVersion = 7.0;
 						TestTargetID = CAD311A01B01507300D905F7;
 					};
+					CA5EFC271D8EAC5A0020C8A8 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					CAD311A01B01507300D905F7 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -465,6 +520,7 @@
 					};
 					CAE78B031B850F5600CBB165 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -486,6 +542,7 @@
 				CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */,
 				CA3FDC9A1B35E1A700590165 /* RMActionController-Demo-Tests */,
 				CA55C7901B35E98E009CF003 /* RMActionController-Demo-UITests */,
+				CA5EFC271D8EAC5A0020C8A8 /* RMActionController */,
 			);
 		};
 /* End PBXProject section */
@@ -499,6 +556,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CA55C78F1B35E98E009CF003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA5EFC261D8EAC5A0020C8A8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -535,189 +599,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		081DC7128B129A796BC6EAB3 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		1A3AB554AF7A536E00B2A540 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2945BBD0ED59B06D590652FF /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		36247A606A0594853055DBF0 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3CF5D56737188EC8073CB64D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		53D1C22A634AF382CE52FE99 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63C6FD2D4B5B62B33B557A4A /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6A0CA5812DB4591290F99ADF /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7A86F57690D81644FDE7423E /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87807D4F05E3040562950136 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9F7D9793CEFAB6A5CCC1A825 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A736FF080A5879A765796FA1 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CA3FDC971B35E1A700590165 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -736,6 +617,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA55C79C1B35E996009CF003 /* RMActionControllerPresentationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA5EFC231D8EAC5A0020C8A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5EFC361D8EAC780020C8A8 /* RMActionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,6 +677,16 @@
 			target = CAD311A01B01507300D905F7 /* RMActionController-Demo */;
 			targetProxy = CA55C7961B35E98E009CF003 /* PBXContainerItemProxy */;
 		};
+		CA5EFC2E1D8EAC5A0020C8A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA5EFC271D8EAC5A0020C8A8 /* RMActionController */;
+			targetProxy = CA5EFC2D1D8EAC5A0020C8A8 /* PBXContainerItemProxy */;
+		};
+		CA5EFC381D8EAC8C0020C8A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA5EFC271D8EAC5A0020C8A8 /* RMActionController */;
+			targetProxy = CA5EFC371D8EAC8C0020C8A8 /* PBXContainerItemProxy */;
+		};
 		CAD311E51B01517800D905F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CAD311DA1B01517800D905F7 /* RMActionController-DemoExtension */;
@@ -833,7 +732,6 @@
 /* Begin XCBuildConfiguration section */
 		CA3FDCA41B35E1A800590165 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F6AA898D5171D30571F446 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -851,7 +749,6 @@
 		};
 		CA3FDCA51B35E1A800590165 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 023FD22D7217DAB71291DEEB /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "RMActionController-Demo-Tests/Info.plist";
@@ -891,6 +788,59 @@
 			};
 			name = Release;
 		};
+		CA5EFC311D8EAC5A0020C8A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RMActionController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.cooperrs.RMActionController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA5EFC321D8EAC5A0020C8A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = RMActionController/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.cooperrs.RMActionController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		CAD311C51B01507400D905F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -904,8 +854,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -949,8 +901,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -969,6 +923,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -976,7 +931,6 @@
 		};
 		CAD311C81B01507400D905F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F6AA898D5171D30571F446 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "RMActionController-Demo/Info.plist";
@@ -988,7 +942,6 @@
 		};
 		CAD311C91B01507400D905F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 023FD22D7217DAB71291DEEB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "RMActionController-Demo/Info.plist";
@@ -1000,7 +953,6 @@
 		};
 		CAD311E81B01517800D905F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F6AA898D5171D30571F446 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1016,7 +968,6 @@
 		};
 		CAD311E91B01517800D905F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 023FD22D7217DAB71291DEEB /* Pods.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "RMActionController-DemoExtension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1028,7 +979,6 @@
 		};
 		CAE78B221B850F5600CBB165 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0F6AA898D5171D30571F446 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1040,18 +990,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "de.cooperrs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		CAE78B231B850F5600CBB165 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 023FD22D7217DAB71291DEEB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "RMActionController-SwiftDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.cooperrs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1072,6 +1023,15 @@
 			buildConfigurations = (
 				CA55C7981B35E98E009CF003 /* Debug */,
 				CA55C7991B35E98E009CF003 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA5EFC331D8EAC5A0020C8A8 /* Build configuration list for PBXNativeTarget "RMActionController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA5EFC311D8EAC5A0020C8A8 /* Debug */,
+				CA5EFC321D8EAC5A0020C8A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
