@@ -1,4 +1,6 @@
 language: objective-c
+xcode_project: RMActionController-Demo.xcodeproj
+xcode_scheme: RMActionController-Demo
 
 os: osx
 osx_image: xcode8
