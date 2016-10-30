@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A654F83E1FA6913C62FA529D3AF00D1F869A6C7E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "567CB3DFEA460013DF16133CF5F5015D8E4E1826" : 9223372036854775807,
+    "A654F83E1FA6913C62FA529D3AF00D1F869A6C7E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8B1DD966-F74D-4DA7-AFDB-DFAB083D9678",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "567CB3DFEA460013DF16133CF5F5015D8E4E1826" : "..",
+    "A654F83E1FA6913C62FA529D3AF00D1F869A6C7E" : "RMActionController\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RMActionController-Demo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RMActionController-Demo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CooperRS\/RMDateSelectionViewController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "567CB3DFEA460013DF16133CF5F5015D8E4E1826"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:CooperRS\/RMActionViewController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A654F83E1FA6913C62FA529D3AF00D1F869A6C7E"
+    }
+  ]
+}

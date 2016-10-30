@@ -8,6 +8,7 @@
 
 import UIKit
 import RMActionController
+import MapKit
 
 class ViewController: UITableViewController {
     
@@ -24,11 +25,11 @@ class ViewController: UITableViewController {
             style = RMActionControllerStyle.black
         }
         
-        let selectAction = RMAction(title: "Select", style: RMActionStyle.done) { controller in
+        let selectAction = RMAction<UIView>(title: "Select", style: RMActionStyle.done) { controller in
             print("Custom action controller finished successfully")
         }
         
-        let cancelAction = RMAction(title: "Cancel", style: RMActionStyle.cancel) { _ in
+        let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.cancel) { _ in
             print("custom action controller was canceled")
         }
         
@@ -67,11 +68,11 @@ class ViewController: UITableViewController {
             style = RMActionControllerStyle.black
         }
         
-        let selectAction = RMAction(title: "Select", style: RMActionStyle.done) { controller in
+        let selectAction = RMAction<MKMapView>(title: "Select", style: RMActionStyle.done) { controller in
             print("Map action controller finished successfully")
         }
         
-        let cancelAction = RMAction(title: "Cancel", style: RMActionStyle.cancel) { _ in
+        let cancelAction = RMAction<MKMapView>(title: "Cancel", style: RMActionStyle.cancel) { _ in
             print("Map action controller was canceled")
         }
         

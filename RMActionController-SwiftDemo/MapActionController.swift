@@ -9,12 +9,12 @@
 import RMActionController
 import MapKit
 
-class MapActionController: RMActionController<UIView> {
+class MapActionController: RMActionController<MKMapView> {
     
-    required override init?(style aStyle: RMActionControllerStyle, title aTitle: String?, message aMessage: String?, select selectAction: RMAction<RMActionController<UIView>>?, andCancel cancelAction: RMAction<RMActionController<UIView>>?) {
+    required override init?(style aStyle: RMActionControllerStyle, title aTitle: String?, message aMessage: String?, select selectAction: RMAction<MKMapView>?, andCancel cancelAction: RMAction<MKMapView>?) {
         super.init(style: aStyle, title: aTitle, message: aMessage, select: selectAction, andCancel: cancelAction);
         
-        self.contentView = MKMapView(frame: CGRect.zero)
+        self.contentView = MKMapView(frame: .zero)
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         
         let bindings = ["contentView": self.contentView];

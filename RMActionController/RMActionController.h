@@ -26,8 +26,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class RMActionController;
-@class RMAction<T : RMActionController *>;
+@class RMActionController<T : UIView *>;
+@class RMAction<T : UIView *>;
 
 /**
  *  RMActionControllerStyle is used to determine the display style of RMActionController. There are three styles available: White, black and the default style, which is white.
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  *
  *  @return A new instance of RMActionController.
  */
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)aStyle selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction;
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)aStyle selectAction:(nullable RMAction<T> *)selectAction andCancelAction:(nullable RMAction<T> *)cancelAction;
 
 /**
  *  Returns a new instance of RMActionController.
@@ -82,7 +82,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  *
  *  @return A new instance of RMActionController.
  */
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)aStyle title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction;
++ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)aStyle title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<T> *)selectAction andCancelAction:(nullable RMAction<T> *)cancelAction;
 
 /**
  *  Initializes a new instance of RMActionController.
@@ -97,7 +97,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  *
  *  @return An initialized of RMActionController.
  */
-- (nullable instancetype)initWithStyle:(RMActionControllerStyle)aStyle title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<RMActionController<T> *> *)selectAction andCancelAction:(nullable RMAction<RMActionController<T> *> *)cancelAction NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithStyle:(RMActionControllerStyle)aStyle title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction<T> *)selectAction andCancelAction:(nullable RMAction<T> *)cancelAction NS_DESIGNATED_INITIALIZER;
 
 /// @name User Interface
 #pragma mark - User Interface
@@ -128,14 +128,14 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 /**
  *  An array of actions that has been added to the RMActionController
  */
-@property (nonnull, nonatomic, readonly) NSArray<RMAction<RMActionController<T> *> *> *actions;
+@property (nonnull, nonatomic, readonly) NSArray<RMAction<T> *> *actions;
 
 /**
  *  Use this method to add further actions to the RMActionController.
  *
  *  @param action The instance of RMAction to add.
  */
-- (void)addAction:(nonnull RMAction<RMActionController<T> *> *)action;
+- (void)addAction:(nonnull RMAction<T> *)action;
 
 /// @name Content View
 #pragma mark - Content View
@@ -210,7 +210,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
 /**
  *  A RMAction instance represents an action that can be tapped by the use when a RMActionController is presented. It has a title or image for identifying the action and a handler which is calledwhen the action has been tapped by the user.
  */
-@interface RMAction<T : RMActionController *> : NSObject
+@interface RMAction<T : UIView *> : NSObject
 
 /// @name Getting an Instance
 #pragma mark - Getting an Instance
@@ -224,7 +224,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(T __nonnull controller))handler;
++ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
 
 /**
  *  Returns a new instance of RMAction.
@@ -235,7 +235,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(T __nonnull controller))handler;
++ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
 
 /// @name Properties
 #pragma mark - Properties
@@ -269,7 +269,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  Normally, a RMActionController uses one row for every action that has been added. RMGroupedActions offers the possibility to show multiple RMActions in one row.
  */
-@interface RMGroupedAction<T : RMActionController *> : RMAction<T>
+@interface RMGroupedAction<T : UIView *> : RMAction<T>
 
 /// @name Getting an Instance
 #pragma mark - Getting an Instance
