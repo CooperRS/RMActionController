@@ -19,7 +19,7 @@ pod "RMActionController", "~> 1.1.0"
 
 ## Usage
 
-See the [Wiki Pages](https://github.com/CooperRS/RMActionController/wiki) on how o use RMActionController. Also take a look at [Migration](https://github.com/CooperRS/RMActionController/wiki/Migration) on how to migrate to the latest version of RMActionController.
+See the [Wiki Pages](https://github.com/CooperRS/RMActionController/wiki) on how to use RMActionController. Also take a look at [Migration](https://github.com/CooperRS/RMActionController/wiki/Migration) on how to migrate to the latest version of RMActionController.
 
 ## Documentation
 There is an additional documentation available provided by the CocoaPods team. Take a look at [cocoadocs.org](http://cocoadocs.org/docsets/RMActionController/).
