@@ -5,16 +5,10 @@ osx_image: xcode8
 
 env:
   matrix:
-    - NAME='iPhone 6' OS=8.1
-    - NAME='iPhone 6' OS=8.2
-    - NAME='iPhone 6' OS=8.3
-    - NAME='iPhone 6' OS=8.4
-    - NAME='iPhone 4s' OS=9.0
-    - NAME='iPhone 5s' OS=9.0
-    - NAME='iPhone 6' OS=9.0
-    - NAME='iPhone 6 Plus' OS=9.0
-    - NAME='iPad 2' OS=9.0
-    - NAME='iPad Air' OS=9.0
+# Ufortunately, the iOS 8.x simulators are not starting on travis right now
+#    - NAME='iPhone 6' OS=8.4
+    - NAME='iPhone 6' OS=9.3
+    - NAME='iPhone 6' OS=10.0
 
 script:
     - xcodebuild test -project RMActionController-Demo.xcodeproj -scheme RMActionController-Demo -sdk iphonesimulator -destination "platform=iOS Simulator,name=$NAME,OS=$OS"
