@@ -139,8 +139,6 @@
         [actionButton setTitle:self.title forState:UIControlStateNormal];
     } else if(self.image) {
         [actionButton setImage:self.image forState:UIControlStateNormal];
-    } else {
-        [actionButton setTitle:@"Unknown title" forState:UIControlStateNormal];
     }
     
     [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(height)]" options:0 metrics:@{@"height": @([NSProcessInfo runningAtLeastiOS9] ? 55 : 44)} views:NSDictionaryOfVariableBindings(actionButton)]];
