@@ -6,12 +6,10 @@ This is an iOS control for presenting any UIView in an UIActionSheet/UIAlertCont
 ## Screenshots
 ### Portrait
 ![Portrait](http://cooperrs.github.io/RMActionController/Images/Blur-Screen-Portrait.png)
+![Colors](http://cooperrs.github.io/RMActionController/Images/Blur-Screen-Portrait-Black.png)|
 
 ### Landscape
 ![Landscape](http://cooperrs.github.com/RMActionController/Images/Blur-Screen-Landscape.png)
-
-### Black version
-![Colors](http://cooperrs.github.io/RMActionController/Images/Blur-Screen-Portrait-Black.png)
 
 ## Installation (CocoaPods)
 ```ruby
