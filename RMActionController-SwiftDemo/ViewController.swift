@@ -49,11 +49,10 @@ class ViewController: UITableViewController {
             style = RMActionControllerStyle.black
         }
         
-        let image = UIImage(named: "File")!
-        let action1 = RMImageAction<UIView>(title: "File", image: image, style: .done)
-        let action2 = RMImageAction<UIView>(title: "Mail", image: image, style: .done)
-        let action3 = RMImageAction<UIView>(title: "Calendar", image: image, style: .done)
-        let action4 = RMImageAction<UIView>(title: "Server", image: image, style: .done)
+        let action1 = RMImageAction<UIView>(title: "File", image: UIImage(named: "File")!, style: .done)
+        let action2 = RMImageAction<UIView>(title: "Mail", image: UIImage(named: "Mail")!, style: .done)
+        let action3 = RMImageAction<UIView>(title: "Server", image: UIImage(named: "Server")!, style: .done)
+        let action4 = RMImageAction<UIView>(title: "Calendar", image: UIImage(named: "Calendar")!, style: .done)
         
         let selectAction = RMScrollableGroupedAction<UIView>(style: .done, actionWidth: 100, andActions: [action1!, action2!, action3!, action4!])
         let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.cancel) { _ in
@@ -61,8 +60,8 @@ class ViewController: UITableViewController {
         }
         
         let actionController = CustomViewActionController(style: style)!
-        actionController.title = "Test"
-        actionController.message = "This is a test message.\nPlease choose a date and press 'Select' or 'Cancel'."
+        actionController.title = "Export"
+        actionController.message = "Please choose an export format or tap 'Cancel'."
         
         actionController.addAction(selectAction!)
         actionController.addAction(cancelAction!)

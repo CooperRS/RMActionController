@@ -71,11 +71,10 @@
         style = RMActionControllerStyleBlack;
     }
     
-    UIImage *image = [[UIImage imageNamed:@"File"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    RMAction *action1 = [RMImageAction<UIView *> actionWithTitle:@"File" image:image style:RMActionStyleDone andHandler:nil];
-    RMAction *action2 = [RMImageAction<UIView *> actionWithTitle:@"Mail" image:image style:RMActionStyleDone andHandler:nil];
-    RMAction *action3 = [RMImageAction<UIView *> actionWithTitle:@"Calendar" image:image style:RMActionStyleDone andHandler:nil];
-    RMAction *action4 = [RMImageAction<UIView *> actionWithTitle:@"Server" image:image style:RMActionStyleDone andHandler:nil];
+    RMAction *action1 = [RMImageAction<UIView *> actionWithTitle:@"File" image:[UIImage imageNamed:@"File"] style:RMActionStyleDone andHandler:nil];
+    RMAction *action2 = [RMImageAction<UIView *> actionWithTitle:@"Mail" image:[UIImage imageNamed:@"Mail"] style:RMActionStyleDone andHandler:nil];
+    RMAction *action3 = [RMImageAction<UIView *> actionWithTitle:@"Server" image:[UIImage imageNamed:@"Server"] style:RMActionStyleDone andHandler:nil];
+    RMAction *action4 = [RMImageAction<UIView *> actionWithTitle:@"Calendar" image:[UIImage imageNamed:@"Calendar"] style:RMActionStyleDone andHandler:nil];
     
     RMAction *selectAction = [RMScrollableGroupedAction<UIView *> actionWithStyle:RMActionStyleDone actionWidth:100 andActions:@[action1, action2, action3, action4]];
     
