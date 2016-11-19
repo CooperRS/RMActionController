@@ -253,11 +253,19 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		CA1015E21DE10E3F0034734D /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				CA1373DE1DE0D50F002BFD04 /* RMActionController+Private.h */,
+				CA1373DD1DE0D30E002BFD04 /* RMAction+Private.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		CA1373C61DE0CE63002BFD04 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
 				CA1373C81DE0CE89002BFD04 /* RMAction.h */,
-				CA1373DD1DE0D30E002BFD04 /* RMAction+Private.h */,
 				CA1373C91DE0CE89002BFD04 /* RMAction.m */,
 				CA1373CA1DE0CE89002BFD04 /* RMImageAction.h */,
 				CA1373CB1DE0CE89002BFD04 /* RMImageAction.m */,
@@ -333,12 +341,12 @@
 			isa = PBXGroup;
 			children = (
 				CA5EFC2A1D8EAC5A0020C8A8 /* RMActionController.h */,
-				CA1373DE1DE0D50F002BFD04 /* RMActionController+Private.h */,
 				CA5EFC351D8EAC780020C8A8 /* RMActionController.m */,
 				CA1373C61DE0CE63002BFD04 /* Actions */,
 				CA1373C71DE0CE6A002BFD04 /* Grouping Actions */,
 				CA1373D81DE0D1B6002BFD04 /* Categories */,
 				CA1373E91DE0D8C6002BFD04 /* Animations */,
+				CA1015E21DE10E3F0034734D /* Private */,
 				CA5EFC2B1D8EAC5A0020C8A8 /* Info.plist */,
 			);
 			path = RMActionController;
