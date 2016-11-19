@@ -28,6 +28,8 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
 
 /**
  *  A RMAction instance represents an action that can be tapped by the use when a RMActionController is presented. It has a title or image for identifying the action and a handler which is calledwhen the action has been tapped by the user.
+ *
+ *  If both title and image are given, the title is displayed.
  */
 @interface RMAction<T : UIView *> : NSObject
 
