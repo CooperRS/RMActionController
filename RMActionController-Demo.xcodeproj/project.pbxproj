@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1015DF1DE0E9490034734D /* RMImageActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1015DE1DE0E9490034734D /* RMImageActionTests.m */; };
+		CA1015E11DE0EA8D0034734D /* RMScrollableGroupedActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1015E01DE0EA8D0034734D /* RMScrollableGroupedActionTests.m */; };
+		CA1373CC1DE0CE89002BFD04 /* RMAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1373C81DE0CE89002BFD04 /* RMAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA1373CD1DE0CE89002BFD04 /* RMAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373C91DE0CE89002BFD04 /* RMAction.m */; };
+		CA1373CE1DE0CE89002BFD04 /* RMImageAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1373CA1DE0CE89002BFD04 /* RMImageAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA1373CF1DE0CE89002BFD04 /* RMImageAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373CB1DE0CE89002BFD04 /* RMImageAction.m */; };
+		CA1373D41DE0CE90002BFD04 /* RMGroupedAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1373D01DE0CE90002BFD04 /* RMGroupedAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA1373D51DE0CE90002BFD04 /* RMGroupedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373D11DE0CE90002BFD04 /* RMGroupedAction.m */; };
+		CA1373D61DE0CE90002BFD04 /* RMScrollableGroupedAction.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1373D21DE0CE90002BFD04 /* RMScrollableGroupedAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA1373D71DE0CE90002BFD04 /* RMScrollableGroupedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373D31DE0CE90002BFD04 /* RMScrollableGroupedAction.m */; };
+		CA1373E21DE0D5A7002BFD04 /* UIView+RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373E01DE0D5A7002BFD04 /* UIView+RMActionController.m */; };
+		CA1373E61DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373E41DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.m */; };
+		CA1373ED1DE0D8F8002BFD04 /* RMActionControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1373EB1DE0D8F8002BFD04 /* RMActionControllerTransition.m */; };
 		CA3FDCAB1B35E1B200590165 /* RMActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA61B35E1B200590165 /* RMActionTests.m */; };
 		CA3FDCAC1B35E1B200590165 /* RMGroupedActionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */; };
 		CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */; };
@@ -121,7 +134,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		CA38CB371B35EF0F000837D8 /* RMActionController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMActionController+Private.h"; sourceTree = "<group>"; };
+		CA1015D81DE0E5080034734D /* RMActionController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMActionController+Private.h"; sourceTree = "<group>"; };
+		CA1015DB1DE0E5340034734D /* RMAction+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMAction+Private.h"; sourceTree = "<group>"; };
+		CA1015DE1DE0E9490034734D /* RMImageActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMImageActionTests.m; sourceTree = "<group>"; };
+		CA1015E01DE0EA8D0034734D /* RMScrollableGroupedActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMScrollableGroupedActionTests.m; sourceTree = "<group>"; };
+		CA1373C81DE0CE89002BFD04 /* RMAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAction.h; sourceTree = "<group>"; };
+		CA1373C91DE0CE89002BFD04 /* RMAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMAction.m; sourceTree = "<group>"; };
+		CA1373CA1DE0CE89002BFD04 /* RMImageAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMImageAction.h; sourceTree = "<group>"; };
+		CA1373CB1DE0CE89002BFD04 /* RMImageAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMImageAction.m; sourceTree = "<group>"; };
+		CA1373D01DE0CE90002BFD04 /* RMGroupedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGroupedAction.h; sourceTree = "<group>"; };
+		CA1373D11DE0CE90002BFD04 /* RMGroupedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMGroupedAction.m; sourceTree = "<group>"; };
+		CA1373D21DE0CE90002BFD04 /* RMScrollableGroupedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMScrollableGroupedAction.h; sourceTree = "<group>"; };
+		CA1373D31DE0CE90002BFD04 /* RMScrollableGroupedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMScrollableGroupedAction.m; sourceTree = "<group>"; };
+		CA1373DD1DE0D30E002BFD04 /* RMAction+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMAction+Private.h"; sourceTree = "<group>"; };
+		CA1373DE1DE0D50F002BFD04 /* RMActionController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMActionController+Private.h"; sourceTree = "<group>"; };
+		CA1373DF1DE0D5A7002BFD04 /* UIView+RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RMActionController.h"; sourceTree = "<group>"; };
+		CA1373E01DE0D5A7002BFD04 /* UIView+RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RMActionController.m"; sourceTree = "<group>"; };
+		CA1373E31DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSProcessInfo+RMActionController.h"; sourceTree = "<group>"; };
+		CA1373E41DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSProcessInfo+RMActionController.m"; sourceTree = "<group>"; };
+		CA1373EA1DE0D8F8002BFD04 /* RMActionControllerTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMActionControllerTransition.h; sourceTree = "<group>"; };
+		CA1373EB1DE0D8F8002BFD04 /* RMActionControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionControllerTransition.m; sourceTree = "<group>"; };
 		CA3FDC9B1B35E1A700590165 /* RMActionController-Demo-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RMActionController-Demo-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3FDC9E1B35E1A700590165 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA3FDCA61B35E1B200590165 /* RMActionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMActionTests.m; sourceTree = "<group>"; };
@@ -212,23 +244,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CA38CB3A1B35EF16000837D8 /* Categories */ = {
+		CA1015D71DE0E4F70034734D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				CA38CB371B35EF0F000837D8 /* RMActionController+Private.h */,
+				CA1015D81DE0E5080034734D /* RMActionController+Private.h */,
+				CA1015DB1DE0E5340034734D /* RMAction+Private.h */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		CA1373C61DE0CE63002BFD04 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				CA1373C81DE0CE89002BFD04 /* RMAction.h */,
+				CA1373DD1DE0D30E002BFD04 /* RMAction+Private.h */,
+				CA1373C91DE0CE89002BFD04 /* RMAction.m */,
+				CA1373CA1DE0CE89002BFD04 /* RMImageAction.h */,
+				CA1373CB1DE0CE89002BFD04 /* RMImageAction.m */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		CA1373C71DE0CE6A002BFD04 /* Grouping Actions */ = {
+			isa = PBXGroup;
+			children = (
+				CA1373D01DE0CE90002BFD04 /* RMGroupedAction.h */,
+				CA1373D11DE0CE90002BFD04 /* RMGroupedAction.m */,
+				CA1373D21DE0CE90002BFD04 /* RMScrollableGroupedAction.h */,
+				CA1373D31DE0CE90002BFD04 /* RMScrollableGroupedAction.m */,
+			);
+			path = "Grouping Actions";
+			sourceTree = "<group>";
+		};
+		CA1373D81DE0D1B6002BFD04 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CA1373E31DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.h */,
+				CA1373E41DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.m */,
+				CA1373DF1DE0D5A7002BFD04 /* UIView+RMActionController.h */,
+				CA1373E01DE0D5A7002BFD04 /* UIView+RMActionController.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CA1373E91DE0D8C6002BFD04 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				CA1373EA1DE0D8F8002BFD04 /* RMActionControllerTransition.h */,
+				CA1373EB1DE0D8F8002BFD04 /* RMActionControllerTransition.m */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		CA3FDC9C1B35E1A700590165 /* RMActionController-Demo-Tests */ = {
 			isa = PBXGroup;
 			children = (
 				CA3FDCA61B35E1B200590165 /* RMActionTests.m */,
-				CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */,
 				CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */,
+				CA1015DE1DE0E9490034734D /* RMImageActionTests.m */,
+				CA3FDCA71B35E1B200590165 /* RMGroupedActionTests.m */,
+				CA1015E01DE0EA8D0034734D /* RMScrollableGroupedActionTests.m */,
 				CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */,
 				CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */,
-				CA38CB3A1B35EF16000837D8 /* Categories */,
+				CA1015D71DE0E4F70034734D /* Categories */,
 				CA3FDC9D1B35E1A700590165 /* Supporting Files */,
 			);
 			path = "RMActionController-Demo-Tests";
@@ -255,7 +333,12 @@
 			isa = PBXGroup;
 			children = (
 				CA5EFC2A1D8EAC5A0020C8A8 /* RMActionController.h */,
+				CA1373DE1DE0D50F002BFD04 /* RMActionController+Private.h */,
 				CA5EFC351D8EAC780020C8A8 /* RMActionController.m */,
+				CA1373C61DE0CE63002BFD04 /* Actions */,
+				CA1373C71DE0CE6A002BFD04 /* Grouping Actions */,
+				CA1373D81DE0D1B6002BFD04 /* Categories */,
+				CA1373E91DE0D8C6002BFD04 /* Animations */,
 				CA5EFC2B1D8EAC5A0020C8A8 /* Info.plist */,
 			);
 			path = RMActionController;
@@ -386,7 +469,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1373D61DE0CE90002BFD04 /* RMScrollableGroupedAction.h in Headers */,
 				CA5EFC2C1D8EAC5A0020C8A8 /* RMActionController.h in Headers */,
+				CA1373CE1DE0CE89002BFD04 /* RMImageAction.h in Headers */,
+				CA1373D41DE0CE90002BFD04 /* RMGroupedAction.h in Headers */,
+				CA1373CC1DE0CE89002BFD04 /* RMAction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +710,9 @@
 				CA3FDCAE1B35E1B200590165 /* RMActionControllerTests.m in Sources */,
 				CA3FDCAB1B35E1B200590165 /* RMActionTests.m in Sources */,
 				CA3FDCAF1B35E1B200590165 /* RMMapActionControllerTests.m in Sources */,
+				CA1015DF1DE0E9490034734D /* RMImageActionTests.m in Sources */,
 				CA3FDCAC1B35E1B200590165 /* RMGroupedActionTests.m in Sources */,
+				CA1015E11DE0EA8D0034734D /* RMScrollableGroupedActionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +728,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1373D71DE0CE90002BFD04 /* RMScrollableGroupedAction.m in Sources */,
+				CA1373E61DE0D7AB002BFD04 /* NSProcessInfo+RMActionController.m in Sources */,
+				CA1373CD1DE0CE89002BFD04 /* RMAction.m in Sources */,
+				CA1373CF1DE0CE89002BFD04 /* RMImageAction.m in Sources */,
 				CA5EFC361D8EAC780020C8A8 /* RMActionController.m in Sources */,
+				CA1373ED1DE0D8F8002BFD04 /* RMActionControllerTransition.m in Sources */,
+				CA1373E21DE0D5A7002BFD04 /* UIView+RMActionController.m in Sources */,
+				CA1373D51DE0CE90002BFD04 /* RMGroupedAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

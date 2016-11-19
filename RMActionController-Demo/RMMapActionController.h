@@ -24,7 +24,7 @@
 //  THE SOFTWARE.
 //
 
-#import "RMActionController.h"
+#import <RMActionController/RMActionController.h>
 #import <MapKit/MapKit.h>
 
 /*

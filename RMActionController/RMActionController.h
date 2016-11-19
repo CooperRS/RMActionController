@@ -26,8 +26,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class RMActionController<T : UIView *>;
-@class RMAction<T : UIView *>;
+#import "RMAction.h"
+#import "RMImageAction.h"
+#import "RMGroupedAction.h"
+#import "RMScrollableGroupedAction.h"
 
 /**
  *  RMActionControllerStyle is used to determine the display style of RMActionController. There are three styles available: White, black and the default style, which is white.
@@ -186,107 +188,5 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  *  @warning This property always returns YES, if disableBlurEffects returns YES.
  */
 @property (assign, nonatomic) BOOL disableBlurEffectsForBackgroundView;
-
-@end
-
-#pragma mark -
-
-/**
- *  RMActionStyle is used to determine the display style of RMAction and where it is positioned. There are 4 styles available: Done, cancel, additional and the default style, which is the done style.
- */
-typedef NS_ENUM(NSInteger, RMActionStyle) {
-    /** The button is displayed with a regular font and positioned right below the content view. */
-    RMActionStyleDone,
-    /** The button is displayed with a bold font and positioned below all done buttons (or the content view if there are no done buttons). */
-    RMActionStyleCancel,
-    /** The button is displayed with a standard destructive and positioned right below the content view. Currently only supported when blur effects are disabled.*/
-    RMActionStyleDestructive,
-    /** The button is displayed with a regular font and positioned above the content view. */
-    RMActionStyleAdditional,
-    /** The button is displayed and positioned like a done button. */
-    RMActionStyleDefault = RMActionStyleDone
-};
-
-/**
- *  A RMAction instance represents an action that can be tapped by the use when a RMActionController is presented. It has a title or image for identifying the action and a handler which is calledwhen the action has been tapped by the user.
- */
-@interface RMAction<T : UIView *> : NSObject
-
-/// @name Getting an Instance
-#pragma mark - Getting an Instance
-
-/**
- *  Returns a new instance of RMAction.
- *
- *  @param title   The title of the action.
- *  @param style   The style of the action.
- *  @param handler A block that is called when the action has been tapped.
- *
- *  @return The new instance of RMAction.
- */
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
-
-/**
- *  Returns a new instance of RMAction.
- *
- *  @param image   The image of the action.
- *  @param style   The style of the action.
- *  @param handler A block that is called when the action has been tapped.
- *
- *  @return The new instance of RMAction.
- */
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
-
-/// @name Properties
-#pragma mark - Properties
-
-/**
- *  The title of the action.
- */
-@property (nullable, nonatomic, readonly) NSString *title;
-
-/**
- *  The image of the action.
- */
-@property (nullable, nonatomic, readonly) UIImage *image;
-
-/**
- *  The style of the action.
- */
-@property (nonatomic, readonly) RMActionStyle style;
-
-/**
- *  Control whether or not the RMActionController to whom the RMAction has been added is dismissed when the RMAction has been tapped.
- */
-@property (nonatomic, assign) BOOL dismissesActionController;
-
-@end
-
-#pragma mark -
-
-/**
- *  A RMGroupedAction instance represents a number of actions that can be grouped.
- *
- *  Normally, a RMActionController uses one row for every action that has been added. RMGroupedActions offers the possibility to show multiple RMActions in one row.
- */
-@interface RMGroupedAction<T : UIView *> : RMAction<T>
-
-/// @name Getting an Instance
-#pragma mark - Getting an Instance
-
-/**
- *  Returns a new instance of RMGroupedAction.
- *
- *  @param style   The style of the action.
- *  @param actions The actions that are contained in the grouped action.
- *
- *  @return The new instance of RMGroupedAction
- */
-+ (nullable instancetype)actionWithStyle:(RMActionStyle)style andActions:(nonnull NSArray<RMAction<T> *> *)actions;
-
-/**
- *  An array of actions the RMGroupedAction consists of.
- */
-@property (nonnull, nonatomic, strong, readonly) NSArray<RMAction<T> *> *actions;
 
 @end

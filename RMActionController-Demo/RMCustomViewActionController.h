@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Roland Moers. All rights reserved.
 //
 
-#import "RMActionController.h"
+#import <RMActionController/RMActionController.h>
 
 /*
  *  RMCustomViewActionController is a simple example showing how to subclass RMActionController and show custom content in the action controller.

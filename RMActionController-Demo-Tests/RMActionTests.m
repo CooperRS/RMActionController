@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
-#import "RMActionController.h"
 #import "RMActionController+Private.h"
+#import "RMAction+Private.h"
 
 @interface RMActionTests : XCTestCase
 
@@ -31,6 +31,15 @@
     
     XCTAssertEqual(action.style, RMActionStyleDefault);
     XCTAssertNil(action.title);
+    XCTAssertNotNil(action.image);
+    XCTAssertTrue(action.dismissesActionController);
+}
+
+- (void)testCreatingActionWithTitleAndImage {
+    RMAction *action = [RMAction actionWithTitle:@"TestAction" image:[[UIImage alloc] init] style:RMActionStyleDefault andHandler:nil];
+    
+    XCTAssertEqual(action.style, RMActionStyleDefault);
+    XCTAssertEqualObjects(action.title, @"TestAction");
     XCTAssertNotNil(action.image);
     XCTAssertTrue(action.dismissesActionController);
 }
@@ -79,7 +88,7 @@
         executed = YES;
     }];
     
-    [cancelAction viewTapped:nil];
+    [cancelAction actionTapped:nil];
     
     XCTAssertTrue(executed);
 }
@@ -87,7 +96,7 @@
 - (void)testHandlerExecutionWithNilHandler {
     RMAction *action = [RMAction actionWithTitle:@"Action" style:RMActionStyleCancel andHandler:nil];
     
-    XCTAssertNoThrow([action viewTapped:nil]);
+    XCTAssertNoThrow([action actionTapped:nil]);
 }
 
 - (void)testExecutingCancelAction {

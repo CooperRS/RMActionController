@@ -6,9 +6,9 @@
 //  Copyright © 2016 Roland Moers. All rights reserved.
 //
 
-#import <RMActionController/RMActionController.h>
+#import "RMActionController.h"
 
-@interface RMActionController (Private)
+@interface RMActionController ()
 
 @property (nonatomic, strong) NSMutableArray *additionalActions;
 @property (nonatomic, strong) NSMutableArray *doneActions;
@@ -20,10 +20,5 @@
 @property (nonatomic, weak) NSLayoutConstraint *yConstraint;
 
 - (void)setupTopContainersTopMarginConstraint;
-
-- (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle;
-- (UIBlurEffectStyle)backgroundBlurEffectStyleForCurrentStyle;
-
-- (void)backgroundViewTapped:(UIGestureRecognizer *)sender;
 
 @end

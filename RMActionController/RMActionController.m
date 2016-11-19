@@ -24,8 +24,13 @@
 //  THE SOFTWARE.
 //
 
-#import "RMActionController.h"
+#import "RMActionController+Private.h"
 #import <QuartzCore/QuartzCore.h>
+
+#import "RMAction+Private.h"
+#import "RMActionControllerTransition.h"
+#import "NSProcessInfo+RMActionController.h"
+#import "UIView+RMActionController.h"
 
 #pragma mark - Defines
 
@@ -36,13 +41,6 @@
 //App Extension
 #define RM_CURRENT_ORIENTATION_IS_LANDSCAPE_PREDICATE [UIScreen mainScreen].bounds.size.height < [UIScreen mainScreen].bounds.size.width
 #endif
-
-#define IOS_9_PREDICATE [[UIDevice currentDevice].systemVersion floatValue] >= 9.0
-
-typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
-    RMActionControllerAnimationStylePresenting,
-    RMActionControllerAnimationStyleDismissing
-};
 
 #pragma mark - Interfaces
 
@@ -56,67 +54,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 @property (nonatomic, strong) UILabel *headerTitleLabel;
 @property (nonatomic, strong) UILabel *headerMessageLabel;
 
-@property (nonatomic, strong) NSMutableArray *additionalActions;
-@property (nonatomic, strong) NSMutableArray *doneActions;
-@property (nonatomic, strong) NSMutableArray *cancelActions;
-
-@property (nonatomic, strong) UIView *backgroundView;
-@property (nonatomic, assign) BOOL hasBeenDismissed;
-
-@property (nonatomic, weak) NSLayoutConstraint *yConstraint;
-
 - (nonnull instancetype)initWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
-
-@end
-
-@interface RMActionControllerAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
-
-@property (nonatomic, assign) RMActionControllerAnimationStyle animationStyle;
-
-@end
-
-@interface RMAction ()
-
-@property (nonatomic, weak) RMActionController *controller;
-
-@property (nonatomic, strong, readwrite) NSString *title;
-@property (nonatomic, strong, readwrite) UIImage *image;
-@property (nonatomic, assign, readwrite) RMActionStyle style;
-
-@property (nonatomic, copy) void (^handler)(RMActionController *controller);
-
-@property (nonatomic, strong) UIView *view;
-- (UIView *)loadView;
-
-- (BOOL)containsCancelAction;
-- (void)executeHandlerOfCancelActionWithController:(RMActionController *)controller;
-
-@end
-
-@interface RMGroupedAction ()
-
-@property (nonatomic, strong, readwrite) NSArray *actions;
-
-@end
-
-#pragma mark - Categories
-
-@interface UIView (RMActionViewSeperators)
-
-+ (UIView *)seperatorView;
-
-@end
-
-@implementation UIView (RMActionViewSeperators)
-
-+ (UIView *)seperatorView {
-    UIView *seperatorView = [[UIView alloc] initWithFrame:CGRectZero];
-    seperatorView.backgroundColor = [UIColor grayColor];
-    seperatorView.translatesAutoresizingMaskIntoConstraints = NO;
-    
-    return seperatorView;
-}
 
 @end
 
@@ -302,7 +241,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
     }
     
     //Container properties
-    self.topContainer.layer.cornerRadius = IOS_9_PREDICATE ? 12 : 4;
+    self.topContainer.layer.cornerRadius = [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
     self.topContainer.clipsToBounds = YES;
     self.topContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -312,7 +251,7 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
         self.topContainer.backgroundColor = [UIColor whiteColor];
     }
     
-    self.bottomContainer.layer.cornerRadius = IOS_9_PREDICATE ? 12 : 4;
+    self.bottomContainer.layer.cornerRadius = [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
     self.bottomContainer.clipsToBounds = YES;
     self.bottomContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -680,15 +619,15 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 #pragma mark - Custom Transitions
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    RMActionControllerAnimationController *animationController = [[RMActionControllerAnimationController alloc] init];
-    animationController.animationStyle = RMActionControllerAnimationStylePresenting;
+    RMActionControllerTransition *animationController = [[RMActionControllerTransition alloc] init];
+    animationController.animationStyle = RMActionControllerTransitionStylePresenting;
     
     return animationController;
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    RMActionControllerAnimationController *animationController = [[RMActionControllerAnimationController alloc] init];
-    animationController.animationStyle = RMActionControllerAnimationStyleDismissing;
+    RMActionControllerTransition *animationController = [[RMActionControllerTransition alloc] init];
+    animationController.animationStyle = RMActionControllerTransitionStyleDismissing;
     
     return animationController;
 }
@@ -724,342 +663,6 @@ typedef NS_ENUM(NSInteger, RMActionControllerAnimationStyle) {
 
 - (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)popoverPresentationController {
     [self handleCancelNotAssociatedWithAnyButton];
-}
-
-@end
-
-@implementation RMActionControllerAnimationController
-
-- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    if(self.animationStyle == RMActionControllerAnimationStylePresenting) {
-        UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-        if([toVC isKindOfClass:[RMActionController class]]) {
-            RMActionController *actionController = (RMActionController *)toVC;
-            
-            if(actionController.disableBouncingEffects) {
-                return 0.3f;
-            } else {
-                return 1.0f;
-            }
-        }
-    } else if(self.animationStyle == RMActionControllerAnimationStyleDismissing) {
-        return 0.3f;
-    }
-    
-    return 1.0f;
-}
-
-- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
-    UIView *containerView = [transitionContext containerView];
-    
-    if(self.animationStyle == RMActionControllerAnimationStylePresenting) {
-        UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-        if([toVC isKindOfClass:[RMActionController class]]) {
-            RMActionController *actionController = (RMActionController *)toVC;
-            
-            [actionController setupTopContainersTopMarginConstraint];
-            
-            actionController.backgroundView.alpha = 0;
-            [containerView addSubview:actionController.backgroundView];
-            [containerView addSubview:actionController.view];
-            
-            NSDictionary *bindingsDict = @{@"BGView": actionController.backgroundView};
-            
-            [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[BGView]-(0)-|" options:0 metrics:nil views:bindingsDict]];
-            [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[BGView]-(0)-|" options:0 metrics:nil views:bindingsDict]];
-            
-            [containerView addConstraint:[NSLayoutConstraint constraintWithItem:actionController.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
-            [containerView addConstraint:[NSLayoutConstraint constraintWithItem:actionController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-            
-            actionController.yConstraint = [NSLayoutConstraint constraintWithItem:actionController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-            [containerView addConstraint:actionController.yConstraint];
-            
-            [containerView setNeedsUpdateConstraints];
-            [containerView layoutIfNeeded];
-            
-            [containerView removeConstraint:actionController.yConstraint];
-            actionController.yConstraint = [NSLayoutConstraint constraintWithItem:actionController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-            [containerView addConstraint:actionController.yConstraint];
-            
-            [containerView setNeedsUpdateConstraints];
-            
-            CGFloat damping = 1.0f;
-            CGFloat duration = 0.3f;
-            if(!actionController.disableBouncingEffects) {
-                damping = 0.6f;
-                duration = 1.0f;
-            }
-            
-            [UIView animateWithDuration:duration delay:0 usingSpringWithDamping:damping initialSpringVelocity:1 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
-                actionController.backgroundView.alpha = 1;
-                
-                [containerView layoutIfNeeded];
-            } completion:^(BOOL finished) {
-                [transitionContext completeTransition:YES];
-            }];
-        }
-    } else if(self.animationStyle == RMActionControllerAnimationStyleDismissing) {
-        UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-        if([fromVC isKindOfClass:[RMActionController class]]) {
-            RMActionController *actionController = (RMActionController *)fromVC;
-            
-            [containerView removeConstraint:actionController.yConstraint];
-            actionController.yConstraint = [NSLayoutConstraint constraintWithItem:actionController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
-            [containerView addConstraint:actionController.yConstraint];
-            
-            [containerView setNeedsUpdateConstraints];
-            
-            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                actionController.backgroundView.alpha = 0;
-                
-                [containerView layoutIfNeeded];
-            } completion:^(BOOL finished) {
-                [actionController.view removeFromSuperview];
-                [actionController.backgroundView removeFromSuperview];
-                
-                actionController.hasBeenDismissed = NO;
-                [transitionContext completeTransition:YES];
-            }];
-        }
-    }
-}
-
-@end
-
-@implementation RMAction
-
-#pragma mark - Class
-+ (instancetype)actionWithTitle:(NSString *)title style:(RMActionStyle)style andHandler:(void (^)(RMActionController<UIView *> * _Nonnull))handler {
-    RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
-    action.title = title;
-    
-    return action;
-}
-
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * _Nonnull controller))handler {
-    RMAction *action = [RMAction actionWithStyle:style andHandler:handler];
-    action.image = image;
-    
-    return action;
-}
-
-+ (instancetype)actionWithStyle:(RMActionStyle)style andHandler:(void (^)(RMActionController<UIView *> *controller))handler {
-    RMAction *action = [[RMAction alloc] init];
-    action.style = style;
-    
-    __weak RMAction *weakAction = action;
-    [action setHandler:^(RMActionController *controller) {
-        if(handler) {
-            handler(controller);
-        }
-        
-        if(weakAction.dismissesActionController) {
-            if(controller.modalPresentationStyle == UIModalPresentationPopover || controller.yConstraint != nil) {
-                [controller dismissViewControllerAnimated:YES completion:nil];
-            } else {
-                [controller dismissViewControllerAnimated:NO completion:nil];
-            }
-        }
-    }];
-    
-    return action;
-}
-
-#pragma mark - Init and Dealloc
-- (instancetype)init {
-    self = [super init];
-    if(self) {
-        self.dismissesActionController = YES;
-    }
-    return self;
-}
-
-#pragma mark - Cancel Helper
-- (BOOL)containsCancelAction {
-    return self.style == RMActionStyleCancel;
-}
-
-- (void)executeHandlerOfCancelActionWithController:(RMActionController *)controller {
-    if(self.style == RMActionStyleCancel) {
-        self.handler(controller);
-    }
-}
-
-#pragma mark - Other Helper
-- (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0, 0, 1, 1);
-    
-    UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-    [color setFill];
-    UIRectFill(rect);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
-#pragma mark - View
-- (UIView *)view {
-    if(!_view) {
-        _view = [self loadView];
-    }
-    
-    return _view;
-}
-
-- (UIView *)loadView {
-    UIButtonType buttonType = UIButtonTypeCustom;
-    if(self.controller.disableBlurEffects) {
-        buttonType = UIButtonTypeSystem;
-    }
-    
-    UIButton *actionButton = [UIButton buttonWithType:buttonType];
-    actionButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [actionButton addTarget:self action:@selector(viewTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    if(self.style == RMActionStyleCancel) {
-        actionButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
-    } else {
-        actionButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
-    }
-    
-    if(!self.controller.disableBlurEffects) {
-        [actionButton setBackgroundImage:[self imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3]] forState:UIControlStateHighlighted];
-    } else {
-        switch (self.controller.style) {
-            case RMActionControllerStyleWhite:
-                [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:230./255. alpha:1]] forState:UIControlStateHighlighted];
-                break;
-            case RMActionControllerStyleBlack:
-                [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.2 alpha:1]] forState:UIControlStateHighlighted];
-                break;
-        }
-    }
-    
-    if(self.title) {
-        [actionButton setTitle:self.title forState:UIControlStateNormal];
-    } else if(self.image) {
-        [actionButton setImage:self.image forState:UIControlStateNormal];
-    } else {
-        [actionButton setTitle:@"Unknown title" forState:UIControlStateNormal];
-    }
-    
-    [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(height)]" options:0 metrics:@{@"height": @(IOS_9_PREDICATE ? 55 : 44)} views:NSDictionaryOfVariableBindings(actionButton)]];
-    
-    if(self.style == RMActionStyleDestructive) {
-        [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    }
-    
-    return actionButton;
-}
-
-- (void)viewTapped:(id)sender {
-    self.handler(self.controller);
-}
-
-@end
-
-@implementation RMGroupedAction
-
-#pragma mark - Class
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
-    [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
-    return nil;
-}
-
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
-    [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
-    return nil;
-}
-
-+ (nullable instancetype)actionWithStyle:(RMActionStyle)style andActions:(nonnull NSArray<RMAction<UIView *> *> *)actions {
-    NSAssert([actions count] > 0, @"Tried to initialize RMGroupedAction with less than one action.");
-    NSAssert([actions count] > 1, @"Tried to initialize RMGroupedAction with one action. Use RMAction in this case.");
-    
-    [actions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSAssert([obj isKindOfClass:[RMAction class]], @"Tried to initialize RMGroupedAction with objects of types other than RMAction.");
-    }];
-    
-    RMGroupedAction *groupedAction = [[RMGroupedAction alloc] init];
-    groupedAction.style = style;
-    groupedAction.actions = actions;
-    
-    [groupedAction setHandler:^(RMActionController *controller) {
-        [NSException raise:@"RMInconsistencyException" format:@"The handler of a grouped action has been called."];
-    }];
-    
-    return groupedAction;
-}
-
-#pragma mark - Cancel Helper
-- (BOOL)containsCancelAction {
-    for(RMAction *anAction in self.actions) {
-        if([anAction containsCancelAction]) {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
-- (void)executeHandlerOfCancelActionWithController:(RMActionController *)controller {
-    for(RMAction *anAction in self.actions) {
-        if([anAction containsCancelAction]) {
-            [anAction executeHandlerOfCancelActionWithController:controller];
-            return;
-        }
-    }
-}
-
-#pragma mark - Properties
-- (RMActionController *)controller {
-    return [[self.actions firstObject] controller];
-    
-}
-
-- (void)setController:(RMActionController *)controller {
-    for(RMAction *anAction in self.actions) {
-        anAction.controller = controller;
-    }
-}
-
-#pragma mark - View
-- (UIView *)loadView {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.translatesAutoresizingMaskIntoConstraints = NO;
-    view.backgroundColor = [UIColor clearColor];
-    
-    NSDictionary *metrics = @{@"seperatorHeight": @(1.f / [[UIScreen mainScreen] scale])};
-    
-    __block UIView *currentLeft = nil;
-    [self.actions enumerateObjectsUsingBlock:^(RMAction *action, NSUInteger index, BOOL *stop) {
-        [action.view setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
-        [view addSubview:action.view];
-        
-        if(index == 0) {
-            NSDictionary *bindings = @{@"actionView": action.view};
-            
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]" options:0 metrics:nil views:bindings]];
-        } else {
-            UIView *seperatorView = [UIView seperatorView];
-            [view addSubview:seperatorView];
-            
-            NSDictionary *bindings = @{@"actionView": action.view, @"seperator": seperatorView, @"currentLeft": currentLeft};
-            
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:bindings]];
-            [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[currentLeft(==actionView)]-(0)-[seperator(seperatorHeight)]-(0)-[actionView(==currentLeft)]" options:0 metrics:metrics views:bindings]];
-        }
-        
-        currentLeft = action.view;
-    }];
-    
-    NSDictionary *bindings = @{@"currentLeft": currentLeft};
-    
-    [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[currentLeft]-(0)-|" options:0 metrics:nil views:bindings]];
-    
-    return view;
 }
 
 @end

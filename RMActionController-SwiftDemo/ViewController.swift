@@ -40,26 +40,34 @@ class ViewController: UITableViewController {
         actionController.addAction(selectAction!)
         actionController.addAction(cancelAction!)
         
-        //You can enable or disable blur, bouncing and motion effects
-        actionController.disableBouncingEffects = !self.bouncingSwitch.isOn
-        actionController.disableMotionEffects = !self.motionSwitch.isOn
-        actionController.disableBlurEffects = !self.blurSwitch.isOn
-        
-        //On the iPad we want to show the date selection view controller within a popover. Fortunately, we can use iOS 8 API for this! :)
-        //(Of course only if we are running on iOS 8 or later)
-        if actionController.responds(to: Selector(("popoverPresentationController:"))) && UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad {
-            //First we set the modal presentation style to the popover style
-            actionController.modalPresentationStyle = UIModalPresentationStyle.popover
-            
-            //Then we tell the popover presentation controller, where the popover should appear
-            if let popoverPresentationController = actionController.popoverPresentationController {
-                popoverPresentationController.sourceView = self.tableView
-                popoverPresentationController.sourceRect = self.tableView.rectForRow(at: IndexPath(row: 0, section: 0))
-            }
+        present(actionController: actionController);
+    }
+    
+    func openExportActionController() {
+        var style = RMActionControllerStyle.white
+        if self.blackSwitch.isOn {
+            style = RMActionControllerStyle.black
         }
         
-        //Now just present the date selection controller using the standard iOS presentation method
-        present(actionController, animated: true, completion: nil)
+        let image = UIImage(named: "File")!
+        let action1 = RMImageAction<UIView>(title: "File", image: image, style: .done)
+        let action2 = RMImageAction<UIView>(title: "Mail", image: image, style: .done)
+        let action3 = RMImageAction<UIView>(title: "Calendar", image: image, style: .done)
+        let action4 = RMImageAction<UIView>(title: "Server", image: image, style: .done)
+        
+        let selectAction = RMScrollableGroupedAction<UIView>(style: .done, actionWidth: 100, andActions: [action1!, action2!, action3!, action4!])
+        let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.cancel) { _ in
+            print("custom action controller was canceled")
+        }
+        
+        let actionController = CustomViewActionController(style: style)!
+        actionController.title = "Test"
+        actionController.message = "This is a test message.\nPlease choose a date and press 'Select' or 'Cancel'."
+        
+        actionController.addAction(selectAction!)
+        actionController.addAction(cancelAction!)
+        
+        present(actionController: actionController);
     }
     
     func openMapActionController() {
@@ -83,6 +91,10 @@ class ViewController: UITableViewController {
         actionController.addAction(selectAction!)
         actionController.addAction(cancelAction!)
         
+        present(actionController: actionController);
+    }
+    
+    func present<T : UIView>(actionController: RMActionController<T>) {
         //You can enable or disable blur, bouncing and motion effects
         actionController.disableBouncingEffects = !self.bouncingSwitch.isOn
         actionController.disableMotionEffects = !self.motionSwitch.isOn
@@ -107,9 +119,20 @@ class ViewController: UITableViewController {
     
     // MARK: UITableView Delegates
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
+        switch indexPath.row {
+        case 0:
             openCustomActionController()
+            break;
+        case 1:
+            openExportActionController()
+            break;
+        case 2:
+            openMapActionController()
+            break;
+        default:
+            break;
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 
-#import "RMActionController.h"
 #import "RMActionController+Private.h"
+#import "RMAction+Private.h"
 
 @interface RMGroupedActionTests : XCTestCase
 

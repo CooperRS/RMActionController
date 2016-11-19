@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 
-#import "RMActionController.h"
 #import "RMActionController+Private.h"
 
 @interface RMActionControllerTests : XCTestCase
@@ -55,6 +54,15 @@
     RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleWhite];
     
     XCTAssertEqual(controller.style, RMActionControllerStyleWhite);
+    XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleLightContent);
+    XCTAssertEqual([controller containerBlurEffectStyleForCurrentStyle], UIBlurEffectStyleExtraLight);
+    XCTAssertEqual([controller backgroundBlurEffectStyleForCurrentStyle], UIBlurEffectStyleDark);
+}
+
+- (void)testCreatingEmptyActionControllerWithUnknownStyle {
+    RMActionController *controller = [RMActionController actionControllerWithStyle:5000];
+    
+    XCTAssertEqual(controller.style, 5000);
     XCTAssertEqual(controller.preferredStatusBarStyle, UIStatusBarStyleLightContent);
     XCTAssertEqual([controller containerBlurEffectStyleForCurrentStyle], UIBlurEffectStyleExtraLight);
     XCTAssertEqual([controller backgroundBlurEffectStyleForCurrentStyle], UIBlurEffectStyleDark);
