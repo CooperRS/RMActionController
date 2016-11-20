@@ -10,10 +10,6 @@
 
 @interface RMActionController ()
 
-@property (nonatomic, strong) NSMutableArray *additionalActions;
-@property (nonatomic, strong) NSMutableArray *doneActions;
-@property (nonatomic, strong) NSMutableArray *cancelActions;
-
 @property (nonatomic, strong) UIView *backgroundView;
 @property (nonatomic, assign) BOOL hasBeenDismissed;
 

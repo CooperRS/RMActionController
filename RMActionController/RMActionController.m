@@ -48,6 +48,10 @@
 
 @property (nonatomic, assign, readwrite) RMActionControllerStyle style;
 
+@property (nonatomic, strong) NSMutableArray *additionalActions;
+@property (nonatomic, strong) NSMutableArray *doneActions;
+@property (nonatomic, strong) NSMutableArray *cancelActions;
+
 @property (nonatomic, strong) UIView *topContainer;
 @property (nonatomic, strong) UIView *bottomContainer;
 

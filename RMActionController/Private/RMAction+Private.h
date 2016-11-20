@@ -12,8 +12,6 @@
 
 @property (nonatomic, weak, readwrite) RMActionController *controller;
 
-@property (nonatomic, strong, readwrite) NSString *title;
-@property (nonatomic, strong, readwrite) UIImage *image;
 @property (nonatomic, assign, readwrite) RMActionStyle style;
 
 @property (nonatomic, copy) void (^handler)(RMActionController *controller);

@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong, readwrite) UIView *view;
 
+@property (nonatomic, strong, readwrite) NSString *title;
+@property (nonatomic, strong, readwrite) UIImage *image;
+
 @end
 
 @implementation RMAction
