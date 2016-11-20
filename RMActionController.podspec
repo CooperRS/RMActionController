@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   
   s.source               = { :git => "https://github.com/CooperRS/RMActionController.git", :tag => "1.1.0" }
   s.source_files         = 'RMActionController/**/*.{h, m}'
-  s.public_header_files  = 'RMActionController/**/{RMActionController, RMAction, RMImageAction, RMGroupedAction, RMScrollableGroupedAction}.h'
+  s.public_header_files  = 'RMActionController/RMActionController.h', 'RMActionController/Actions/RMAction.h', 'RMActionController/Actions/RMImageAction.h', 'RMActionController/Grouping Actions/RMGroupedAction.h', 'RMActionController/Grouping Actions/RMScrollableGroupedAction.h'
   
   s.requires_arc         = true
   s.framework            = 'CoreGraphics', 'QuartzCore'
