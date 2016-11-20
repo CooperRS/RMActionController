@@ -5,6 +5,12 @@ RMActionController adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.0](https://github.com/CooperRS/RMActionController/releases/tag/1.2.0)
+
+* Add RMImageAction and RMScrollableGroupedAction
+	* These actions allows to build an Apple share sheet like user interface
+* Splits up code into multiple files to make everything more readable
+
 ## [1.1.0](https://github.com/CooperRS/RMActionController/releases/tag/1.1.0)
 
 * Swift 3 compatible (required an API change, see Migration for more information on that)
