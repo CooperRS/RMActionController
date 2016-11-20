@@ -3,6 +3,8 @@ RMActionController [![Build Status](https://travis-ci.org/CooperRS/RMActionContr
 
 This framework allows you to present just any view as an action sheet. In addition, it allows you to add actions arround the presented view which behave like a button and can be tapped by the user. The result looks very much like an UIActionSheet or UIAlertController with a special UIView and some UIActions attached.
 
+RMActionController also contains two special actions (RMImageAction and RMScrollableGroupedAction) which allow to build a share sheet which looks very much like the UIActivityViewController.
+
 ## Screenshots
 
 ### White
