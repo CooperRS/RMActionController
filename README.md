@@ -4,12 +4,22 @@ RMActionController [![Build Status](https://travis-ci.org/CooperRS/RMActionContr
 This is an iOS control for presenting any UIView in an UIActionSheet/UIAlertController like manner.
 
 ## Screenshots
-### Portrait
-![Portrait](http://cooperrs.github.io/RMActionController/Images/Blur-Screen-Portrait.png)
-![Colors](http://cooperrs.github.io/RMActionController/Images/Blur-Screen-Portrait-Black.png)|
+
+### White
+
+| Custom View | Image Actions | Map |
+|:-----------:|:-------------:|:---:|
+|![Custom](http://cooperrs.github.io/RMActionController/Images/Custom-White.png)|![Image](http://cooperrs.github.io/RMActionController/Images/Image-White.png)|![Map](http://cooperrs.github.io/RMActionController/Images/Map-White.png)
+
+### Black
+
+| Custom View | Image Actions | Map |
+|:-----------:|:-------------:|:---:|
+|![Custom](http://cooperrs.github.io/RMActionController/Images/Custom-Black.png)|![Image](http://cooperrs.github.io/RMActionController/Images/Image-Black.png)|![Map](http://cooperrs.github.io/RMActionController/Images/Map-Black.png)
 
 ### Landscape
-![Landscape](http://cooperrs.github.com/RMActionController/Images/Blur-Screen-Landscape.png)
+
+RMActionController supports automatic rotation between portrait and landscape.
 
 ## Installation (CocoaPods)
 ```ruby
