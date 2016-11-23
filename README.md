@@ -26,7 +26,7 @@ RMActionController supports automatic rotation between portrait and landscape.
 ## Installation (CocoaPods)
 ```ruby
 platform :ios, '8.0'
-pod "RMActionController", "~> 1.2.0"
+pod "RMActionController", "~> 1.2.1"
 ```
 
 ## Usage
