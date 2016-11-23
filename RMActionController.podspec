@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.author               = { "Roland Moers" => "rm@cooperrs.de" }
   
   s.source               = { :git => "https://github.com/CooperRS/RMActionController.git", :tag => "1.2.0" }
-  s.source_files         = 'RMActionController/**/*.{h, m}'
+  s.source_files         = 'RMActionController/**/*.{h,m}'
   s.public_header_files  = 'RMActionController/RMActionController.h', 'RMActionController/Actions/RMAction.h', 'RMActionController/Actions/RMImageAction.h', 'RMActionController/Grouping Actions/RMGroupedAction.h', 'RMActionController/Grouping Actions/RMScrollableGroupedAction.h'
   
   s.requires_arc         = true
