@@ -114,7 +114,7 @@ Using this control in your app or know anyone who does?
 
 Feel free to add the app to this list: [Apps using RMActionController](https://github.com/CooperRS/RMActionController/wiki/Apps-using-RMActionController)
 
-##Credits
+## Credits
 
 * Hannes Tribus (Bugfixes)
 * normKei (Destructive button type)
