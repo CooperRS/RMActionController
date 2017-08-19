@@ -39,6 +39,10 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
     RMActionControllerStyleWhite,
     /** Displays a RMActionController with a dark background. */
     RMActionControllerStyleBlack,
+    /**  */
+    RMActionControllerStyleSheetWhite,
+    /**  */
+    RMActionControllerStyleSheetBlack,
     /** Displays a RMActionController with the default background (which is currently light). */
     RMActionControllerStyleDefault = RMActionControllerStyleWhite
 };

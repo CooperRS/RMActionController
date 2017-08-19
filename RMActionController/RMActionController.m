@@ -245,7 +245,7 @@
     }
     
     //Container properties
-    self.topContainer.layer.cornerRadius = [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
+    self.topContainer.layer.cornerRadius = [self cornerRadiusForCurrentStyle];
     self.topContainer.clipsToBounds = YES;
     self.topContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -255,7 +255,7 @@
         self.topContainer.backgroundColor = [UIColor whiteColor];
     }
     
-    self.bottomContainer.layer.cornerRadius = [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
+    self.bottomContainer.layer.cornerRadius = [self cornerRadiusForCurrentStyle];
     self.bottomContainer.clipsToBounds = YES;
     self.bottomContainer.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -273,7 +273,7 @@
 }
 
 - (void)setupConstraints {
-    NSDictionary *metrics = @{@"seperatorHeight": @(1.f / [[UIScreen mainScreen] scale])};
+    NSDictionary *metrics = @{@"seperatorHeight": @(1.f / [[UIScreen mainScreen] scale]), @"Margin": @([self marginForCurrentStyle])};
     
     UIView *topContainer = self.topContainer;
     UIView *bottomContainer = self.bottomContainer;
@@ -284,13 +284,13 @@
     NSDictionary *bindingsDict = NSDictionaryOfVariableBindings(topContainer, bottomContainer, headerTitleLabel, headerMessageLabel);
     
     //Container constraints
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(Margin)-[topContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
     
     if([self.cancelActions count] <= 0) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
     } else {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(10)-[bottomContainer]-(10)-|" options:0 metrics:nil views:bindingsDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(Margin)-[bottomContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(Margin)-[bottomContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
     }
     
     //Top container content constraints
@@ -485,11 +485,35 @@
 }
 
 #pragma mark - Helper
+- (NSInteger)cornerRadiusForCurrentStyle {
+    switch (self.style) {
+        case RMActionControllerStyleWhite:
+        case RMActionControllerStyleBlack:
+            return [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
+        case RMActionControllerStyleSheetWhite:
+        case RMActionControllerStyleSheetBlack:
+            return 0;
+    }
+}
+
+- (NSInteger)marginForCurrentStyle {
+    switch (self.style) {
+        case RMActionControllerStyleWhite:
+        case RMActionControllerStyleBlack:
+            return 10;
+        case RMActionControllerStyleSheetWhite:
+        case RMActionControllerStyleSheetBlack:
+            return 0;
+    }
+}
+
 - (UIBlurEffectStyle)containerBlurEffectStyleForCurrentStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleSheetWhite:
             return UIBlurEffectStyleExtraLight;
         case RMActionControllerStyleBlack:
+        case RMActionControllerStyleSheetBlack:
             return UIBlurEffectStyleDark;
         default:
             return UIBlurEffectStyleExtraLight;
@@ -499,8 +523,10 @@
 - (UIBlurEffectStyle)backgroundBlurEffectStyleForCurrentStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleSheetWhite:
             return UIBlurEffectStyleDark;
         case RMActionControllerStyleBlack:
+        case RMActionControllerStyleSheetBlack:
             return UIBlurEffectStyleLight;
         default:
             return UIBlurEffectStyleDark;
@@ -535,8 +561,10 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     switch (self.style) {
         case RMActionControllerStyleWhite:
+        case RMActionControllerStyleSheetWhite:
             return UIStatusBarStyleLightContent;
         case RMActionControllerStyleBlack:
+        case RMActionControllerStyleSheetBlack:
             return UIStatusBarStyleDefault;
         default:
             return UIStatusBarStyleLightContent;
@@ -575,11 +603,19 @@
         return YES;
     }
     
+    if(self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack) {
+        return YES;
+    }
+    
     return _disableBouncingEffects;
 }
 
 - (BOOL)disableMotionEffects {
     if(&UIAccessibilityIsReduceMotionEnabled && UIAccessibilityIsReduceMotionEnabled()) {
+        return YES;
+    }
+    
+    if(self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack) {
         return YES;
     }
     
