@@ -39,9 +39,9 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
     RMActionControllerStyleWhite,
     /** Displays a RMActionController with a dark background. */
     RMActionControllerStyleBlack,
-    /**  */
+    /** Displays a RMActionController with a light background and without padding and corner radius. This looks very much like the new iOS 11 App Store sheet. */
     RMActionControllerStyleSheetWhite,
-    /**  */
+    /** Displays a RMActionController with a dark background and without padding and corner radius. This looks very much like the new iOS 11 App Store sheet. */
     RMActionControllerStyleSheetBlack,
     /** Displays a RMActionController with the default background (which is currently light). */
     RMActionControllerStyleDefault = RMActionControllerStyleWhite
