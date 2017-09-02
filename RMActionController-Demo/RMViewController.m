@@ -116,6 +116,30 @@
     [self presentActionController:actionController];
 }
 
+- (IBAction)openCustomViewSheetController:(id)sender {
+    RMActionControllerStyle style = RMActionControllerStyleSheetWhite;
+    if(self.blackSwitch.on) {
+        style = RMActionControllerStyleSheetBlack;
+    }
+
+    RMAction *selectAction = [RMAction<UIView *> actionWithTitle:@"Select" style:RMActionStyleDone andHandler:^(RMActionController<UIView *> *controller) {
+        NSLog(@"Action controller finished successfully");
+    }];
+
+    RMAction *cancelAction = [RMAction<UIView *> actionWithTitle:@"Cancel" style:RMActionStyleDone andHandler:^(RMActionController<UIView *> *controller) {
+        NSLog(@"Action controller was canceled");
+    }];
+
+    RMCustomViewActionController *actionController = [RMCustomViewActionController actionControllerWithStyle:style];
+    actionController.title = @"Test";
+    actionController.message = @"This is a test action controller.\nPlease tap 'Select' or 'Cancel'.";
+
+    [actionController addAction:selectAction];
+    [actionController addAction:cancelAction];
+
+    [self presentActionController:actionController];
+}
+
 - (void)presentActionController:(RMActionController *)actionController {
     //You can enable or disable blur, bouncing and motion effects
     actionController.disableBouncingEffects = !self.bouncingSwitch.on;
@@ -148,6 +172,9 @@
             break;
         case 2:
             [self openMapActionController:self];
+            break;
+        case 3:
+            [self openCustomViewSheetController:self];
             break;
     }
     
