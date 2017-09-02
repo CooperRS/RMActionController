@@ -92,6 +92,30 @@ class ViewController: UITableViewController {
         
         present(actionController: actionController);
     }
+
+    func openCustomSheetController() {
+        var style = RMActionControllerStyle.sheetWhite
+        if self.blackSwitch.isOn {
+            style = RMActionControllerStyle.sheetBlack
+        }
+
+        let selectAction = RMAction<UIView>(title: "Select", style: RMActionStyle.done) { controller in
+            print("Custom action controller finished successfully")
+        }
+
+        let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.done) { _ in
+            print("custom action controller was canceled")
+        }
+
+        let actionController = CustomViewActionController(style: style)!
+        actionController.title = "Test"
+        actionController.message = "This is a test message.\nPlease choose a date and press 'Select' or 'Cancel'."
+
+        actionController.addAction(selectAction!)
+        actionController.addAction(cancelAction!)
+
+        present(actionController: actionController);
+    }
     
     func present<T : UIView>(actionController: RMActionController<T>) {
         //You can enable or disable blur, bouncing and motion effects
@@ -127,6 +151,9 @@ class ViewController: UITableViewController {
             break;
         case 2:
             openMapActionController()
+            break;
+        case 3:
+            openCustomSheetController()
             break;
         default:
             break;
