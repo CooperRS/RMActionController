@@ -1,27 +1,27 @@
 RMActionController [![Build Status](https://travis-ci.org/CooperRS/RMActionController.svg?branch=master)](https://travis-ci.org/CooperRS/RMActionController/) [![Pod Version](https://img.shields.io/cocoapods/v/RMActionController.svg)](https://cocoapods.org/pods/RMActionController) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ====================
 
-This framework allows you to present just any view as an action sheet. In addition, it allows you to add actions arround the presented view which behave like a button and can be tapped by the user. The result looks very much like an UIActionSheet or UIAlertController with a special UIView and some UIActions attached.
+This framework allows you to present just any view as an action sheet. In addition, it allows you to add actions arround the presented view which behave like a button and can be tapped by the user. The result looks very much like an `UIActionSheet` or `UIAlertController` with a special `UIView` and some `UIActions` attached.
 
-RMActionController also contains two special actions (RMImageAction and RMScrollableGroupedAction) which allow to build a share sheet which looks very much like the UIActivityViewController.
+`RMActionController` also contains two special actions (`RMImageAction` and `RMScrollableGroupedAction`) which allow to build a share sheet which looks very much like the `UIActivityViewController`. In addition, `RMActionController` can be configured to look like the new buy sheet which can be found in the iOS 11 App Store.
 
 ## Screenshots
 
 ### White
 
-| Custom View | Image Actions | Map |
-|:-----------:|:-------------:|:---:|
-|![Custom](http://cooperrs.github.io/RMActionController/Images/Custom-White.png)|![Image](http://cooperrs.github.io/RMActionController/Images/Image-White.png)|![Map](http://cooperrs.github.io/RMActionController/Images/Map-White.png)
+| Custom View | Image Actions | Map | Sheet |
+|:-----------:|:-------------:|:---:|:-----:|
+|![Custom](http://cooperrs.github.io/RMActionController/Images/Custom-White.png)|![Image](http://cooperrs.github.io/RMActionController/Images/Image-White.png)|![Map](http://cooperrs.github.io/RMActionController/Images/Map-White.png)|![Sheet](http://cooperrs.github.io/RMActionController/Images/Sheet-White.png)
 
 ### Black
 
-| Custom View | Image Actions | Map |
-|:-----------:|:-------------:|:---:|
-|![Custom](http://cooperrs.github.io/RMActionController/Images/Custom-Black.png)|![Image](http://cooperrs.github.io/RMActionController/Images/Image-Black.png)|![Map](http://cooperrs.github.io/RMActionController/Images/Map-Black.png)
+| Custom View | Image Actions | Map | Sheet |
+|:-----------:|:-------------:|:---:|:-----:|
+|![Custom](http://cooperrs.github.io/RMActionController/Images/Custom-Black.png)|![Image](http://cooperrs.github.io/RMActionController/Images/Image-Black.png)|![Map](http://cooperrs.github.io/RMActionController/Images/Map-Black.png)|![Sheet](http://cooperrs.github.io/RMActionController/Images/Sheet-Black.png)
 
 ### Landscape
 
-RMActionController supports automatic rotation between portrait and landscape.
+`RMActionController` supports automatic rotation between portrait and landscape.
 
 ## Installation (CocoaPods)
 ```ruby
@@ -31,9 +31,9 @@ pod "RMActionController", "~> 1.2.1"
 
 ## Usage
 
-For a detailed description on how to use RMActionController take a look at the [Wiki Pages](https://github.com/CooperRS/RMActionController/wiki). The following four steps are a very short intro:
+For a detailed description on how to use `RMActionController` take a look at the [Wiki Pages](https://github.com/CooperRS/RMActionController/wiki). The following four steps are a very short intro:
 
-* Create your own subclass of RMActionController. Let's create one for presenting a map and let's call it RMMapActionController:
+* Create your own subclass of `RMActionController`. Let's create one for presenting a map and let's call it `RMMapActionController`:
 
 ```objc
 @interface RMMapActionController : RMActionController<MKMapView *>
@@ -61,7 +61,7 @@ For a detailed description on how to use RMActionController take a look at the [
 @end
 ```
 
-* Present your custom RMActionController:
+* Present your custom `RMActionController`:
 
 ```objc
 - (IBAction)openActionController:(id)sender {
