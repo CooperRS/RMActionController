@@ -130,9 +130,11 @@
     } else {
         switch (self.controller.style) {
             case RMActionControllerStyleWhite:
+            case RMActionControllerStyleSheetWhite:
                 [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:230./255. alpha:1]] forState:UIControlStateHighlighted];
                 break;
             case RMActionControllerStyleBlack:
+            case RMActionControllerStyleSheetBlack:
                 [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.2 alpha:1]] forState:UIControlStateHighlighted];
                 break;
         }
