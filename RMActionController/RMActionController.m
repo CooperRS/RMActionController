@@ -200,11 +200,13 @@
     }
     
     for(RMAction *anAction in self.additionalActions) {
-        [viewForAddingSubviews addSubview:anAction.view];
+        UIView *view = self.disableBlurEffectsForActions ? self.topContainer : viewForAddingSubviews;
+        [view addSubview:anAction.view];
     }
     
     for(RMAction *anAction in self.doneActions) {
-        [viewForAddingSubviews addSubview:anAction.view];
+        UIView *view = self.disableBlurEffectsForActions ? self.topContainer : viewForAddingSubviews;
+        [view addSubview:anAction.view];
     }
     
     //Container properties
@@ -244,7 +246,8 @@
     }
     
     for(RMAction *anAction in self.cancelActions) {
-        [viewForAddingSubviews addSubview:anAction.view];
+        UIView *view = self.disableBlurEffectsForActions ? self.bottomContainer : viewForAddingSubviews;
+        [view addSubview:anAction.view];
     }
     
     //Container properties
@@ -588,6 +591,14 @@
     }
     
     return _disableBlurEffectsForContentView;
+}
+
+- (BOOL)disableBlurEffectsForActions {
+    if(self.disableBlurEffects) {
+        return YES;
+    }
+    
+    return _disableBlurEffectsForActions;
 }
 
 - (BOOL)disableBouncingEffects {
