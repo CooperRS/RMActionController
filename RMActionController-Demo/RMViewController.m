@@ -33,6 +33,7 @@
 
 @property (nonatomic, weak) IBOutlet UISwitch *blackSwitch;
 @property (nonatomic, weak) IBOutlet UISwitch *blurSwitch;
+@property (nonatomic, weak) IBOutlet UISwitch *blurActionsSwitch;
 @property (nonatomic, weak) IBOutlet UISwitch *motionSwitch;
 @property (nonatomic, weak) IBOutlet UISwitch *bouncingSwitch;
 
@@ -145,6 +146,7 @@
     actionController.disableBouncingEffects = !self.bouncingSwitch.on;
     actionController.disableMotionEffects = !self.motionSwitch.on;
     actionController.disableBlurEffects = !self.blurSwitch.on;
+    actionController.disableBlurEffectsForActions = !self.blurActionsSwitch.on;
     
     //On the iPad we want to show the map action controller within a popover. Fortunately, we can use iOS 8 API for this! :)
     //(Of course only if we are running on iOS 8 or later)
