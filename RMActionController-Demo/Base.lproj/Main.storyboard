@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="udc-zS-aSN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A360a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="udc-zS-aSN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -172,8 +172,8 @@ If your need a black version on iOS 7, take a look at the demo code.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blur Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgj-0D-7YY">
-                                                    <rect key="frame" x="15" y="11" width="89" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blur Effects (All)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgj-0D-7YY">
+                                                    <rect key="frame" x="15" y="11" width="123" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -191,8 +191,34 @@ If your need a black version on iOS 7, take a look at the demo code.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0uf-pB-Z3a">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="LIq-7a-1wo">
                                         <rect key="frame" x="0.0" y="474.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LIq-7a-1wo" id="Fmy-69-nha">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blur Effects (Actions)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioj-rf-WU2">
+                                                    <rect key="frame" x="15" y="11" width="162" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQU-bn-19S">
+                                                    <rect key="frame" x="311" y="6" width="51" height="31"/>
+                                                    <accessibility key="accessibilityConfiguration" label="BouncingEffects"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="tQU-bn-19S" secondAttribute="trailing" constant="15" id="Cwv-cG-nXg"/>
+                                                <constraint firstAttribute="centerY" secondItem="tQU-bn-19S" secondAttribute="centerY" id="RNH-K5-YkD"/>
+                                                <constraint firstItem="ioj-rf-WU2" firstAttribute="leading" secondItem="Fmy-69-nha" secondAttribute="leading" constant="15" id="opM-1S-WlA"/>
+                                                <constraint firstAttribute="centerY" secondItem="ioj-rf-WU2" secondAttribute="centerY" id="yG2-B4-kac"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="0uf-pB-Z3a">
+                                        <rect key="frame" x="0.0" y="518.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0uf-pB-Z3a" id="VZE-Iw-VdN">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -218,7 +244,7 @@ If your need a black version on iOS 7, take a look at the demo code.</string>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Lo2-u3-HQv">
-                                        <rect key="frame" x="0.0" y="518.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="562.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lo2-u3-HQv" id="tkF-xY-4o6">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -248,7 +274,7 @@ If your need a black version on iOS 7, take a look at the demo code.</string>
                             <tableViewSection headerTitle="" id="LXP-f0-YuE">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="y4b-Bl-Pvu" detailTextLabel="VYV-y8-Gzj" style="IBUITableViewCellStyleValue1" id="ZuU-OY-2Xu">
-                                        <rect key="frame" x="0.0" y="602.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="646.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZuU-OY-2Xu" id="GlE-bI-kWK">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -281,6 +307,7 @@ If your need a black version on iOS 7, take a look at the demo code.</string>
                     <navigationItem key="navigationItem" title="Objective-C Demo" id="I0k-is-Syx"/>
                     <connections>
                         <outlet property="blackSwitch" destination="zIP-i2-iGI" id="M7G-FS-hV9"/>
+                        <outlet property="blurActionsSwitch" destination="tQU-bn-19S" id="prj-jR-HrL"/>
                         <outlet property="blurSwitch" destination="IYE-EG-ZeU" id="Wvn-eY-O7O"/>
                         <outlet property="bouncingSwitch" destination="t4u-2y-gb7" id="YxY-GX-lwT"/>
                         <outlet property="motionSwitch" destination="DHP-vc-zbb" id="Ou1-rW-7ha"/>

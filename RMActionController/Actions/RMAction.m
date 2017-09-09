@@ -112,7 +112,7 @@
 
 - (UIView *)loadView {
     UIButtonType buttonType = UIButtonTypeCustom;
-    if(self.controller.disableBlurEffects) {
+    if(self.controller.disableBlurEffectsForActions) {
         buttonType = UIButtonTypeSystem;
     }
     
@@ -125,17 +125,17 @@
         actionButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
     }
     
-    if(!self.controller.disableBlurEffects) {
+    if(!self.controller.disableBlurEffectsForActions) {
         [actionButton setBackgroundImage:[self imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3]] forState:UIControlStateHighlighted];
     } else {
         switch (self.controller.style) {
             case RMActionControllerStyleWhite:
             case RMActionControllerStyleSheetWhite:
-                [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:230./255. alpha:1]] forState:UIControlStateHighlighted];
+                [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.2 alpha:1]] forState:UIControlStateHighlighted];
                 break;
             case RMActionControllerStyleBlack:
             case RMActionControllerStyleSheetBlack:
-                [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.2 alpha:1]] forState:UIControlStateHighlighted];
+                [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.8 alpha:1]] forState:UIControlStateHighlighted];
                 break;
         }
     }

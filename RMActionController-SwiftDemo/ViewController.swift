@@ -15,6 +15,7 @@ class ViewController: UITableViewController {
     //MARK: Properties
     @IBOutlet weak var blackSwitch: UISwitch!
     @IBOutlet weak var blurSwitch: UISwitch!
+    @IBOutlet weak var blurActionSwitch: UISwitch!
     @IBOutlet weak var motionSwitch: UISwitch!
     @IBOutlet weak var bouncingSwitch: UISwitch!
     
@@ -122,6 +123,7 @@ class ViewController: UITableViewController {
         actionController.disableBouncingEffects = !self.bouncingSwitch.isOn
         actionController.disableMotionEffects = !self.motionSwitch.isOn
         actionController.disableBlurEffects = !self.blurSwitch.isOn
+        actionController.disableBlurEffectsForActions = !self.blurActionSwitch.isOn
         
         //On the iPad we want to show the date selection view controller within a popover. Fortunately, we can use iOS 8 API for this! :)
         //(Of course only if we are running on iOS 8 or later)

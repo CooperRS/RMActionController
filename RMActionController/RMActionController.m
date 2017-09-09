@@ -162,86 +162,51 @@
 }
 
 - (void)setupContainerElements {
-    //Top container
+    [self setupTopContainerElements];
+    [self setupBottomContainerElements];
+}
+
+- (void)setupTopContainerElements {
+    UIView *viewForAddingSubviews = nil;
     if(self.disableBlurEffects) {
         self.topContainer = [[UIView alloc] initWithFrame:CGRectZero];
-        
-        [self.topContainer addSubview:self.contentView];
-        
-        if([self.headerTitleLabel.text length] > 0) {
-            [self.topContainer addSubview:self.headerTitleLabel];
-        }
-        
-        if([self.headerMessageLabel.text length] > 0) {
-            [self.topContainer addSubview:self.headerMessageLabel];
-        }
-        
-        for(RMAction *anAction in self.additionalActions) {
-            [self.topContainer addSubview:anAction.view];
-        }
-        
-        for(RMAction *anAction in self.doneActions) {
-            [self.topContainer addSubview:anAction.view];
-        }
+        viewForAddingSubviews = self.topContainer;
     } else {
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
         UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
         
         UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
         vibrancyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
-        if(!self.disableBlurEffectsForContentView) {
-            [vibrancyView.contentView addSubview:self.contentView];
-        }
-        
-        if([self.headerTitleLabel.text length] > 0) {
-            [vibrancyView.contentView addSubview:self.headerTitleLabel];
-        }
-        
-        if([self.headerMessageLabel.text length] > 0) {
-            [vibrancyView.contentView addSubview:self.headerMessageLabel];
-        }
-        
-        for(RMAction *anAction in self.additionalActions) {
-            [vibrancyView.contentView addSubview:anAction.view];
-        }
-        
-        for(RMAction *anAction in self.doneActions) {
-            [vibrancyView.contentView addSubview:anAction.view];
-        }
         
         UIVisualEffectView *container = [[UIVisualEffectView alloc] initWithEffect:blur];
         [container.contentView addSubview:vibrancyView];
         
         self.topContainer = container;
-        
-        if(self.disableBlurEffectsForContentView) {
-            [self.topContainer addSubview:self.contentView];
-        }
+        viewForAddingSubviews = vibrancyView.contentView;
     }
     
-    //Botoom container
-    if(self.disableBlurEffects) {
-        self.bottomContainer = [[UIView alloc] initWithFrame:CGRectZero];
-        
-        for(RMAction *anAction in self.cancelActions) {
-            [self.bottomContainer addSubview:anAction.view];
-        }
+    if(!self.disableBlurEffectsForContentView) {
+        [viewForAddingSubviews addSubview:self.contentView];
     } else {
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
-        UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
-        
-        UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
-        vibrancyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
-        for(RMAction *anAction in self.cancelActions) {
-            [vibrancyView.contentView addSubview:anAction.view];
-        }
-        
-        UIVisualEffectView *container = [[UIVisualEffectView alloc] initWithEffect:blur];
-        [container.contentView addSubview:vibrancyView];
-        
-        self.bottomContainer = container;
+        [self.topContainer addSubview:self.contentView];
+    }
+    
+    if([self.headerTitleLabel.text length] > 0) {
+        [viewForAddingSubviews addSubview:self.headerTitleLabel];
+    }
+    
+    if([self.headerMessageLabel.text length] > 0) {
+        [viewForAddingSubviews addSubview:self.headerMessageLabel];
+    }
+    
+    for(RMAction *anAction in self.additionalActions) {
+        UIView *view = self.disableBlurEffectsForActions ? self.topContainer : viewForAddingSubviews;
+        [view addSubview:anAction.view];
+    }
+    
+    for(RMAction *anAction in self.doneActions) {
+        UIView *view = self.disableBlurEffectsForActions ? self.topContainer : viewForAddingSubviews;
+        [view addSubview:anAction.view];
     }
     
     //Container properties
@@ -255,6 +220,37 @@
         self.topContainer.backgroundColor = [UIColor whiteColor];
     }
     
+    //Debugging Accessibility Labels
+#ifdef DEBUG
+    self.topContainer.accessibilityLabel = @"TopContainer";
+#endif
+}
+
+- (void)setupBottomContainerElements {
+    UIView *viewForAddingSubviews = nil;
+    if(self.disableBlurEffects) {
+        self.bottomContainer = [[UIView alloc] initWithFrame:CGRectZero];
+        viewForAddingSubviews = self.bottomContainer;
+    } else {
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
+        UIVibrancyEffect *vibrancy = [UIVibrancyEffect effectForBlurEffect:blur];
+        
+        UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
+        vibrancyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+        UIVisualEffectView *container = [[UIVisualEffectView alloc] initWithEffect:blur];
+        [container.contentView addSubview:vibrancyView];
+        
+        self.bottomContainer = container;
+        viewForAddingSubviews = vibrancyView.contentView;
+    }
+    
+    for(RMAction *anAction in self.cancelActions) {
+        UIView *view = self.disableBlurEffectsForActions ? self.bottomContainer : viewForAddingSubviews;
+        [view addSubview:anAction.view];
+    }
+    
+    //Container properties
     self.bottomContainer.layer.cornerRadius = [self cornerRadiusForCurrentStyle];
     self.bottomContainer.clipsToBounds = YES;
     self.bottomContainer.translatesAutoresizingMaskIntoConstraints = NO;
@@ -267,7 +263,6 @@
     
     //Debugging Accessibility Labels
 #ifdef DEBUG
-    self.topContainer.accessibilityLabel = @"TopContainer";
     self.bottomContainer.accessibilityLabel = @"BottomContainer";
 #endif
 }
@@ -596,6 +591,14 @@
     }
     
     return _disableBlurEffectsForContentView;
+}
+
+- (BOOL)disableBlurEffectsForActions {
+    if(self.disableBlurEffects) {
+        return YES;
+    }
+    
+    return _disableBlurEffectsForActions;
 }
 
 - (BOOL)disableBouncingEffects {

@@ -193,4 +193,13 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
  */
 @property (assign, nonatomic) BOOL disableBlurEffectsForBackgroundView;
 
+/**
+ *  Used to enable or disable blurring actions. If you want the title of your action to appear in your tint color, set this to YES. Same for image actions: If the image should appear in its original colors, set this to YES. Otherwise NO.
+ *
+ *  The default value is NO.
+ *
+ *  @warning This property always returns YES, if disableBlurEffects returns YES.
+ */
+@property (assign, nonatomic) BOOL disableBlurEffectsForActions;
+
 @end
