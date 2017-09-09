@@ -165,6 +165,10 @@
 
 #pragma mark - UITableView Delegates
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section != 0) {
+        return;
+    }
+    
     switch (indexPath.row) {
         case 0:
             [self openCustomViewActionController:self];
