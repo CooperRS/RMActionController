@@ -5,6 +5,12 @@ RMActionController adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.3.0](https://github.com/CooperRS/RMActionController/releases/tag/1.3.0)
+
+* Add new style which mimics the iOS 11 App Store buy sheet
+* Add option to disable blur effects for actions
+    * Allows to show titles and images in their original color
+
 ## [1.2.1](https://github.com/CooperRS/RMActionController/releases/tag/1.2.1)
 
 * Fix RMActionController.podspec
