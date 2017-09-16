@@ -136,7 +136,8 @@
     }
     
     self.transitioningDelegate = self;
-    
+
+    self.disableBlurEffectsForBackgroundView = YES;
     [self setupUIElements];
 }
 
