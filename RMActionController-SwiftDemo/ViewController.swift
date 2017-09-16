@@ -118,7 +118,7 @@ class ViewController: UITableViewController {
         present(actionController: actionController);
     }
     
-    func present<T : UIView>(actionController: RMActionController<T>) {
+    func present<T>(actionController: RMActionController<T>) {
         //You can enable or disable blur, bouncing and motion effects
         actionController.disableBouncingEffects = !self.bouncingSwitch.isOn
         actionController.disableMotionEffects = !self.motionSwitch.isOn
