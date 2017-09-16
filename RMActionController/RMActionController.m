@@ -727,9 +727,16 @@
         case RMActionStyleDone:
             [self.doneActions addObject:action];
             break;
-        case RMActionStyleCancel:
-            [self.cancelActions addObject:action];
+        case RMActionStyleCancel: {
+            NSMutableArray *arrayForAdding;
+            if([self currentStyleIsSheet]) {
+                arrayForAdding = self.doneActions;
+            } else {
+                arrayForAdding = self.cancelActions;
+            }
+            [arrayForAdding addObject:action];
             break;
+        }
         case RMActionStyleDestructive:
             [self.doneActions addObject:action];
             break;
