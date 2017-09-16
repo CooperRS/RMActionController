@@ -285,13 +285,25 @@
     
     //Container constraints
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(Margin)-[topContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
-    
+
+    id item;
     if([self.cancelActions count] <= 0) {
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
+        item = self.topContainer;
     } else {
         [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(Margin)-[bottomContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
-        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(Margin)-[bottomContainer]-(Margin)-|" options:0 metrics:metrics views:bindingsDict]];
+        [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[topContainer]-(Margin)-[bottomContainer]" options:0 metrics:metrics views:bindingsDict]];
+
+        item = self.bottomContainer;
     }
+
+    id bottomItem;
+    if(@available(iOS 11, *)) {
+        bottomItem = self.view.safeAreaLayoutGuide;
+    } else {
+        bottomItem = self.view;
+    }
+
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:item attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomItem attribute:NSLayoutAttributeBottom multiplier:1 constant:-[self marginForCurrentStyle]]];
     
     //Top container content constraints
     __block UIView *currentTopView = nil;
