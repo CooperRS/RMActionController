@@ -167,9 +167,10 @@
 }
 
 - (void)setupTopContainerElements {
+    self.topContainer = [[UIView alloc] initWithFrame:CGRectZero];
+
     UIView *viewForAddingSubviews = nil;
     if(self.disableBlurEffects) {
-        self.topContainer = [[UIView alloc] initWithFrame:CGRectZero];
         viewForAddingSubviews = self.topContainer;
     } else {
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
@@ -178,10 +179,11 @@
         UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
         vibrancyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
-        UIVisualEffectView *container = [[UIVisualEffectView alloc] initWithEffect:blur];
-        [container.contentView addSubview:vibrancyView];
+        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+        effectView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [effectView.contentView addSubview:vibrancyView];
         
-        self.topContainer = container;
+        [self.topContainer addSubview:effectView];
         viewForAddingSubviews = vibrancyView.contentView;
     }
     
@@ -227,9 +229,10 @@
 }
 
 - (void)setupBottomContainerElements {
+    self.bottomContainer = [[UIView alloc] initWithFrame:CGRectZero];
+
     UIView *viewForAddingSubviews = nil;
     if(self.disableBlurEffects) {
-        self.bottomContainer = [[UIView alloc] initWithFrame:CGRectZero];
         viewForAddingSubviews = self.bottomContainer;
     } else {
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:[self containerBlurEffectStyleForCurrentStyle]];
@@ -238,10 +241,11 @@
         UIVisualEffectView *vibrancyView = [[UIVisualEffectView alloc] initWithEffect:vibrancy];
         vibrancyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
-        UIVisualEffectView *container = [[UIVisualEffectView alloc] initWithEffect:blur];
-        [container.contentView addSubview:vibrancyView];
+        UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+        effectView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        [effectView.contentView addSubview:vibrancyView];
         
-        self.bottomContainer = container;
+        [self.bottomContainer addSubview:effectView];
         viewForAddingSubviews = vibrancyView.contentView;
     }
     
