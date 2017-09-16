@@ -26,16 +26,16 @@
     
     XCTAssertFalse(controller.disableBackgroundTaps);
     XCTAssertFalse(controller.disableBlurEffects);
-    XCTAssertFalse(controller.disableBlurEffectsForBackgroundView);
     XCTAssertFalse(controller.disableBlurEffectsForContentView);
     XCTAssertFalse(controller.disableBouncingEffects);
     XCTAssertFalse(controller.disableMotionEffects);
+    XCTAssertTrue(controller.disableBlurEffectsForBackgroundView);
     
     XCTAssertNil(controller.contentView);
     
     NSObject *backgroundView = controller.backgroundView;
     XCTAssertNotNil(backgroundView);
-    XCTAssertTrue([backgroundView isKindOfClass:[UIVisualEffectView class]]);
+    XCTAssertFalse([backgroundView isKindOfClass:[UIVisualEffectView class]]);
     
     XCTAssertNotNil(controller.actions);
     XCTAssertEqual([controller.actions count], (NSUInteger)0);
@@ -110,10 +110,10 @@
     
     XCTAssertFalse(controller.disableBackgroundTaps);
     XCTAssertFalse(controller.disableBlurEffects);
-    XCTAssertFalse(controller.disableBlurEffectsForBackgroundView);
     XCTAssertFalse(controller.disableBlurEffectsForContentView);
     XCTAssertFalse(controller.disableBouncingEffects);
     XCTAssertFalse(controller.disableMotionEffects);
+    XCTAssertTrue(controller.disableBlurEffectsForBackgroundView);
     
     XCTAssertNil(controller.contentView);
     
@@ -149,16 +149,16 @@
     
     XCTAssertFalse(controller.disableBackgroundTaps);
     XCTAssertFalse(controller.disableBlurEffects);
-    XCTAssertFalse(controller.disableBlurEffectsForBackgroundView);
     XCTAssertFalse(controller.disableBlurEffectsForContentView);
     XCTAssertFalse(controller.disableBouncingEffects);
     XCTAssertFalse(controller.disableMotionEffects);
+    XCTAssertTrue(controller.disableBlurEffectsForBackgroundView);
     
     XCTAssertNil(controller.contentView);
     
     NSObject *backgroundView = controller.backgroundView;
     XCTAssertNotNil(backgroundView);
-    XCTAssertTrue([backgroundView isKindOfClass:[UIVisualEffectView class]]);
+    XCTAssertFalse([backgroundView isKindOfClass:[UIVisualEffectView class]]);
     
     XCTAssertNotNil(controller.actions);
     XCTAssertEqual([controller.actions count], (NSUInteger)0);
@@ -191,8 +191,8 @@
     RMActionController *controller = [RMActionController actionControllerWithStyle:RMActionControllerStyleDefault];
     
     XCTAssertFalse(controller.disableBlurEffects);
-    XCTAssertFalse(controller.disableBlurEffectsForBackgroundView);
     XCTAssertFalse(controller.disableBlurEffectsForContentView);
+    XCTAssertTrue(controller.disableBlurEffectsForBackgroundView);
     
     controller.disableBlurEffects = YES;
     
@@ -218,7 +218,7 @@
     NSObject *backgroundView = controller.backgroundView;
     
     XCTAssertNotNil(backgroundView);
-    XCTAssertTrue([backgroundView isKindOfClass:[UIView class]]);
+    XCTAssertFalse([backgroundView isKindOfClass:[UIVisualEffectView class]]);
 }
 
 - (void)testDisablingMotionAndBouncingEffects {
