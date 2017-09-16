@@ -363,10 +363,10 @@
         item = self.bottomContainer;
     }
 
-    NSInteger bottomMargin = [self marginForCurrentStyle];
+    NSInteger bottomMargin = [self currentStyleIsSheet] ? 0 : [self marginForCurrentStyle];
     id bottomItem;
     if(@available(iOS 11, *)) {
-        bottomItem = self.view.safeAreaLayoutGuide;
+        bottomItem = [self currentStyleIsSheet] ? self.view : self.view.safeAreaLayoutGuide;
     } else {
         bottomItem = self.view;
     }
@@ -386,7 +386,16 @@
 
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[actionView]-(0)-|" options:0 metrics:nil views:bindings]];
             [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:bindings]];
-            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(seperatorHeight)]-(0)-[actionView]-(0)-|" options:0 metrics:metrics views:bindings]];
+            [blockself.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(seperatorHeight)]-(0)-[actionView]" options:0 metrics:metrics views:bindings]];
+
+            id bottomItem;
+            if(@available(iOS 11, *)) {
+                bottomItem = [self currentStyleIsSheet] ? self.topContainer.safeAreaLayoutGuide : self.topContainer;
+            } else {
+                bottomItem = self.topContainer;
+            }
+
+            [blockself.topContainer addConstraint:[NSLayoutConstraint constraintWithItem:action.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomItem attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
         } else {
             NSDictionary *bindings = @{@"actionView": action.view, @"seperator": seperator, @"currentTopView": currentTopView};
 
@@ -576,6 +585,10 @@
     } else {
         [container addSubview:subview];
     }
+}
+
+- (BOOL)currentStyleIsSheet {
+    return self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack;
 }
 
 #pragma mark - iOS Properties
