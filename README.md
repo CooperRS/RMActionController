@@ -124,7 +124,7 @@ I want to thank everyone who has contributed code and/or time to this project!
 ## License (MIT License)
 
 ```
-Copyright (c) 2015-2016 Roland Moers
+Copyright (c) 2015-2017 Roland Moers
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
