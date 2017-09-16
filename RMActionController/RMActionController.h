@@ -189,6 +189,8 @@ typedef NS_ENUM(NSInteger, RMActionControllerStyle) {
 /**
  *  Used to enable or disable blurring the background of RMActionController.
  *
+ *  The default value is YES.
+ *
  *  @warning This property always returns YES, if disableBlurEffects returns YES.
  */
 @property (assign, nonatomic) BOOL disableBlurEffectsForBackgroundView;
