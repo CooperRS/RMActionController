@@ -9,6 +9,9 @@ RMActionController adheres to [Semantic Versioning](http://semver.org/).
 
 * Add support for iOS 11 GM
 * Add support for iPhone X
+* The blur effect for the background now is disabled by default
+    * Makes RMActionController look like a default iOS action sheet
+    * You can enable it at any time using the related property
 * Xcode 9 is now required for building
     * At runtime, iOS 8 is still fine
 
