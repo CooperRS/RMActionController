@@ -127,7 +127,7 @@
         NSLog(@"Action controller finished successfully");
     }];
 
-    RMAction *cancelAction = [RMAction<UIView *> actionWithTitle:@"Cancel" style:RMActionStyleDone andHandler:^(RMActionController<UIView *> *controller) {
+    RMAction *cancelAction = [RMAction<UIView *> actionWithTitle:@"Cancel" style:RMActionStyleCancel andHandler:^(RMActionController<UIView *> *controller) {
         NSLog(@"Action controller was canceled");
     }];
 

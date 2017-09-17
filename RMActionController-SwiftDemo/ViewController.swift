@@ -104,7 +104,7 @@ class ViewController: UITableViewController {
             print("Custom action controller finished successfully")
         }
 
-        let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.done) { _ in
+        let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.cancel) { _ in
             print("custom action controller was canceled")
         }
 
