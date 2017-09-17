@@ -26,7 +26,7 @@ This framework allows you to present just any view as an action sheet. In additi
 ## Installation (CocoaPods)
 ```ruby
 platform :ios, '8.0'
-pod "RMActionController", "~> 1.3.0"
+pod "RMActionController", "~> 1.3.1"
 ```
 
 ## Usage

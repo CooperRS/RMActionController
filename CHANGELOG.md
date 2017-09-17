@@ -5,6 +5,13 @@ RMActionController adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.3.1](https://github.com/CooperRS/RMActionController/releases/tag/1.3.1)
+
+* Add support for iOS 11 GM
+* Add support for iPhone X
+* Xcode 9 is now required for building
+    * At runtime, iOS 8 is still fine
+
 ## [1.3.0](https://github.com/CooperRS/RMActionController/releases/tag/1.3.0)
 
 * Add new style which mimics the iOS 11 App Store buy sheet
