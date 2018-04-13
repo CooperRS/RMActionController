@@ -1,7 +1,7 @@
 RMActionController [![Build Status](https://travis-ci.org/CooperRS/RMActionController.svg?branch=master)](https://travis-ci.org/CooperRS/RMActionController/) [![Pod Version](https://img.shields.io/cocoapods/v/RMActionController.svg)](https://cocoapods.org/pods/RMActionController) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ====================
 
-This framework allows you to present just any view as an action sheet. In addition, it allows you to add actions arround the presented view which behave like a button and can be tapped by the user. The result looks very much like an `UIActionSheet` or `UIAlertController` with a special `UIView` and some `UIActions` attached.
+This framework allows you to present just any view as an action sheet. In addition, it allows you to add actions around the presented view which behave like a button and can be tapped by the user. The result looks very much like an `UIActionSheet` or `UIAlertController` with a special `UIView` and some `UIActions` attached.
 
 `RMActionController` also contains two special actions (`RMImageAction` and `RMScrollableGroupedAction`) which allow to build a share sheet which looks very much like the `UIActivityViewController`. In addition, `RMActionController` can be configured to look like the new buy sheet which can be found in the iOS 11 App Store.
 
