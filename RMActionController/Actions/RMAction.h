@@ -45,7 +45,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
++ (nonnull instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
 
 /**
  *  Returns a new instance of RMAction with the given properties set.
@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
++ (nonnull instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<T> * __nonnull controller))handler;
 
 /**
  *  Returns a new instance of RMAction with the given properties set.
@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  *
  *  @return The new instance of RMAction.
  */
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title image:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull controller))handler;
++ (nonnull instancetype)actionWithTitle:(nonnull NSString *)title image:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull controller))handler;
 
 /// @name Properties
 #pragma mark - Properties

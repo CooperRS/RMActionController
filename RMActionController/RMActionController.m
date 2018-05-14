@@ -70,15 +70,15 @@
 @synthesize disableMotionEffects = _disableMotionEffects;
 
 #pragma mark - Class
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style {
++ (nonnull instancetype)actionControllerWithStyle:(RMActionControllerStyle)style {
     return [self actionControllerWithStyle:style selectAction:nil andCancelAction:nil];
 }
 
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
++ (nonnull instancetype)actionControllerWithStyle:(RMActionControllerStyle)style selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
     return [self actionControllerWithStyle:style title:nil message:nil selectAction:selectAction andCancelAction:cancelAction];
 }
 
-+ (nullable instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
++ (nonnull instancetype)actionControllerWithStyle:(RMActionControllerStyle)style title:(nullable NSString *)aTitle message:(nullable NSString *)aMessage selectAction:(nullable RMAction *)selectAction andCancelAction:(nullable RMAction *)cancelAction {
     return [[self alloc] initWithStyle:style title:aTitle message:aMessage selectAction:selectAction andCancelAction:cancelAction];
 }
 
