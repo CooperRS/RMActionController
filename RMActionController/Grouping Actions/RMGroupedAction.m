@@ -20,12 +20,12 @@
 @implementation RMGroupedAction
 
 #pragma mark - Class
-+ (nullable instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
++ (instancetype)actionWithTitle:(nonnull NSString *)title style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
     [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
     return nil;
 }
 
-+ (nullable instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
++ (instancetype)actionWithImage:(nonnull UIImage *)image style:(RMActionStyle)style andHandler:(nullable void (^)(RMActionController<UIView *> * __nonnull))handler {
     [NSException raise:@"RMIllegalCallException" format:@"Tried to initialize a grouped action with +[%@ %@]. Please use +[%@ %@] instead.", NSStringFromClass(self), NSStringFromSelector(_cmd), NSStringFromClass(self), NSStringFromSelector(@selector(actionWithStyle:andActions:))];
     return nil;
 }
