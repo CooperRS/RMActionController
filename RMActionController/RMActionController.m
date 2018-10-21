@@ -211,14 +211,16 @@
     //Setup properties of elements
     self.headerTitleLabel.backgroundColor = [UIColor clearColor];
     self.headerTitleLabel.textColor = [UIColor grayColor];
-    self.headerTitleLabel.font = [UIFont boldSystemFontOfSize:[UIFont smallSystemFontSize]];
+    self.headerTitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    self.headerTitleLabel.adjustsFontForContentSizeCategory = YES;
     self.headerTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerTitleLabel.textAlignment = NSTextAlignmentCenter;
     self.headerTitleLabel.numberOfLines = 0;
 
     self.headerMessageLabel.backgroundColor = [UIColor clearColor];
     self.headerMessageLabel.textColor = [UIColor grayColor];
-    self.headerMessageLabel.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
+    self.headerMessageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.headerMessageLabel.adjustsFontForContentSizeCategory = YES;
     self.headerMessageLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerMessageLabel.textAlignment = NSTextAlignmentCenter;
     self.headerMessageLabel.numberOfLines = 0;
