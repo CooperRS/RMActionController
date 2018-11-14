@@ -55,7 +55,7 @@
             handler(controller);
         }
         
-        if(weakAction.dismissesActionController) {
+        if(weakAction.dismissesActionController && controller.isBeingPresented) {
             if(controller.modalPresentationStyle == UIModalPresentationPopover || controller.yConstraint != nil) {
                 [controller dismissViewControllerAnimated:YES completion:nil];
             } else {

@@ -212,7 +212,6 @@
     self.headerTitleLabel.backgroundColor = [UIColor clearColor];
     self.headerTitleLabel.textColor = [UIColor grayColor];
     self.headerTitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
-    self.headerTitleLabel.adjustsFontForContentSizeCategory = YES;
     self.headerTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerTitleLabel.textAlignment = NSTextAlignmentCenter;
     self.headerTitleLabel.numberOfLines = 0;
@@ -220,10 +219,14 @@
     self.headerMessageLabel.backgroundColor = [UIColor clearColor];
     self.headerMessageLabel.textColor = [UIColor grayColor];
     self.headerMessageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.headerMessageLabel.adjustsFontForContentSizeCategory = YES;
     self.headerMessageLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerMessageLabel.textAlignment = NSTextAlignmentCenter;
     self.headerMessageLabel.numberOfLines = 0;
+    
+    if([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion >= 10) {
+        self.headerTitleLabel.adjustsFontForContentSizeCategory = YES;
+        self.headerMessageLabel.adjustsFontForContentSizeCategory = YES;
+    }
 }
 
 - (void)setupContainerElements {
