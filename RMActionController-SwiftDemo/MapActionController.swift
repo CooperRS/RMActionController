@@ -11,7 +11,7 @@ import MapKit
 
 class MapActionController: RMActionController<MKMapView> {
     
-    required override init?(style aStyle: RMActionControllerStyle, title aTitle: String?, message aMessage: String?, select selectAction: RMAction<MKMapView>?, andCancel cancelAction: RMAction<MKMapView>?) {
+    required override init(style aStyle: RMActionControllerStyle, title aTitle: String?, message aMessage: String?, select selectAction: RMAction<MKMapView>?, andCancel cancelAction: RMAction<MKMapView>?) {
         super.init(style: aStyle, title: aTitle, message: aMessage, select: selectAction, andCancel: cancelAction);
         
         self.contentView = MKMapView(frame: .zero)

@@ -10,12 +10,12 @@ import RMActionController
 
 class CustomViewActionController: RMActionController<UIView> {
     
-    required override init?(style aStyle: RMActionControllerStyle, title aTitle: String?, message aMessage: String?, select selectAction: RMAction<UIView>?, andCancel cancelAction: RMAction<UIView>?) {
+    required override init(style aStyle: RMActionControllerStyle, title aTitle: String?, message aMessage: String?, select selectAction: RMAction<UIView>?, andCancel cancelAction: RMAction<UIView>?) {
         super.init(style: aStyle, title: aTitle, message: aMessage, select: selectAction, andCancel: cancelAction);
         
         self.contentView = UIView(frame: .zero)
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         let plusLabel = UILabel(frame: .zero)
         plusLabel.translatesAutoresizingMaskIntoConstraints = false
         plusLabel.text = "+"
