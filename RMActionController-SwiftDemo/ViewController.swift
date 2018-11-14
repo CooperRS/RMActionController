@@ -34,12 +34,12 @@ class ViewController: UITableViewController {
             print("custom action controller was canceled")
         }
         
-        let actionController = CustomViewActionController(style: style)!
+        let actionController = CustomViewActionController(style: style)
         actionController.title = "Test"
         actionController.message = "This is a test message.\nPlease choose a date and press 'Select' or 'Cancel'."
         
-        actionController.addAction(selectAction!)
-        actionController.addAction(cancelAction!)
+        actionController.addAction(selectAction)
+        actionController.addAction(cancelAction)
         
         present(actionController: actionController);
     }
@@ -55,17 +55,17 @@ class ViewController: UITableViewController {
         let action3 = RMImageAction<UIView>(title: "Server", image: UIImage(named: "Server")!, style: .done)
         let action4 = RMImageAction<UIView>(title: "Calendar", image: UIImage(named: "Calendar")!, style: .done)
         
-        let selectAction = RMScrollableGroupedAction<UIView>(style: .done, actionWidth: 100, andActions: [action1!, action2!, action3!, action4!])
+        let selectAction = RMScrollableGroupedAction<UIView>(style: .done, actionWidth: 100, andActions: [action1, action2, action3, action4])
         let cancelAction = RMAction<UIView>(title: "Cancel", style: RMActionStyle.cancel) { _ in
             print("custom action controller was canceled")
         }
         
-        let actionController = CustomViewActionController(style: style)!
+        let actionController = CustomViewActionController(style: style)
         actionController.title = "Export"
         actionController.message = "Please choose an export format or tap 'Cancel'."
         
-        actionController.addAction(selectAction!)
-        actionController.addAction(cancelAction!)
+        actionController.addAction(selectAction)
+        actionController.addAction(cancelAction)
         
         present(actionController: actionController);
     }
@@ -84,12 +84,12 @@ class ViewController: UITableViewController {
             print("Map action controller was canceled")
         }
         
-        let actionController = MapActionController(style: style)!
+        let actionController = MapActionController(style: style)
         actionController.title = "Test"
         actionController.message = "This is a map action controller.\nPlease choose a date and press 'Select' or 'Cancel'."
         
-        actionController.addAction(selectAction!)
-        actionController.addAction(cancelAction!)
+        actionController.addAction(selectAction)
+        actionController.addAction(cancelAction)
         
         present(actionController: actionController);
     }
@@ -108,12 +108,12 @@ class ViewController: UITableViewController {
             print("custom action controller was canceled")
         }
 
-        let actionController = CustomViewActionController(style: style)!
+        let actionController = CustomViewActionController(style: style)
         actionController.title = "Test"
         actionController.message = "This is a test message.\nPlease choose a date and press 'Select' or 'Cancel'."
 
-        actionController.addAction(selectAction!)
-        actionController.addAction(cancelAction!)
+        actionController.addAction(selectAction)
+        actionController.addAction(cancelAction)
 
         present(actionController: actionController);
     }

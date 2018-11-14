@@ -24,6 +24,6 @@
  *
  *  @return The new instance of RMScrollableGroupedAction
  */
-+ (nullable instancetype)actionWithStyle:(RMActionStyle)style actionWidth:(CGFloat)actionWidth andActions:(nonnull NSArray *)actions;
++ (nonnull instancetype)actionWithStyle:(RMActionStyle)style actionWidth:(CGFloat)actionWidth andActions:(nonnull NSArray *)actions;
 
 @end

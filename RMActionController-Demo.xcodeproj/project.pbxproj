@@ -25,6 +25,8 @@
 		CA3FDCAD1B35E1B200590165 /* RMCustomViewActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA81B35E1B200590165 /* RMCustomViewActionControllerTests.m */; };
 		CA3FDCAE1B35E1B200590165 /* RMActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCA91B35E1B200590165 /* RMActionControllerTests.m */; };
 		CA3FDCAF1B35E1B200590165 /* RMMapActionControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3FDCAA1B35E1B200590165 /* RMMapActionControllerTests.m */; };
+		CA44BD40219CB9F600269DD6 /* RMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD311CE1B01511500D905F7 /* RMViewController.m */; };
+		CA44BD41219CB9F900269DD6 /* RMCustomViewActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87636F1B088DDA00885A0B /* RMCustomViewActionController.m */; };
 		CA55C79C1B35E996009CF003 /* RMActionControllerPresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA55C79B1B35E996009CF003 /* RMActionControllerPresentationTests.m */; };
 		CA5EFC2C1D8EAC5A0020C8A8 /* RMActionController.h in Headers */ = {isa = PBXBuildFile; fileRef = CA5EFC2A1D8EAC5A0020C8A8 /* RMActionController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA5EFC2F1D8EAC5A0020C8A8 /* RMActionController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5EFC281D8EAC5A0020C8A8 /* RMActionController.framework */; };
@@ -763,7 +765,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA44BD41219CB9F900269DD6 /* RMCustomViewActionController.m in Sources */,
 				CAD311EC1B0151DB00D905F7 /* RMMapActionController.m in Sources */,
+				CA44BD40219CB9F600269DD6 /* RMViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
