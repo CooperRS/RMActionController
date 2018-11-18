@@ -135,6 +135,7 @@
     
     UIButton *actionButton = [UIButton buttonWithType:buttonType];
     [actionButton addTarget:self action:@selector(actionTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [actionButton setBackgroundImage:[self imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:0]] forState:UIControlStateNormal];
     
     if(!self.controller.disableBlurEffectsForActions) {
         [actionButton setBackgroundImage:[self imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3]] forState:UIControlStateHighlighted];
