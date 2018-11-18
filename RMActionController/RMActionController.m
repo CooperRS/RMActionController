@@ -380,6 +380,19 @@
 
 - (void)setupTopContainerContentConstraintsWithMetrics:(NSDictionary *)metrics {
     __block UIView *currentTopView = nil;
+    
+    if([self currentStyleIsSheet]) {
+        UIView *seperator = [UIView seperatorView];
+        [self addSubview:seperator toContainer:self.topContainer];
+        
+        [self.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[seperator]-(0)-|" options:0 metrics:nil views:@{@"seperator": seperator}]];
+        [self.topContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[seperator(seperatorHeight)]" options:0 metrics:metrics views:@{@"seperator": seperator}]];
+
+        [self.topContainer addConstraint:[NSLayoutConstraint constraintWithItem:seperator attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:[self topContainerBottomItem] attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+        
+        currentTopView = seperator;
+    }
+    
     __weak RMActionController *blockself = self;
     [self.doneActions enumerateObjectsUsingBlock:^(RMAction *action, NSUInteger index, BOOL *stop) {
         UIView *seperator = [UIView seperatorView];
