@@ -12,6 +12,8 @@
 
 @interface RMImageAction () <UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) UILabel *label;
+
 @end
 
 @implementation RMImageAction
@@ -26,7 +28,6 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     titleLabel.userInteractionEnabled = NO;
-    titleLabel.font = [UIFont systemFontOfSize:[UIFont smallSystemFontSize]];
     titleLabel.text = self.title;
     titleLabel.numberOfLines = 0;
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -51,7 +52,13 @@
     [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(0)-[button]-(0)-|" options:0 metrics:nil views:bindings]];
     [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(0)-[button]-(0)-|" options:0 metrics:nil views:bindings]];
     
+    self.label = titleLabel;
     return view;
+}
+
+- (void)updateFont {
+    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleFootnote];
+    self.label.font = [UIFont fontWithDescriptor:descriptor size:descriptor.pointSize];
 }
 
 @end

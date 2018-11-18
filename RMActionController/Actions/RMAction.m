@@ -18,6 +18,8 @@
 @property (nonatomic, strong, readwrite) NSString *title;
 @property (nonatomic, strong, readwrite) UIImage *image;
 
+@property (nonatomic, strong) UIButton *button;
+
 @end
 
 @implementation RMAction
@@ -72,8 +74,13 @@
     self = [super init];
     if(self) {
         self.dismissesActionController = YES;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(contentSizeCategoryChanged) name:UIContentSizeCategoryDidChangeNotification object:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Cancel Helper
@@ -100,11 +107,21 @@
     return image;
 }
 
+- (void)updateFont {
+    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleCallout];
+    if(self.style == RMActionStyleCancel) {
+        descriptor = [descriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    }
+    self.button.titleLabel.font = [UIFont fontWithDescriptor:descriptor size:descriptor.pointSize];
+}
+
 #pragma mark - View
 - (UIView *)view {
     if(!_view) {
         _view = [self loadView];
         _view.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [self updateFont];
     }
     
     return _view;
@@ -118,12 +135,6 @@
     
     UIButton *actionButton = [UIButton buttonWithType:buttonType];
     [actionButton addTarget:self action:@selector(actionTapped:) forControlEvents:UIControlEventTouchUpInside];
-    
-    if(self.style == RMActionStyleCancel) {
-        actionButton.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
-    } else {
-        actionButton.titleLabel.font = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
-    }
     
     if(!self.controller.disableBlurEffectsForActions) {
         [actionButton setBackgroundImage:[self imageWithColor:[[UIColor whiteColor] colorWithAlphaComponent:0.3]] forState:UIControlStateHighlighted];
@@ -146,17 +157,23 @@
         [actionButton setImage:self.image forState:UIControlStateNormal];
     }
     
-    [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(height)]" options:0 metrics:@{@"height": @([NSProcessInfo runningAtLeastiOS9] ? 55 : 44)} views:NSDictionaryOfVariableBindings(actionButton)]];
+    [actionButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[actionButton(>=minHeight)]" options:0 metrics:@{@"minHeight": @([NSProcessInfo runningAtLeastiOS9] ? 55 : 44)} views:NSDictionaryOfVariableBindings(actionButton)]];
     
     if(self.style == RMActionStyleDestructive) {
         [actionButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     }
     
+    self.button = actionButton;
     return actionButton;
 }
 
 - (void)actionTapped:(id)sender {
     self.handler(self.controller);
+}
+
+#pragma mark - Notifications
+- (void)contentSizeCategoryChanged {
+    [self updateFont];
 }
 
 @end

@@ -113,5 +113,10 @@ typedef NS_ENUM(NSInteger, RMActionStyle) {
  */
 - (void)actionTapped:(nullable id)sender;
 
+/**
+ *  Called when the system content size category changed.
+ */
+- (void)updateFont;
+
 @end
 

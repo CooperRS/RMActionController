@@ -11,6 +11,7 @@
 @interface RMScrollableGroupedAction ()
 
 @property (nonatomic, assign) CGFloat actionWidth;
+@property (nonatomic, weak) NSLayoutConstraint *heightConstraint;
 
 @end
 
@@ -38,11 +39,9 @@
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
     
-    __block CGFloat maxHeight = 0;
     __block UIView *currentLeft = nil;
     [self.actions enumerateObjectsUsingBlock:^(RMAction *action, NSUInteger index, BOOL *stop) {
         [scrollView addSubview:action.view];
-        maxHeight = MAX(maxHeight, [action.view systemLayoutSizeFittingSize:CGSizeMake(self.actionWidth, 999999) withHorizontalFittingPriority:UILayoutPriorityRequired verticalFittingPriority:UILayoutPriorityFittingSizeLevel].height);
         
         if(index == 0) {
             NSDictionary *bindings = @{@"actionView": action.view};
@@ -63,9 +62,20 @@
     NSDictionary *bindings = @{@"currentLeft": currentLeft, @"scrollView": scrollView};
     [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[currentLeft]-(0)-|" options:0 metrics:nil views:bindings]];
     
-    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[scrollView(height)]" options:0 metrics:@{@"height": @(maxHeight)} views:bindings]];
+    self.heightConstraint = [NSLayoutConstraint constraintWithItem:scrollView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:0];
+    [scrollView addConstraint: self.heightConstraint];
+    [self updateFont];
     
     return scrollView;
+}
+
+#pragma mark - Helper
+- (void)updateFont {
+    __block CGFloat maxHeight = 0;
+    [self.actions enumerateObjectsUsingBlock:^(RMAction *action, NSUInteger index, BOOL *stop) {
+        maxHeight = MAX(maxHeight, [action.view systemLayoutSizeFittingSize:CGSizeMake(self.actionWidth, 999999) withHorizontalFittingPriority:UILayoutPriorityRequired verticalFittingPriority:UILayoutPriorityFittingSizeLevel].height);
+    }];
+    self.heightConstraint.constant = maxHeight;
 }
 
 @end
