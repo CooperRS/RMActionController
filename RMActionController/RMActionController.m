@@ -139,6 +139,8 @@
 
     self.disableBlurEffectsForBackgroundView = YES;
     [self setupUIElements];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFont) name:UIContentSizeCategoryDidChangeNotification object:nil];
 }
 
 - (void)viewDidLoad {
@@ -202,6 +204,10 @@
     self.hasBeenDismissed = NO;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - UI Element Setup
 - (void)setupUIElements {
     //Instantiate elements
@@ -211,17 +217,17 @@
     //Setup properties of elements
     self.headerTitleLabel.backgroundColor = [UIColor clearColor];
     self.headerTitleLabel.textColor = [UIColor grayColor];
-    self.headerTitleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.headerTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerTitleLabel.textAlignment = NSTextAlignmentCenter;
     self.headerTitleLabel.numberOfLines = 0;
 
     self.headerMessageLabel.backgroundColor = [UIColor clearColor];
     self.headerMessageLabel.textColor = [UIColor grayColor];
-    self.headerMessageLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.headerMessageLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerMessageLabel.textAlignment = NSTextAlignmentCenter;
     self.headerMessageLabel.numberOfLines = 0;
+    
+    [self updateFont];
     
     if([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion >= 10) {
         self.headerTitleLabel.adjustsFontForContentSizeCategory = YES;
@@ -594,6 +600,14 @@
 
 - (BOOL)currentStyleIsSheet {
     return self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack;
+}
+
+- (void)updateFont {
+    UIFontDescriptor *descriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleFootnote];
+    self.headerMessageLabel.font = [UIFont fontWithDescriptor:descriptor size:descriptor.pointSize];
+    
+    descriptor = [descriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    self.headerTitleLabel.font = [UIFont fontWithDescriptor:descriptor size:descriptor.pointSize];
 }
 
 #pragma mark - iOS Properties
