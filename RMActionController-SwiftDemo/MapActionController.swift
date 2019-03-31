@@ -18,8 +18,8 @@ class MapActionController: RMActionController<MKMapView> {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         
         let bindings = ["contentView": self.contentView];
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[contentView(>=300)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: bindings))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[contentView(200)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: bindings))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[contentView(>=300)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: bindings))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[contentView(200)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: bindings))
     }
     
     required init?(coder aDecoder: NSCoder) {
