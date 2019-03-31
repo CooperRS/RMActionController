@@ -35,8 +35,8 @@ class CustomViewActionController: RMActionController<UIView> {
         self.contentView.addConstraint(NSLayoutConstraint(item: textLabel, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1, constant: 20))
         
         let bindings = ["contentView": self.contentView];
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[contentView(>=300)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: bindings))
-        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[contentView(140)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: bindings))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "[contentView(>=300)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: bindings))
+        self.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[contentView(140)]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: bindings))
     }
 
     required init?(coder aDecoder: NSCoder) {
