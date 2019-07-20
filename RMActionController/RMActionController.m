@@ -529,9 +529,11 @@
     switch (self.style) {
         case RMActionControllerStyleWhite:
         case RMActionControllerStyleBlack:
+        case RMActionControllerStyleAdaptive:
             return [NSProcessInfo runningAtLeastiOS9] ? 12 : 4;
         case RMActionControllerStyleSheetWhite:
         case RMActionControllerStyleSheetBlack:
+        case RMActionControllerStyleSheetAdaptive:
             return 0;
     }
 }
@@ -540,9 +542,11 @@
     switch (self.style) {
         case RMActionControllerStyleWhite:
         case RMActionControllerStyleBlack:
+        case RMActionControllerStyleAdaptive:
             return 10;
         case RMActionControllerStyleSheetWhite:
         case RMActionControllerStyleSheetBlack:
+        case RMActionControllerStyleSheetAdaptive:
             return 0;
     }
 }
@@ -555,6 +559,12 @@
         case RMActionControllerStyleBlack:
         case RMActionControllerStyleSheetBlack:
             return UIBlurEffectStyleDark;
+        case RMActionControllerStyleAdaptive:
+        case RMActionControllerStyleSheetAdaptive:
+            if(@available(iOS 13, *)) {
+                return UIBlurEffectStyleSystemThickMaterial;
+            }
+            return UIBlurEffectStyleExtraLight;
         default:
             return UIBlurEffectStyleExtraLight;
     }
@@ -568,6 +578,12 @@
         case RMActionControllerStyleBlack:
         case RMActionControllerStyleSheetBlack:
             return UIBlurEffectStyleLight;
+        case RMActionControllerStyleAdaptive:
+        case RMActionControllerStyleSheetAdaptive:
+            if(@available(iOS 13, *)) {
+                return UIBlurEffectStyleSystemUltraThinMaterial;
+            }
+            return UIBlurEffectStyleDark;
         default:
             return UIBlurEffectStyleDark;
     }
@@ -683,7 +699,7 @@
         return YES;
     }
     
-    if(self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack) {
+    if(self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack || self.style == RMActionControllerStyleSheetAdaptive) {
         return YES;
     }
     
@@ -695,7 +711,7 @@
         return YES;
     }
     
-    if(self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack) {
+    if(self.style == RMActionControllerStyleSheetWhite || self.style == RMActionControllerStyleSheetBlack || self.style == RMActionControllerStyleSheetAdaptive) {
         return YES;
     }
     
