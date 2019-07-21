@@ -143,6 +143,8 @@
         switch (self.controller.style) {
             case RMActionControllerStyleWhite:
             case RMActionControllerStyleSheetWhite:
+            case RMActionControllerStyleAdaptive:
+            case RMActionControllerStyleSheetAdaptive:
                 [actionButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.2 alpha:1]] forState:UIControlStateHighlighted];
                 break;
             case RMActionControllerStyleBlack:
