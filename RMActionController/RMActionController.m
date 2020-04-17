@@ -302,7 +302,7 @@
 
     //Debugging Accessibility Labels
 #ifdef DEBUG
-    self.topContainer.accessibilityLabel = @"TopContainer   ";
+    self.topContainer.accessibilityLabel = @"TopContainer";
 #endif
 }
 
