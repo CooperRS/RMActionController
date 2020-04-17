@@ -293,7 +293,11 @@
     if(!self.disableBlurEffects) {
         self.topContainer.backgroundColor = [UIColor clearColor];
     } else {
-        self.topContainer.backgroundColor = [UIColor whiteColor];
+        if (@available(iOS 13.0, *)) {
+            self.topContainer.backgroundColor = [UIColor secondarySystemBackgroundColor];
+        }else {
+            self.topContainer.backgroundColor = [UIColor whiteColor];
+        }
     }
 
     //Debugging Accessibility Labels
@@ -336,7 +340,11 @@
     if(!self.disableBlurEffects) {
         self.bottomContainer.backgroundColor = [UIColor clearColor];
     } else {
-        self.bottomContainer.backgroundColor = [UIColor whiteColor];
+        if (@available(iOS 13.0, *)) {
+            self.bottomContainer.backgroundColor = [UIColor secondarySystemBackgroundColor];
+        }else {
+            self.bottomContainer.backgroundColor = [UIColor whiteColor];
+        }
     }
 
     //Debugging Accessibility Labels
