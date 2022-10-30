@@ -6,7 +6,7 @@
 //  Copyright © 2016 Roland Moers. All rights reserved.
 //
 
-#import "RMAction.h"
+#import <RMActionController/RMAction.h>
 
 /**
  *  A RMGroupedAction instance represents a number of actions that can be grouped.

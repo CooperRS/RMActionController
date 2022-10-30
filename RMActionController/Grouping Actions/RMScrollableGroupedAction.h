@@ -6,7 +6,7 @@
 //  Copyright © 2016 Roland Moers. All rights reserved.
 //
 
-#import "RMGroupedAction.h"
+#import <RMActionController/RMGroupedAction.h>
 
 /**
  *  Like RMGroupedActions allows to show multiple RMActions in a row. However, instead to equally divide the available width, RMScrollableGroupedAction uses a fix width for each RMAction and allows the user to scroll when the available width is not sufficient.

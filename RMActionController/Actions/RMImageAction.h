@@ -6,7 +6,7 @@
 //  Copyright © 2016 Roland Moers. All rights reserved.
 //
 
-#import "RMAction.h"
+#import <RMActionController/RMAction.h>
 
 /**
  *  Like RMAction, RMImageAction represents an action that can be tapped by the use when a RMActionController is presented.
